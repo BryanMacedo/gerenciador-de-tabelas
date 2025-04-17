@@ -1,0 +1,24 @@
+.background{
+    -fx-background-color:#A020F0;
+}
+
+.borderRight{
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: #ffffff;
+}
+
+.label{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+
+.HboxHover:hover{
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+
+
+

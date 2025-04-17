@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <StackPane BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="23.0" right="30.0" />
+         </BorderPane.margin>
+      </StackPane>
+   </top>
+   <left>
+      <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="40.0" top="40.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
+                     <image>
+                        <Image url="@../../../imgs/imgUI/ic_new_file.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Nova tabela">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="HboxHover" />
+                  <String fx:value="Hbox" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
+                     <image>
+                        <Image url="@../../../imgs/imgUI/ic_edit_file.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Editar tabela" textAlignment="RIGHT">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="HboxHover" />
+                  <String fx:value="Hbox" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
+                     <image>
+                        <Image url="@../../../imgs/imgUI/ic_list_file.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Listar tabelas" textAlignment="RIGHT">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="HboxHover" />
+                  <String fx:value="Hbox" />
+               </styleClass>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
