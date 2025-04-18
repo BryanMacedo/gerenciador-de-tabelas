@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -12,10 +13,12 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //primaryStage.initStyle(StageStyle.UNDECORATED); //tira a barra superior
-        Parent root = FXMLLoader.load(getClass().getResource("/org/bryanmacedo/gui/MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+        Scene scene = new Scene(root, 1445, 833);
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Test");
-        primaryStage.setScene(new Scene(root, 1445, 833));
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 

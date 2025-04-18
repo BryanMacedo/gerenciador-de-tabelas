@@ -4,6 +4,7 @@
 
 .borderRight{
     -fx-border-width: 0 2 0 0;
+    -fx-border-width: 0 6px 0 0;
     -fx-border-color: #ffffff;
 }
 
@@ -19,6 +20,49 @@
     -fx-scale-y: 1.1;
 }
 
+.backgroundStackPane{
+    -fx-border-color: #ffffff;       /* Cor da borda */
+    -fx-border-width: 6px;           /* Largura da borda */
+    -fx-border-radius: 20px;         /* Arredondamento das bordas */
+}
+
+.buton{
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+}
+
+.butonHover:hover{
+    -fx-border-color: #ffffff;
+}
+
+.textFild{
+    -fx-background-color: transparent; /* Fundo transparente */
+    -fx-border-color: white;           /* Cor da borda (linha inferior) */
+    -fx-border-width: 0 0 1px 0;      /* Borda apenas na parte inferior (1px de espessura) */
+    -fx-text-fill: white;             /* Cor do texto (opcional) */
+    -fx-prompt-text-fill: #aaaaaa;    /* Cor do texto de dica (opcional) */
+}
+
+.imageview{
+    -fx-cursor: hand;
+}
+
+.imageviewHover:hover{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
 
 
-
+.root {
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-border-color: #A020F0;
+    -fx-border-width: 10;
+}
