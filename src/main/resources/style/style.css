@@ -66,3 +66,15 @@
     -fx-border-color: #A020F0;
     -fx-border-width: 10;
 }
+
+.floating-controls {
+    -fx-z-index: 1000;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+
+/* Define o fundo do conteúdo */
+.background-content {
+    -fx-background-color: transparent;
+    -fx-pref-width: 100%;
+    -fx-pref-height: 100%;
+}

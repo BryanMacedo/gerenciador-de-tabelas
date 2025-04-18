@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.NewFileViewController">
    <left>
       <StackPane BorderPane.alignment="CENTER">
@@ -22,6 +21,30 @@
          <children>
             <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
                <children>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="319.0" prefHeight="0.0" prefWidth="142.0">
+                     <children>
+                        <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
+                           <image>
+                              <Image url="@../../../imgs/imgUI/ic_profile.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Seu perfil">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="HboxHover" />
+                        <String fx:value="Hbox" />
+                     </styleClass>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
@@ -111,64 +134,78 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="409.0" prefWidth="1127.0">
+            <VBox>
                <children>
-                  <VBox alignment="CENTER" prefHeight="172.0" prefWidth="278.0" styleClass="backgroundStackPane">
+                  <HBox alignment="CENTER" prefHeight="829.0" prefWidth="1107.0">
                      <children>
-                        <Label prefHeight="27.0" prefWidth="256.0" text="Digite o nome do arquivo:">
-                           <VBox.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField prefHeight="25.0" prefWidth="0.0" promptText="jogos-2025" styleClass="textFild">
-                           <VBox.margin>
-                              <Insets left="20.0" right="20.0" top="10.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <Button fx:id="btCreate" mnemonicParsing="false" onAction="#onBtCreateAction" text="Criar">
-                           <VBox.margin>
-                              <Insets top="15.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="buton" />
-                              <String fx:value="butonHover" />
-                           </styleClass>
-                        </Button>
+                        <VBox alignment="CENTER" prefHeight="172.0" prefWidth="278.0" styleClass="backgroundStackPane">
+                           <children>
+                              <Label prefHeight="27.0" prefWidth="256.0" text="Digite o nome do arquivo:">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfFileName" focusTraversable="false" prefHeight="25.0" prefWidth="0.0" promptText="jogos-2025" styleClass="textFild">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Button fx:id="btCreate" mnemonicParsing="false" onAction="#onBtCreateAction" text="Criar">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="buton" />
+                                    <String fx:value="butonHover" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
                      </children>
-                     <HBox.margin>
+                     <VBox.margin>
                         <Insets bottom="320.0" top="320.0" />
-                     </HBox.margin>
-                  </VBox>
+                     </VBox.margin>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+            </VBox>
+            <StackPane prefHeight="64.0" prefWidth="1107.0">
                <children>
-                  <ImageView fx:id="imgvMinimize" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvMinimizeClick" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../imgs/imgUI/ic_minimize.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets top="15.0" />
-                     </HBox.margin>
-                     <styleClass>
-                        <String fx:value="imageview" />
-                        <String fx:value="imageviewHover" />
-                     </styleClass>
-                  </ImageView>
-                  <ImageView fx:id="imgvClose" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvCloseClick" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../imgs/imgUI/ic_Close.png" />
-                     </image>
-                     <styleClass>
-                        <String fx:value="imageview" />
-                        <String fx:value="imageviewHover" />
-                     </styleClass>
-                     <HBox.margin>
-                        <Insets left="10.0" right="15.0" top="15.0" />
-                     </HBox.margin>
-                  </ImageView>
+                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="imgvMinimize" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvMinimizeClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imgs/imgUI/ic_minimize.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                           <styleClass>
+                              <String fx:value="imageview" />
+                              <String fx:value="imageviewHover" />
+                           </styleClass>
+                        </ImageView>
+                        <ImageView fx:id="imgvClose" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvCloseClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imgs/imgUI/ic_Close.png" />
+                           </image>
+                           <styleClass>
+                              <String fx:value="imageview" />
+                              <String fx:value="imageviewHover" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="10.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+               <StackPane.margin>
+                  <Insets bottom="700.0" left="1000.0" />
+               </StackPane.margin>
+            </StackPane>
          </children>
       </StackPane>
    </center>
