@@ -8,8 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -20,9 +23,14 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class NewFileViewController implements Initializable {
+    List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
+
     @FXML
     private Button btCreate;
 
@@ -71,7 +79,23 @@ public class NewFileViewController implements Initializable {
 
             try (XSSFWorkbook workbook = new XSSFWorkbook();
                  FileOutputStream fileOutputStream = new FileOutputStream(fullPath.toString())) {
-                workbook.createSheet(fileName);
+
+                // cria a planilha
+                XSSFSheet sheet = workbook.createSheet(fileName);
+
+                //cria a primeira linha que será usada como cabeçalho/colunas
+                Row headerRow = sheet.createRow(0);
+
+                for (int i = 0; i < columns.size(); i++) {
+                    Cell cell = headerRow.createCell(i);
+                    cell.setCellValue(columns.get(i));
+                }
+
+                //Deixa o tamanho da célula igual ao do seu conteúdo
+                for(int i = 0; i < columns.size(); i++) {
+                    sheet.autoSizeColumn(i);
+                }
+
                 workbook.write(fileOutputStream);
             } catch (IOException e) {
                 throw new RuntimeException(e);
