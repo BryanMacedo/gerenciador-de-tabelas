@@ -13,6 +13,10 @@
     -fx-font-size: 18px;
 }
 
+.lableHand{
+    -fx-cursor: hand;
+}
+
 
 .HboxHover:hover{
     -fx-cursor: hand;
@@ -100,6 +104,12 @@
     -fx-cursor: hand;
     -fx-font-weight: bold;
 
+}
+
+.choice-box .context-menu {
+    -fx-max-height: 300px; /* Altura máxima em pixels */
+    -fx-pref-width: 150px; /* Largura fixa (opcional) */
+    -fx-scroll-bar-policy: always; /* Força a barra de rolagem */
 }
 
 

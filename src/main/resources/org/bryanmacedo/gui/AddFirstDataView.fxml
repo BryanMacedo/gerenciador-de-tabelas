@@ -138,7 +138,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="229.0" prefWidth="1107.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="190.0" prefWidth="391.0" styleClass="backgroundStackPane">
+                        <VBox alignment="CENTER" prefHeight="229.0" prefWidth="457.0" styleClass="backgroundStackPane">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="5.0" prefWidth="379.0">
                                  <children>
@@ -164,7 +164,7 @@
                                     <ChoiceBox fx:id="cbPlataforms" prefHeight="43.0" prefWidth="151.0" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="5.0" />
+                                    <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="5.0" prefWidth="379.0">
@@ -174,7 +174,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField focusTraversable="false" prefHeight="27.0" prefWidth="37.0" styleClass="textFild">
+                                    <TextField alignment="CENTER" focusTraversable="false" prefHeight="27.0" prefWidth="37.0" styleClass="textFild">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
@@ -184,33 +184,59 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="379.0">
                                  <children>
                                     <Label text="DLC:" />
-                                    <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
-                                       <image>
-                                          <Image url="@../../../imgs/imgAddData/ic_button_Selected.png" />
-                                       </image>
+                                    <HBox fx:id="hbDontHaveDLC" alignment="CENTER" onMouseClicked="#onHbDontHaveDLC_Click">
+                                       <children>
+                                          <ImageView fx:id="imgvRbDontHaveDLC" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
+                                             <image>
+                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label styleClass="lableHand" text="Não tem" />
+                                       </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
-                                    </ImageView>
-                                    <Label text="Terminei" />
-                                    <ImageView fitHeight="20.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
-                                       <image>
-                                          <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
-                                       </image>
+                                    </HBox>
+                                    <HBox fx:id="hbfinishDLC" alignment="CENTER" onMouseClicked="#onHbfinishDLC_Click">
+                                       <children>
+                                          <HBox alignment="CENTER" />
+                                          <ImageView fx:id="imgvRbfinishDLC" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
+                                             <image>
+                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="finishDLC" styleClass="lableHand" text="Terminei" />
+                                       </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
-                                    </ImageView>
-                                    <Label text="Não terminei" />
-                                    <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
-                                       <image>
-                                          <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
-                                       </image>
+                                    </HBox>
+                                    <HBox fx:id="hbUnfinishDLC" alignment="CENTER" onMouseClicked="#onHbUnfinishDLC_Click">
+                                       <children>
+                                          <ImageView fx:id="imgvRbunfinishDLC" fitHeight="20.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
+                                             <image>
+                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="unfinishDLC" styleClass="lableHand" text="Não terminei" />
+                                       </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
-                                    </ImageView>
-                                    <Label text="É DLC" />
+                                    </HBox>
+                                    <HBox fx:id="hbUnIsDLC" alignment="CENTER" onMouseClicked="#onHbIsDLC_Click">
+                                       <children>
+                                          <ImageView fx:id="imgvRbisDLC" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
+                                             <image>
+                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="isDLC" styleClass="lableHand" text="É DLC" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </HBox>
                                  </children>
                                  <VBox.margin>
                                     <Insets left="10.0" top="5.0" />
@@ -219,24 +245,32 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="379.0">
                                  <children>
                                     <Label text="Jogo finalizado?" />
-                                    <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
-                                       <image>
-                                          <Image url="@../../../imgs/imgAddData/ic_button_Selected.png" />
-                                       </image>
+                                    <HBox fx:id="hbFinishYes" alignment="CENTER" onMouseClicked="#onHbFinishYesClick">
+                                       <children>
+                                          <ImageView fx:id="imgvRbFinishYes" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
+                                             <image>
+                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label styleClass="lableHand" text="Sim" />
+                                       </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
-                                    </ImageView>
-                                    <Label text="Sim" />
-                                    <ImageView fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
-                                       <image>
-                                          <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
-                                       </image>
+                                    </HBox>
+                                    <HBox fx:id="hbFinishNo" alignment="CENTER" onMouseClicked="#onHbFinishNoClick">
+                                       <children>
+                                          <ImageView fx:id="imgvRbFinishNo" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
+                                             <image>
+                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label styleClass="lableHand" text="Não" />
+                                       </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
-                                    </ImageView>
-                                    <Label text="Não" />
+                                    </HBox>
                                  </children>
                                  <VBox.margin>
                                     <Insets left="10.0" top="5.0" />
@@ -249,7 +283,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField focusTraversable="false" prefHeight="27.0" prefWidth="84.0" promptText="16/03/2015" styleClass="textFild">
+                                    <TextField fx:id="tfDate" disable="true" focusTraversable="false" prefHeight="27.0" prefWidth="84.0" promptText="16/03/2015" styleClass="textFild">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
