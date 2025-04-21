@@ -2,21 +2,20 @@ package guiClasses.controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -101,6 +100,18 @@ public class NewFileViewController implements Initializable {
                 throw new RuntimeException(e);
             }
 
+        }
+
+        // se chegar aqui ir para outra view para adicionar o primeiro dado
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/AddFirstDataView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
     }

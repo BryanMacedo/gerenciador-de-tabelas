@@ -45,7 +45,7 @@
 .textFild{
     -fx-background-color: transparent; /* Fundo transparente */
     -fx-border-color: white;           /* Cor da borda (linha inferior) */
-    -fx-border-width: 0 0 1px 0;      /* Borda apenas na parte inferior (1px de espessura) */
+    -fx-border-width: 0 0 2px 0;      /* Borda apenas na parte inferior (1px de espessura) */
     -fx-text-fill: white;             /* Cor do texto (opcional) */
     -fx-prompt-text-fill: #aaaaaa;    /* Cor do texto de dica (opcional) */
 }
@@ -58,7 +58,6 @@
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }
-
 
 .root {
     -fx-background-radius: 25;
@@ -78,3 +77,29 @@
     -fx-pref-width: 100%;
     -fx-pref-height: 100%;
 }
+
+.choice-box {
+    -fx-background-color: #A020F0;
+    -fx-cursor: hand;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-mark-color: #ffffff; /* Cor do ícone da seta */
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #A020F0;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+
+}
+
+
