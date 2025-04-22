@@ -24,7 +24,6 @@
     -fx-border-color: #ffffff;
     -fx-border-width: 6px;
     -fx-border-radius: 20px;
-
 }
 
 
@@ -94,15 +93,16 @@
 
 .choice-box {
     -fx-background-color:#272727;
-    -fx-cursor: hand;
     -fx-border-color: #ffffff;
-    -fx-border-radius: 20px;
     -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-cursor: hand;
     -fx-mark-color: #ffffff; /* Cor do ícone da seta */
 }
 
 .choice-box .context-menu {
--fx-background-color:#272727;
+    -fx-background-color:#272727;
+    -fx-background-radius: 20px;
     -fx-border-color: #ffffff;
     -fx-border-radius: 20px;
     -fx-border-width: 2px;

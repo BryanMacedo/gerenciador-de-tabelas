@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import model.entities.Game;
+import model.entities.TypeDLC;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,14 +28,20 @@ public class AddFirstDataViewController implements Initializable {
     private List<String> dlc = new ArrayList<>();
     private List<ImageView> imageViewClicked = new ArrayList<>();
 
-    private List<String>finish = new ArrayList<>();
+    private List<String> finish = new ArrayList<>();
     private List<ImageView> imageViewFinishClicked = new ArrayList<>();
+
+    private List<Boolean> yesOrNo = new ArrayList<>();
+    private List<TypeDLC> typeDLCChoice = new ArrayList<>();
 
     @FXML
     private ImageView imgvClose;
 
     @FXML
     private ImageView imgvMinimize;
+
+    @FXML
+    private TextField tfName;
 
     @FXML
     private Label finishDLC;
@@ -90,8 +98,8 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private Button btAddGame;
 
-    private void clickFinish(String finishStr, ImageView imageView){
-        if (finish.isEmpty()){
+    private void clickFinish(String finishStr, ImageView imageView) {
+        if (finish.isEmpty()) {
             finish.add(finishStr);
             imageViewFinishClicked.add(imageView);
             imageViewFinishClicked.get(0).setImage(imgSelected);
@@ -133,17 +141,29 @@ public class AddFirstDataViewController implements Initializable {
     }
 
     @FXML
-    private void onBtAddGameClick(){
+    private void onBtAddGameClick() {
         // criar um obj com os dados dos campos preenchidos pelo user
         // usar o obj para salvar no arquivo .xlsx
+
+        String date = tfDate.getText();
+        if (date.equals("")){
+            date = "Sem data";
+        }
+        Game newGame = new Game(tfName.getText(), cbPlataforms.getValue(),
+                spnRating.getValue(),typeDLCChoice.get(0),yesOrNo.get(0), date);
+
+
+        System.out.println(newGame);
     }
 
     @FXML
     private void onHbFinishYesClick() {
-        clickFinish("Sim",imgvRbFinishYes);
-        if (!finish.isEmpty() && finish.get(0).equals("Sim")){
+        yesOrNo.clear();
+        yesOrNo.add(true);
+        clickFinish("Sim", imgvRbFinishYes);
+        if (!finish.isEmpty() && finish.get(0).equals("Sim")) {
             tfDate.setDisable(false);
-        }else {
+        } else {
             tfDate.clear();
             tfDate.setDisable(true);
         }
@@ -151,7 +171,9 @@ public class AddFirstDataViewController implements Initializable {
 
     @FXML
     private void onHbFinishNoClick() {
-        clickFinish("Não",imgvRbFinishNo);
+        yesOrNo.clear();
+        yesOrNo.add(false);
+        clickFinish("Não", imgvRbFinishNo);
         tfDate.clear();
         tfDate.setDisable(true);
     }
@@ -159,21 +181,29 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private void onHbfinishDLC_Click() {
         clickDLC("Terminei", imgvRbfinishDLC);
+        typeDLCChoice.clear();
+        typeDLCChoice.add(TypeDLC.TERMINEI);
     }
 
     @FXML
     private void onHbUnfinishDLC_Click() {
         clickDLC("Não terminei", imgvRbunfinishDLC);
+        typeDLCChoice.clear();
+        typeDLCChoice.add(TypeDLC.NAO_TERMINEI);
     }
 
     @FXML
     private void onHbIsDLC_Click() {
         clickDLC("É DLC", imgvRbisDLC);
+        typeDLCChoice.clear();
+        typeDLCChoice.add(TypeDLC.E_DLC);
     }
 
     @FXML
     private void onHbDontHaveDLC_Click() {
         clickDLC("Não tem", imgvRbDontHaveDLC);
+        typeDLCChoice.clear();
+        typeDLCChoice.add(TypeDLC.NAO_TEM);
     }
 
 
@@ -183,12 +213,13 @@ public class AddFirstDataViewController implements Initializable {
 
         // spinner config
         SpinnerValueFactory<Integer> valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0,10);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
         valueFactory.setValue(0);
 
         spnRating.setValueFactory(valueFactory);
         spnRating.getEditor().setDisable(true);
-        spnRating.getEditor().setOpacity(1.0);;
+        spnRating.getEditor().setOpacity(1.0);
+        ;
     }
 
     // fechar e minimizar
