@@ -138,7 +138,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="829.0" prefWidth="1107.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="172.0" prefWidth="278.0" styleClass="backgroundStackPane">
+                        <VBox alignment="CENTER" prefHeight="172.0" prefWidth="278.0" styleClass="bkElements">
                            <children>
                               <Label prefHeight="27.0" prefWidth="256.0" text="Digite o nome do arquivo:">
                                  <VBox.margin>

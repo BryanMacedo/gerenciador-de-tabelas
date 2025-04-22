@@ -13,6 +13,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.AddFirstDataViewController">
    <left>
@@ -140,7 +144,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="229.0" prefWidth="1107.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="229.0" prefWidth="457.0" styleClass="backgroundStackPane">
+                        <VBox alignment="CENTER" prefHeight="297.0" prefWidth="486.0" styleClass="bkElements">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="5.0" prefWidth="379.0">
                                  <children>
@@ -148,6 +152,25 @@
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
+                                       <textFill>
+                                          <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="1.0" green="1.0" blue="1.0" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </RadialGradient>
+                                       </textFill>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Label>
                                     <TextField focusTraversable="false" styleClass="textFild">
                                        <HBox.margin>
@@ -156,7 +179,7 @@
                                     </TextField>
                                  </children>
                                  <VBox.margin>
-                                    <Insets top="5.0" />
+                                    <Insets top="8.0" />
                                  </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="6.0" prefWidth="379.0">
@@ -165,6 +188,25 @@
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
+                                       <textFill>
+                                          <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="1.0" green="1.0" blue="1.0" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </RadialGradient>
+                                       </textFill>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Label>
                                     <ChoiceBox fx:id="cbPlataforms" prefHeight="43.0" prefWidth="151.0" />
                                  </children>
@@ -178,6 +220,25 @@
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
+                                       <textFill>
+                                          <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="1.0" green="1.0" blue="1.0" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </RadialGradient>
+                                       </textFill>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Label>
                                     <Spinner fx:id="spnRating" prefHeight="43.0" prefWidth="75.0">
                                        <HBox.margin>
@@ -191,7 +252,26 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="379.0">
                                  <children>
-                                    <Label text="DLC:" />
+                                    <Label text="DLC:">
+                                       <textFill>
+                                          <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="1.0" green="1.0" blue="1.0" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </RadialGradient>
+                                       </textFill>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <HBox fx:id="hbDontHaveDLC" alignment="CENTER" onMouseClicked="#onHbDontHaveDLC_Click">
                                        <children>
                                           <ImageView fx:id="imgvRbDontHaveDLC" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
@@ -199,7 +279,26 @@
                                                 <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
                                              </image>
                                           </ImageView>
-                                          <Label styleClass="lableHand" text="Não tem" />
+                                          <Label styleClass="lableHand" text="Não tem">
+                                             <textFill>
+                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </RadialGradient>
+                                             </textFill>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
@@ -213,7 +312,26 @@
                                                 <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="finishDLC" styleClass="lableHand" text="Terminei" />
+                                          <Label fx:id="finishDLC" styleClass="lableHand" text="Terminei">
+                                             <textFill>
+                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </RadialGradient>
+                                             </textFill>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
@@ -226,7 +344,26 @@
                                                 <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="unfinishDLC" styleClass="lableHand" text="Não terminei" />
+                                          <Label fx:id="unfinishDLC" styleClass="lableHand" text="Não terminei">
+                                             <textFill>
+                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </RadialGradient>
+                                             </textFill>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
@@ -239,7 +376,26 @@
                                                 <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="isDLC" styleClass="lableHand" text="É DLC" />
+                                          <Label fx:id="isDLC" styleClass="lableHand" text="É DLC">
+                                             <textFill>
+                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </RadialGradient>
+                                             </textFill>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
@@ -252,7 +408,26 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="379.0">
                                  <children>
-                                    <Label text="Jogo finalizado?" />
+                                    <Label text="Jogo finalizado?">
+                                       <textFill>
+                                          <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="1.0" green="1.0" blue="1.0" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </RadialGradient>
+                                       </textFill>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <HBox fx:id="hbFinishYes" alignment="CENTER" onMouseClicked="#onHbFinishYesClick">
                                        <children>
                                           <ImageView fx:id="imgvRbFinishYes" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
@@ -260,7 +435,26 @@
                                                 <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
                                              </image>
                                           </ImageView>
-                                          <Label styleClass="lableHand" text="Sim" />
+                                          <Label styleClass="lableHand" text="Sim">
+                                             <textFill>
+                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </RadialGradient>
+                                             </textFill>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
@@ -273,7 +467,26 @@
                                                 <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
                                              </image>
                                           </ImageView>
-                                          <Label styleClass="lableHand" text="Não" />
+                                          <Label styleClass="lableHand" text="Não">
+                                             <textFill>
+                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </RadialGradient>
+                                             </textFill>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="5.0" />
@@ -290,8 +503,27 @@
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
+                                       <textFill>
+                                          <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="1.0" green="1.0" blue="1.0" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </RadialGradient>
+                                       </textFill>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Label>
-                                    <TextField fx:id="tfDate" disable="true" focusTraversable="false" prefHeight="27.0" prefWidth="84.0" promptText="16/03/2015" styleClass="textFild">
+                                    <TextField fx:id="tfDate" disable="true" focusTraversable="false" prefHeight="27.0" prefWidth="84.0" promptText="dd/mm/yyyy" styleClass="textFild">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
@@ -301,7 +533,7 @@
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Button fx:id="btAddGame" mnemonicParsing="false" text="Adicionar jogo">
+                              <Button fx:id="btAddGame" mnemonicParsing="false" onAction="#onBtAddGameClick" text="Adicionar jogo">
                                  <VBox.margin>
                                     <Insets bottom="5.0" top="8.0" />
                                  </VBox.margin>
