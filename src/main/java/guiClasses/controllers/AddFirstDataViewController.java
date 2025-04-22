@@ -3,10 +3,7 @@ package guiClasses.controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -21,6 +18,7 @@ import java.util.ResourceBundle;
 public class AddFirstDataViewController implements Initializable {
     private final Image imgSelected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Selected.png"));
     private final Image imgUnselected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Unselected.png"));
+
     List<String> plataforms = new ArrayList<>(Arrays.asList
             ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "PC", "XBOX SX"
                     , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX"));
@@ -86,6 +84,12 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private TextField tfDate;
 
+    @FXML
+    private Spinner<Integer> spnRating;
+
+    @FXML
+    private Button btAddGame;
+
     private void clickFinish(String finishStr, ImageView imageView){
         if (finish.isEmpty()){
             finish.add(finishStr);
@@ -128,6 +132,11 @@ public class AddFirstDataViewController implements Initializable {
         }
     }
 
+    @FXML
+    private void onBtAddGameClick(){
+        // criar um obj com os dados dos campos preenchidos pelo user
+        // usar o obj para salvar no arquivo .xlsx
+    }
 
     @FXML
     private void onHbFinishYesClick() {
@@ -135,6 +144,7 @@ public class AddFirstDataViewController implements Initializable {
         if (!finish.isEmpty() && finish.get(0).equals("Sim")){
             tfDate.setDisable(false);
         }else {
+            tfDate.clear();
             tfDate.setDisable(true);
         }
     }
@@ -142,6 +152,8 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private void onHbFinishNoClick() {
         clickFinish("Não",imgvRbFinishNo);
+        tfDate.clear();
+        tfDate.setDisable(true);
     }
 
     @FXML
@@ -169,6 +181,14 @@ public class AddFirstDataViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cbPlataforms.getItems().addAll(plataforms);
 
+        // spinner config
+        SpinnerValueFactory<Integer> valueFactory =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0,10);
+        valueFactory.setValue(0);
+
+        spnRating.setValueFactory(valueFactory);
+        spnRating.getEditor().setDisable(true);
+        spnRating.getEditor().setOpacity(1.0);;
     }
 
     // fechar e minimizar
