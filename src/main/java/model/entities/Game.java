@@ -1,5 +1,6 @@
 package model.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Game {
@@ -8,10 +9,10 @@ public class Game {
     private int rating;
     private TypeDLC dlc;
     private boolean finish;
-    private String finishDate;
+    private LocalDate finishDate;
 
 
-    public Game(String name, String platform, int rating, TypeDLC dlc, boolean finish, String finishDate) {
+    public Game(String name, String platform, int rating, TypeDLC dlc, boolean finish, LocalDate finishDate) {
         this.name = name;
         this.platform = platform;
         this.rating = rating;

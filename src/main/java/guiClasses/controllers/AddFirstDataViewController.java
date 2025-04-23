@@ -21,7 +21,7 @@ public class AddFirstDataViewController implements Initializable {
     private final Image imgSelected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Selected.png"));
     private final Image imgUnselected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Unselected.png"));
 
-    List<String> plataforms = new ArrayList<>(Arrays.asList
+    private List<String> plataforms = new ArrayList<>(Arrays.asList
             ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "PC", "XBOX SX"
                     , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX"));
 
@@ -98,6 +98,9 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private Button btAddGame;
 
+    @FXML
+    private DatePicker dpFinish;
+
     private void clickFinish(String finishStr, ImageView imageView) {
         if (finish.isEmpty()) {
             finish.add(finishStr);
@@ -142,18 +145,13 @@ public class AddFirstDataViewController implements Initializable {
 
     @FXML
     private void onBtAddGameClick() {
-        // criar um obj com os dados dos campos preenchidos pelo user
-        // usar o obj para salvar no arquivo .xlsx
 
-        String date = tfDate.getText();
-        if (date.equals("")){
-            date = "Sem data";
-        }
         Game newGame = new Game(tfName.getText(), cbPlataforms.getValue(),
-                spnRating.getValue(),typeDLCChoice.get(0),yesOrNo.get(0), date);
-
+                spnRating.getValue(),typeDLCChoice.get(0),yesOrNo.get(0), dpFinish.getValue());
 
         System.out.println(newGame);
+
+        // usar o obj para salvar no arquivo .xlsx
     }
 
     @FXML
@@ -162,10 +160,10 @@ public class AddFirstDataViewController implements Initializable {
         yesOrNo.add(true);
         clickFinish("Sim", imgvRbFinishYes);
         if (!finish.isEmpty() && finish.get(0).equals("Sim")) {
-            tfDate.setDisable(false);
-        } else {
-            tfDate.clear();
-            tfDate.setDisable(true);
+            dpFinish.setDisable(false);
+        }else {
+            dpFinish.getEditor().clear();
+            dpFinish.setDisable(true);
         }
     }
 
@@ -174,8 +172,9 @@ public class AddFirstDataViewController implements Initializable {
         yesOrNo.clear();
         yesOrNo.add(false);
         clickFinish("Não", imgvRbFinishNo);
-        tfDate.clear();
-        tfDate.setDisable(true);
+
+        dpFinish.getEditor().clear();
+        dpFinish.setDisable(true);
     }
 
     @FXML

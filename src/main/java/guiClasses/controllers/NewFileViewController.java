@@ -102,8 +102,6 @@ public class NewFileViewController implements Initializable {
 
         }
 
-        // se chegar aqui ir para outra view para adicionar o primeiro dado
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/AddFirstDataView.fxml"));
             Parent root = loader.load();

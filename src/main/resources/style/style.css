@@ -154,3 +154,49 @@
 
 }
 
+.date-picker {
+    -fx-font-size: 14px;
+    -fx-background-color: #272727;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 20px;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #000000;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-cursor: default;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.date-picker .arrow {
+    -fx-background-color: #ffffff;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #272727;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .day-cell {
+    -fx-background-color: #272727;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.date-picker-popup .day-name-cell {
+    -fx-background-color: #161616;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1px;
+}
