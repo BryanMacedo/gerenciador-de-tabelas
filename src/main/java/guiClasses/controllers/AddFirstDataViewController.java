@@ -34,6 +34,8 @@ public class AddFirstDataViewController implements Initializable {
     private List<Boolean> yesOrNo = new ArrayList<>();
     private List<TypeDLC> typeDLCChoice = new ArrayList<>();
 
+    String strRbYesOrNo = null;
+
     @FXML
     private ImageView imgvClose;
 
@@ -105,58 +107,29 @@ public class AddFirstDataViewController implements Initializable {
     private ToggleGroup tgYesOrNo;
 
     @FXML
+    private ToggleGroup tgDLC;
+
+    @FXML
     private RadioButton rbYes;
 
     @FXML
     private RadioButton rbNo;
 
-    private void clickFinish(String finishStr, ImageView imageView) {
-        if (finish.isEmpty()) {
-            finish.add(finishStr);
-            imageViewFinishClicked.add(imageView);
-            imageViewFinishClicked.get(0).setImage(imgSelected);
-        } else if (!finish.get(0).equals(finishStr)) {
-            finish.clear();
-            finish.add(finishStr);
-
-            imageViewFinishClicked.get(0).setImage(imgUnselected);
-            imageViewFinishClicked.clear();
-
-            imageViewFinishClicked.add(imageView);
-            imageViewFinishClicked.get(0).setImage(imgSelected);
-        } else if (finish.get(0).equals(finishStr)) {
-            imageViewFinishClicked.get(0).setImage(imgUnselected);
-            imageViewFinishClicked.clear();
-            finish.clear();
+    private String getStrYesOrNo(){
+        if (rbYes.isSelected()){
+            return "Sim";
+        } else if (rbNo.isSelected()) {
+            return "Não";
         }
+        return "";
     }
 
-    private void clickDLC(String dlcStr, ImageView imageView) {
-        if (dlc.isEmpty()) {
-            dlc.add(dlcStr);
-            imageViewClicked.add(imageView);
-            imageViewClicked.get(0).setImage(imgSelected);
-        } else if (!dlc.get(0).equals(dlcStr)) {
-            dlc.clear();
-            dlc.add(dlcStr);
-
-            imageViewClicked.get(0).setImage(imgUnselected);
-            imageViewClicked.clear();
-
-            imageViewClicked.add(imageView);
-            imageViewClicked.get(0).setImage(imgSelected);
-        } else if (dlc.get(0).equals(dlcStr)) {
-            imageViewClicked.get(0).setImage(imgUnselected);
-            imageViewClicked.clear();
-            dlc.clear();
-        }
-    }
 
     @FXML
     private void onBtAddGameClick() {
-
+        strRbYesOrNo = getStrYesOrNo();
         Game newGame = new Game(tfName.getText(), cbPlataforms.getValue(),
-                spnRating.getValue(), typeDLCChoice.get(0), rbYes.getText(), dpFinish.getValue());
+                spnRating.getValue(), TypeDLC.E_DLC, strRbYesOrNo, dpFinish.getValue());
 
         System.out.println(newGame);
 
@@ -172,34 +145,6 @@ public class AddFirstDataViewController implements Initializable {
     private void onRbNoClick(){
         dpFinish.setDisable(true);
         dpFinish.getEditor().clear();
-    }
-
-    @FXML
-    private void onHbfinishDLC_Click() {
-        clickDLC("Terminei", imgvRbfinishDLC);
-        typeDLCChoice.clear();
-        typeDLCChoice.add(TypeDLC.TERMINEI);
-    }
-
-    @FXML
-    private void onHbUnfinishDLC_Click() {
-        clickDLC("Não terminei", imgvRbunfinishDLC);
-        typeDLCChoice.clear();
-        typeDLCChoice.add(TypeDLC.NAO_TERMINEI);
-    }
-
-    @FXML
-    private void onHbIsDLC_Click() {
-        clickDLC("É DLC", imgvRbisDLC);
-        typeDLCChoice.clear();
-        typeDLCChoice.add(TypeDLC.E_DLC);
-    }
-
-    @FXML
-    private void onHbDontHaveDLC_Click() {
-        clickDLC("Não tem", imgvRbDontHaveDLC);
-        typeDLCChoice.clear();
-        typeDLCChoice.add(TypeDLC.NAO_TEM);
     }
 
 
