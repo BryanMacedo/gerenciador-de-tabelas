@@ -101,6 +101,15 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private DatePicker dpFinish;
 
+    @FXML
+    private ToggleGroup tgYesOrNo;
+
+    @FXML
+    private RadioButton rbYes;
+
+    @FXML
+    private RadioButton rbNo;
+
     private void clickFinish(String finishStr, ImageView imageView) {
         if (finish.isEmpty()) {
             finish.add(finishStr);
@@ -147,7 +156,7 @@ public class AddFirstDataViewController implements Initializable {
     private void onBtAddGameClick() {
 
         Game newGame = new Game(tfName.getText(), cbPlataforms.getValue(),
-                spnRating.getValue(),typeDLCChoice.get(0),yesOrNo.get(0), dpFinish.getValue());
+                spnRating.getValue(), typeDLCChoice.get(0), rbYes.getText(), dpFinish.getValue());
 
         System.out.println(newGame);
 
@@ -155,26 +164,14 @@ public class AddFirstDataViewController implements Initializable {
     }
 
     @FXML
-    private void onHbFinishYesClick() {
-        yesOrNo.clear();
-        yesOrNo.add(true);
-        clickFinish("Sim", imgvRbFinishYes);
-        if (!finish.isEmpty() && finish.get(0).equals("Sim")) {
-            dpFinish.setDisable(false);
-        }else {
-            dpFinish.getEditor().clear();
-            dpFinish.setDisable(true);
-        }
+    private void onRbYesClick(){
+        dpFinish.setDisable(false);
     }
 
     @FXML
-    private void onHbFinishNoClick() {
-        yesOrNo.clear();
-        yesOrNo.add(false);
-        clickFinish("Não", imgvRbFinishNo);
-
-        dpFinish.getEditor().clear();
+    private void onRbNoClick(){
         dpFinish.setDisable(true);
+        dpFinish.getEditor().clear();
     }
 
     @FXML

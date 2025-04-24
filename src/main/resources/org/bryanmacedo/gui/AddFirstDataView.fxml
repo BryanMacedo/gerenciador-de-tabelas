@@ -6,8 +6,10 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -177,6 +179,9 @@
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
                                     </TextField>
                                  </children>
                                  <VBox.margin>
@@ -429,70 +434,27 @@
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Label>
-                                    <HBox fx:id="hbFinishYes" alignment="CENTER" onMouseClicked="#onHbFinishYesClick">
-                                       <children>
-                                          <ImageView fx:id="imgvRbFinishYes" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
-                                             <image>
-                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label styleClass="lableHand" text="Sim">
-                                             <textFill>
-                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                                                   <stops>
-                                                      <Stop>
-                                                         <color>
-                                                            <Color />
-                                                         </color>
-                                                      </Stop>
-                                                      <Stop offset="1.0">
-                                                         <color>
-                                                            <Color red="1.0" green="1.0" blue="1.0" />
-                                                         </color>
-                                                      </Stop>
-                                                   </stops>
-                                                </RadialGradient>
-                                             </textFill>
-                                             <font>
-                                                <Font name="System Bold" size="12.0" />
-                                             </font></Label>
-                                       </children>
+                                    <HBox fx:id="hbFinishNo" alignment="CENTER">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </HBox>
-                                    <HBox fx:id="hbFinishNo" alignment="CENTER" onMouseClicked="#onHbFinishNoClick">
-                                       <children>
-                                          <ImageView fx:id="imgvRbFinishNo" fitHeight="23.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="imageview">
-                                             <image>
-                                                <Image url="@../../../imgs/imgAddData/ic_button_Unselected.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label styleClass="lableHand" text="Não">
-                                             <textFill>
-                                                <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                                                   <stops>
-                                                      <Stop>
-                                                         <color>
-                                                            <Color />
-                                                         </color>
-                                                      </Stop>
-                                                      <Stop offset="1.0">
-                                                         <color>
-                                                            <Color red="1.0" green="1.0" blue="1.0" />
-                                                         </color>
-                                                      </Stop>
-                                                   </stops>
-                                                </RadialGradient>
-                                             </textFill>
-                                             <font>
-                                                <Font name="System Bold" size="12.0" />
-                                             </font></Label>
-                                       </children>
+                                    <RadioButton fx:id="rbYes" mnemonicParsing="false" onAction="#onRbYesClick" text="Sim" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="tgYesOrNo" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="rbNo" layoutX="265.0" layoutY="15.0" mnemonicParsing="false" onAction="#onRbNoClick" text="Não" textFill="WHITE" toggleGroup="$tgYesOrNo">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
-                                    </HBox>
+                                    </RadioButton>
                                  </children>
                                  <VBox.margin>
                                     <Insets left="10.0" top="5.0" />
