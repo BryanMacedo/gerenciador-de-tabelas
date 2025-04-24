@@ -10,7 +10,18 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.entities.Game;
 import model.entities.TypeDLC;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -161,7 +172,41 @@ public class AddFirstDataViewController implements Initializable {
 
         System.out.println(newGame);
 
-        // usar o obj para salvar no arquivo .xlsx
+        writeFirstData(newGame);
+
+    }
+
+    private void writeFirstData(Game game){
+        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\jogos2025.xlsx");
+             Workbook workbook = WorkbookFactory.create(fis);
+             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\jogos2025.xlsx")) {
+
+            Sheet sheet = workbook.getSheetAt(0); // Pega a primeira planilha
+
+            // Encontra a última linha preenchida
+            int lastRow = sheet.getLastRowNum();
+
+            // Cria uma nova linha após a última
+            Row row = sheet.createRow(lastRow + 1);
+
+            // Preenche os dados nas células
+            row.createCell(0).setCellValue(game.getName());
+            row.createCell(1).setCellValue(game.getPlatform());
+            if (strRbYesOrNo.equals("Não")){
+                row.createCell(2).setCellValue("Jogo não finalizado");
+            }else{
+                row.createCell(2).setCellValue(game.getFinishDate().toString());
+            }
+            row.createCell(3).setCellValue(game.getRating());
+            row.createCell(4).setCellValue(game.getDlc().toString());
+            row.createCell(5).setCellValue(game.getFinish());
+
+            // salva no arquivo
+            workbook.write(fos);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
@@ -171,8 +216,8 @@ public class AddFirstDataViewController implements Initializable {
 
     @FXML
     private void onRbNoClick(){
-        dpFinish.setDisable(true);
         dpFinish.getEditor().clear();
+        dpFinish.setDisable(true);
     }
 
 

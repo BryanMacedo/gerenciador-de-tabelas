@@ -392,7 +392,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <DatePicker fx:id="dpFinish" disable="true" editable="false" prefHeight="32.0" prefWidth="127.0" />
+                                    <DatePicker fx:id="dpFinish" disable="true" editable="false" prefHeight="34.0" prefWidth="143.0" promptText="dd/mm/aaaa" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="5.0" />

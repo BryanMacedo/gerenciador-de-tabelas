@@ -23,6 +23,30 @@ public class Game {
         this.finishDate = finishDate;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public TypeDLC getDlc() {
+        return dlc;
+    }
+
+    public String getFinish() {
+        return finish;
+    }
+
+    public LocalDate getFinishDate() {
+        return finishDate;
+    }
+
     @Override
     public String toString() {
         return "Nome: " + this.name +
