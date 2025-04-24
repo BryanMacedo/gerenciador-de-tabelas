@@ -35,6 +35,7 @@ public class AddFirstDataViewController implements Initializable {
     private List<TypeDLC> typeDLCChoice = new ArrayList<>();
 
     String strRbYesOrNo = null;
+    TypeDLC typeDLC = null;
 
     @FXML
     private ImageView imgvClose;
@@ -115,6 +116,18 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private RadioButton rbNo;
 
+    @FXML
+    private RadioButton rbNAO_TEM;
+
+    @FXML
+    private RadioButton rbTERMINEI;
+
+    @FXML
+    private RadioButton rbNAO_TERMINEI;
+
+    @FXML
+    private RadioButton rbE_DLC;
+
     private String getStrYesOrNo(){
         if (rbYes.isSelected()){
             return "Sim";
@@ -124,12 +137,27 @@ public class AddFirstDataViewController implements Initializable {
         return "";
     }
 
+    private TypeDLC getTypeDLC(){
+        if (rbE_DLC.isSelected()){
+            return TypeDLC.E_DLC;
+        } else if (rbTERMINEI.isSelected()) {
+            return TypeDLC.TERMINEI;
+        }else if (rbNAO_TERMINEI.isSelected()) {
+            return TypeDLC.NAO_TERMINEI;
+        } else if (rbNAO_TEM.isSelected()) {
+            return TypeDLC.NAO_TEM;
+        }
+        return null;
+    }
+
 
     @FXML
     private void onBtAddGameClick() {
         strRbYesOrNo = getStrYesOrNo();
+        typeDLC = getTypeDLC();
+
         Game newGame = new Game(tfName.getText(), cbPlataforms.getValue(),
-                spnRating.getValue(), TypeDLC.E_DLC, strRbYesOrNo, dpFinish.getValue());
+                spnRating.getValue(), typeDLC, strRbYesOrNo, dpFinish.getValue());
 
         System.out.println(newGame);
 

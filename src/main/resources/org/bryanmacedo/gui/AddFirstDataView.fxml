@@ -278,7 +278,7 @@
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Label>
-                                    <RadioButton mnemonicParsing="false" text="Não tem" textFill="WHITE">
+                                    <RadioButton fx:id="rbNAO_TEM" mnemonicParsing="false" text="Não tem" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
@@ -289,7 +289,7 @@
                                           <ToggleGroup fx:id="tgDLC" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Terminei" textFill="WHITE" toggleGroup="$tgDLC">
+                                    <RadioButton fx:id="rbTERMINEI" mnemonicParsing="false" text="Terminei" textFill="WHITE" toggleGroup="$tgDLC">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
@@ -297,7 +297,7 @@
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Não terminei" textFill="WHITE" toggleGroup="$tgDLC">
+                                    <RadioButton fx:id="rbNAO_TERMINEI" mnemonicParsing="false" text="Não terminei" textFill="WHITE" toggleGroup="$tgDLC">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
@@ -305,7 +305,7 @@
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="É DLC" textFill="WHITE" toggleGroup="$tgDLC">
+                                    <RadioButton fx:id="rbE_DLC" mnemonicParsing="false" text="É DLC" textFill="WHITE" toggleGroup="$tgDLC">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>

@@ -158,6 +158,7 @@
     -fx-font-size: 14px;
     -fx-background-color: #272727;
     -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
     -fx-border-radius: 20px;
 }
 
