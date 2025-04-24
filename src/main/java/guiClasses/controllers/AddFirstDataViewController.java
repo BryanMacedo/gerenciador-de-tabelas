@@ -45,6 +45,8 @@ public class AddFirstDataViewController implements Initializable {
     private List<Boolean> yesOrNo = new ArrayList<>();
     private List<TypeDLC> typeDLCChoice = new ArrayList<>();
 
+    NewFileViewController controller = new NewFileViewController();
+
     String strRbYesOrNo = null;
     TypeDLC typeDLC = null;
 
@@ -177,9 +179,9 @@ public class AddFirstDataViewController implements Initializable {
     }
 
     private void writeFirstData(Game game){
-        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\jogos2025.xlsx");
+        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + NewFileViewController.nameNewFile);
              Workbook workbook = WorkbookFactory.create(fis);
-             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\jogos2025.xlsx")) {
+             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + NewFileViewController.nameNewFile)) {
 
             Sheet sheet = workbook.getSheetAt(0); // Pega a primeira planilha
 
@@ -233,7 +235,6 @@ public class AddFirstDataViewController implements Initializable {
         spnRating.setValueFactory(valueFactory);
         spnRating.getEditor().setDisable(true);
         spnRating.getEditor().setOpacity(1.0);
-        ;
     }
 
     // fechar e minimizar
