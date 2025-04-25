@@ -65,7 +65,6 @@ public class NewFileViewController implements Initializable {
             return;
         }
 
-
         //verificando se já existe um arquivo com o nome informado
         String fileNameXlsx = fileName + ".xlsx";
         nameNewFile = fileNameXlsx;
@@ -74,6 +73,7 @@ public class NewFileViewController implements Initializable {
         if (checkFile.exists()) {
             System.out.println("Já existe um arquivo com este nome, por favor digite outro.");
             tfFileName.clear();
+            return;
         } else {
             // criando o arquivo
             Path fullPath = Paths.get(path.toString(), fileName + ".xlsx");

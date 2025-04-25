@@ -31,7 +31,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Seu perfil">
+                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Seu perfil">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -55,7 +55,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Nova tabela">
+                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Nova tabela">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -82,7 +82,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Editar tabela" textAlignment="RIGHT">
+                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Editar tabela" textAlignment="RIGHT">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -109,7 +109,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="110.0" styleClass="labelHover" text="Listar tabelas" textAlignment="RIGHT">
+                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Listar tabelas" textAlignment="RIGHT">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
