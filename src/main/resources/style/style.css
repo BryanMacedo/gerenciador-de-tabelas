@@ -248,3 +248,29 @@
 .radio-button:selected .dot {
     -fx-transition: none;
 }
+
+.scrollpane{
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.marg{
+    -fx-border-color: #ffffff;
+    -fx-border-width: 5px;
+}
