@@ -140,8 +140,26 @@
                <content>
                   <HBox fx:id="hbCentralContent" alignment="TOP_CENTER" prefHeight="733.0" prefWidth="1107.0">
                      <children>
-                        <VBox fx:id="vb01" alignment="TOP_CENTER" prefHeight="1360.0" prefWidth="380.0" styleClass="marg" />
-                        <VBox fx:id="vb02" alignment="TOP_CENTER" layoutX="364.0" layoutY="10.0" prefHeight="1360.0" prefWidth="380.0" styleClass="marg" />
+                        <VBox fx:id="vb01" alignment="TOP_CENTER" prefHeight="1360.0" prefWidth="180.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="vb02" alignment="TOP_CENTER" layoutX="364.0" layoutY="10.0" prefHeight="1360.0" prefWidth="180.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="vb03" alignment="TOP_CENTER" prefHeight="1360.0" prefWidth="180.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="vb04" alignment="TOP_CENTER" layoutX="654.0" layoutY="10.0" prefHeight="1360.0" prefWidth="180.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
                      </children>
                   </HBox>
                </content>

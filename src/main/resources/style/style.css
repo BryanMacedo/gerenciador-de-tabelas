@@ -275,7 +275,7 @@
     -fx-opacity: 0;
 }
 
-.marg{
+.marg{ /*borda para testar o alinhamento*/
     -fx-border-color: red;
-    -fx-border-width: 5px;
+    -fx-border-width: 25px;
 }

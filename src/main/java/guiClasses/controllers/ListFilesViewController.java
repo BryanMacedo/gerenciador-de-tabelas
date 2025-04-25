@@ -27,6 +27,12 @@ public class ListFilesViewController implements Initializable {
     private VBox vb02;
 
     @FXML
+    private VBox vb03;
+
+    @FXML
+    private VBox vb04;
+
+    @FXML
     private HBox hbCentralContent;
 
     @Override
@@ -37,36 +43,51 @@ public class ListFilesViewController implements Initializable {
 
         int count = 1;
 
-        if (files != null){
+        if (files != null) {
             for (File file : files) {
-                Label newLabel = new Label(file.getName());
+                String fileWithOutFinal = file.getName().substring(0, file.getName().length() - 5);
+                Label newLabel = new Label(fileWithOutFinal);
 
-                newLabel.setStyle("-fx-border-color: #ffffff; -fx-border-width: 2px; " +
-                        "-fx-padding: 5px; -fx-cursor: hand;");
+                newLabel.setStyle("-fx-border-color: #A9A9A9; -fx-border-width: 4px; " +
+                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #A9A9A9; -fx-max-width: infinity;" +
+                        "-fx-alignment: center;");
 
                 vb01.setSpacing(15);
                 vb02.setSpacing(15);
+                vb03.setSpacing(15);
+                vb04.setSpacing(15);
 
-                newLabel.setOnMouseEntered(e -> newLabel.setStyle("-fx-background-color: #272727; -fx-border-color: #ffffff; -fx-border-width: 2px;" +
-                        "-fx-padding: 5px; -fx-cursor: hand; -fx-font-size: 19px;"));
+                // efeito de hover
+                newLabel.setOnMouseEntered(e -> newLabel.setStyle(" -fx-border-color: #ffffff; -fx-border-width: 4px;" +
+                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #ffffff; -fx-max-width: infinity;" +
+                        "-fx-alignment: center;"));
 
-                newLabel.setOnMouseExited(e -> newLabel.setStyle("-fx-background-color: #161616; -fx-border-color: #ffffff; -fx-border-width: 2px;" +
-                        "-fx-padding: 5px; -fx-cursor: hand; -fx-font-size: 18px;"));
+                newLabel.setOnMouseExited(e -> newLabel.setStyle("-fx-border-color: #A9A9A9; -fx-border-width: 4px;" +
+                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #A9A9A9; -fx-max-width: infinity;" +
+                        "-fx-alignment: center;"));
 
 
                 newLabel.setOnMouseClicked(e -> {
-                    System.out.println("Arquivo clicado: " + file.getName());
+                    System.out.println("Arquivo clicado: " + fileWithOutFinal);
 
                     //ir para a tela que mostra os dados do arquivo
                 });
 
-                switch (count){
-                    case 1 ->{
+                switch (count) {
+                    case 1 -> {
                         vb01.getChildren().add(newLabel);
                         count += 1;
                     }
-                    case 2 ->{
+                    case 2 -> {
                         vb02.getChildren().add(newLabel);
+                        count += 1;
+                    }
+                    case 3 -> {
+                        vb03.getChildren().add(newLabel);
+                        count += 1;
+                    }
+                    case 4 -> {
+                        vb04.getChildren().add(newLabel);
                         count = 1;
                     }
                 }
