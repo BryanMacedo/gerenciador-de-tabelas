@@ -99,7 +99,7 @@
                         <Insets bottom="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+                  <HBox fx:id="hbListFiles" alignment="CENTER" onMouseClicked="#onHbListFilesClick" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
