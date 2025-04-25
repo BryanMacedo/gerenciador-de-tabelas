@@ -249,7 +249,7 @@
     -fx-transition: none;
 }
 
-.scrollpane{
+.scroll-pane{
     -fx-background-color: transparent;
     -fx-padding: 0;
 }
@@ -270,7 +270,12 @@
     -fx-border-width: 0;
 }
 
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow {
+    -fx-opacity: 0;
+}
+
 .marg{
-    -fx-border-color: #ffffff;
+    -fx-border-color: red;
     -fx-border-width: 5px;
 }

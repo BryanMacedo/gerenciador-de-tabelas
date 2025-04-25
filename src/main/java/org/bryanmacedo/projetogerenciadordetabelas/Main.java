@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
         Scene scene = new Scene(root, 1445, 833);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
