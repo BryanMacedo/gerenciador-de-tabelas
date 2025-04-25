@@ -11,10 +11,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.entities.Game;
+import model.entities.TypeDLC;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ListFilesViewController implements Initializable {
@@ -43,7 +52,7 @@ public class ListFilesViewController implements Initializable {
     private HBox hbNewFile;
 
     @FXML
-    private void onHbNewFileClick(){
+    private void onHbNewFileClick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
             Parent root = loader.load();
@@ -57,7 +66,6 @@ public class ListFilesViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         File path = new File("C:\\tabelas-GT");
         File[] files = path.listFiles((dir, nome) -> nome.endsWith(".xlsx"));
 
@@ -90,7 +98,49 @@ public class ListFilesViewController implements Initializable {
                 newLabel.setOnMouseClicked(e -> {
                     System.out.println("Arquivo clicado: " + fileWithOutFinal);
 
+                    /*
+                    recuperar os dados da tabela escolhida
+                    criar um obj de Game para cada linha da tabela
+                    criar uma label para cada obj e exibir as informações:
+                    nome - plataforma - data termino - nota - dlc - finalizado
+                    */
+
                     //ir para a tela que mostra os dados do arquivo
+
+                    // fazer isso na px view
+                    try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + fileWithOutFinal + ".xlsx");
+                         Workbook workbook = new XSSFWorkbook(fis)) {
+
+                        Sheet sheet = workbook.getSheetAt(0);
+
+                        for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                            Row row = sheet.getRow(i);
+
+                            if (row != null) {
+                                int rating = (int) row.getCell(3).getNumericCellValue();
+                                TypeDLC dlc = TypeDLC.valueOf(row.getCell(4).toString());
+                                LocalDate date = LocalDate.parse(row.getCell(2).toString());
+
+                                Game newGame = new Game(row.getCell(0).toString(), row.getCell(1).toString(),
+                                        rating, dlc, row.getCell(5).toString(), date);
+
+                                System.out.println("====================");
+                                System.out.println(newGame.getName());
+                                System.out.println(newGame.getPlatform());
+                                System.out.println(newGame.getFinishDate());
+                                System.out.println(newGame.getRating());
+                                System.out.println(newGame.getDlc());
+                                System.out.println(newGame.getFinish());
+                                System.out.println("====================");
+
+                            }
+                        }
+
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (IOException exc) {
+                        throw new RuntimeException(exc);
+                    }
                 });
 
                 switch (count) {
