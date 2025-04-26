@@ -27,6 +27,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ListFilesViewController implements Initializable {
+    public static String fileToAccess;
     @FXML
     private ImageView imgvClose;
 
@@ -98,48 +99,17 @@ public class ListFilesViewController implements Initializable {
                 newLabel.setOnMouseClicked(e -> {
                     System.out.println("Arquivo clicado: " + fileWithOutFinal);
 
-                    /*
-                    recuperar os dados da tabela escolhida
-                    criar um obj de Game para cada linha da tabela
-                    criar uma label para cada obj e exibir as informações:
-                    nome - plataforma - data termino - nota - dlc - finalizado
-                    */
-
                     //ir para a tela que mostra os dados do arquivo
+                    try {
+                        fileToAccess = fileWithOutFinal;
 
-                    // fazer isso na px view
-                    try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + fileWithOutFinal + ".xlsx");
-                         Workbook workbook = new XSSFWorkbook(fis)) {
-
-                        Sheet sheet = workbook.getSheetAt(0);
-
-                        for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-                            Row row = sheet.getRow(i);
-
-                            if (row != null) {
-                                int rating = (int) row.getCell(3).getNumericCellValue();
-                                TypeDLC dlc = TypeDLC.valueOf(row.getCell(4).toString());
-                                LocalDate date = LocalDate.parse(row.getCell(2).toString());
-
-                                Game newGame = new Game(row.getCell(0).toString(), row.getCell(1).toString(),
-                                        rating, dlc, row.getCell(5).toString(), date);
-
-                                System.out.println("====================");
-                                System.out.println(newGame.getName());
-                                System.out.println(newGame.getPlatform());
-                                System.out.println(newGame.getFinishDate());
-                                System.out.println(newGame.getRating());
-                                System.out.println(newGame.getDlc());
-                                System.out.println(newGame.getFinish());
-                                System.out.println("====================");
-
-                            }
-                        }
-
-                    } catch (FileNotFoundException ex) {
-                        throw new RuntimeException(ex);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFileDataView.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = imgvClose.getScene();
+                        scene.setRoot(root);
                     } catch (IOException exc) {
-                        throw new RuntimeException(exc);
+                        //System.out.println(e.getMessage());
+                        exc.printStackTrace();
                     }
                 });
 

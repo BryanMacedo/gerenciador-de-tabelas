@@ -276,6 +276,6 @@
 }
 
 .marg{ /*borda para testar o alinhamento*/
-    -fx-border-color: red;
-    -fx-border-width: 25px;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 5px;
 }
