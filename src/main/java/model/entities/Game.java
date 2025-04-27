@@ -12,6 +12,7 @@ public class Game {
     private TypeDLC dlc;
     private String finish;
     private LocalDate finishDate;
+    private String textDate;
 
 
     public Game(String name, String platform, int rating, TypeDLC dlc, String finish, LocalDate finishDate) {
@@ -21,6 +22,15 @@ public class Game {
         this.dlc = dlc;
         this.finish = finish;
         this.finishDate = finishDate;
+    }
+
+    public Game(String name, String platform, int rating, TypeDLC dlc, String finish, String textDate) {
+        this.name = name;
+        this.platform = platform;
+        this.rating = rating;
+        this.dlc = dlc;
+        this.finish = finish;
+        this.textDate = textDate;
     }
 
     public String getName() {
@@ -45,6 +55,10 @@ public class Game {
 
     public LocalDate getFinishDate() {
         return finishDate;
+    }
+
+    public String getTextDate() {
+        return textDate;
     }
 
     @Override

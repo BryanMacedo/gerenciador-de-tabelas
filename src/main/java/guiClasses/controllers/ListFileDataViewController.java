@@ -39,6 +39,14 @@ public class ListFileDataViewController implements Initializable {
     private HBox hbListFiles;
 
     @FXML
+    private HBox hbInsertNewGame;
+
+    @FXML void onHbInsertNewGameClick(){
+
+
+    }
+
+    @FXML
     private void onHbListFilesClick(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
@@ -66,12 +74,17 @@ public class ListFileDataViewController implements Initializable {
                 if (row != null) {
                     int rating = (int) row.getCell(3).getNumericCellValue();
                     TypeDLC dlc = TypeDLC.valueOf(row.getCell(4).toString());
-                    LocalDate date = LocalDate.parse(row.getCell(2).toString());
+                    Game newGame;
 
-                    Game newGame = new Game(row.getCell(0).toString(), row.getCell(1).toString(),
-                            rating, dlc, row.getCell(5).toString(), date);
-
-
+                    if (row.getCell(2).toString().equals("Jogo não finalizado")){
+                        String textDate = row.getCell(2).toString();
+                        newGame = new Game(row.getCell(0).toString(), row.getCell(1).toString(),
+                                rating, dlc, row.getCell(5).toString(), textDate);
+                    }else{
+                        LocalDate date = LocalDate.parse(row.getCell(2).toString());
+                        newGame = new Game(row.getCell(0).toString(), row.getCell(1).toString(),
+                                rating, dlc, row.getCell(5).toString(), date);
+                    }
 
                     Label labelName = new Label(newGame.getName());
                     labelName.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 363; -fx-pref-height: 37; -fx-alignment: center;");
@@ -79,7 +92,14 @@ public class ListFileDataViewController implements Initializable {
                     Label labelPlataform = new Label(newGame.getPlatform());
                     labelPlataform.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 142; -fx-pref-height: 37; -fx-alignment: center;");
 
-                    Label labelDate = new Label(newGame.getFinishDate().toString());
+                    Label labelDate;
+
+                    if (newGame.getFinishDate() == null){
+                        labelDate = new Label(newGame.getTextDate());
+                    }else {
+                        labelDate = new Label(newGame.getFinishDate().toString());
+                    }
+
                     labelDate.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 182; -fx-pref-height: 37; -fx-alignment: center;");
 
                     Label labelRating = new Label(String.valueOf(newGame.getRating()));
@@ -95,17 +115,6 @@ public class ListFileDataViewController implements Initializable {
                     newHbox.setStyle("-fx-alignment: top_center;");
 
                     vbList.getChildren().add(newHbox);
-
-
-                    System.out.println("====================");
-                    System.out.println(newGame.getName());
-                    System.out.println(newGame.getPlatform());
-                    System.out.println(newGame.getFinishDate());
-                    System.out.println(newGame.getRating());
-                    System.out.println(newGame.getDlc());
-                    System.out.println(newGame.getFinish());
-                    System.out.println("====================");
-
                 }
             }
 

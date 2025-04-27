@@ -279,3 +279,14 @@
     -fx-border-color: #FFFFFF;
     -fx-border-width: 5px;
 }
+
+.hbStyle{
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+
+    -fx-border-width: 2px;
+}
+
+.hbStyleHover:hover{
+        -fx-border-color: #ffffff;
+}
