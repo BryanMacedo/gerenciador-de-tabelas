@@ -136,7 +136,7 @@ public class ListFileDataViewController implements Initializable {
                     Label labelFinish = new Label(newGame.getFinish());
                     labelFinish.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 122; -fx-pref-height: 37; -fx-alignment: center;");
 
-                    HBox newHbox = new HBox(labelName, labelPlataform, labelDate, labelRating, labelDLC, labelFinish);
+                    HBox newHbox = new HBox(labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
                     newHbox.setStyle("-fx-alignment: top_center;");
 
                     vbList.getChildren().add(newHbox);

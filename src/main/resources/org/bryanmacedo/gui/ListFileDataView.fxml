@@ -252,11 +252,6 @@
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="746.0" layoutY="10.0" prefHeight="37.0" prefWidth="182.0" styleClass="marg" text="DATA DE TERMINO">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Label>
                               <Label alignment="CENTER" layoutX="699.0" layoutY="10.0" prefHeight="37.0" prefWidth="72.0" styleClass="marg" text="NOTA ">
                                  <HBox.margin>
                                     <Insets />
@@ -268,6 +263,11 @@
                                  </HBox.margin>
                               </Label>
                               <Label alignment="CENTER" layoutX="748.0" layoutY="10.0" prefHeight="37.0" prefWidth="122.0" styleClass="marg" text="FINALIZADO">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="746.0" layoutY="10.0" prefHeight="37.0" prefWidth="182.0" styleClass="marg" text="DATA DE TERMINO">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
