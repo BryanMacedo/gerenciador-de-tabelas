@@ -26,6 +26,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ListFileDataViewController implements Initializable {
+    public static String fileNameToAccessFromListData;
     @FXML
     private ImageView imgvClose;
 
@@ -42,8 +43,16 @@ public class ListFileDataViewController implements Initializable {
     private HBox hbInsertNewGame;
 
     @FXML void onHbInsertNewGameClick(){
-
-
+        try {
+            fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/AddNewDataView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @FXML
