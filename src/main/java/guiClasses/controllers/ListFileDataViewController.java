@@ -42,6 +42,22 @@ public class ListFileDataViewController implements Initializable {
     @FXML
     private HBox hbInsertNewGame;
 
+    @FXML
+    private HBox hbNewFile;
+
+    @FXML
+    private void onHbNewFileClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     @FXML void onHbInsertNewGameClick(){
         try {
             fileNameToAccessFromListData = ListFilesViewController.fileToAccess;

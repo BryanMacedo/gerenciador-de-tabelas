@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.entities.Game;
 import model.entities.TypeDLC;
@@ -69,6 +70,12 @@ public class AddNewDataViewController implements Initializable {
 
     @FXML
     private RadioButton rbE_DLC;
+
+    @FXML
+    private HBox hbNewFile;
+
+    @FXML
+    private HBox hbListFiles;
 
     private String getStrYesOrNo(){
         if (rbYes.isSelected()){
@@ -163,6 +170,32 @@ public class AddNewDataViewController implements Initializable {
     private void onRbNoClick(){
         dpFinish.getEditor().clear();
         dpFinish.setDisable(true);
+    }
+
+    @FXML
+    private void onHbNewFileClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onHbListFilesClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override
