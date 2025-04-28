@@ -148,6 +148,12 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private Label lbWarning;
 
+    @FXML
+    private HBox hbNewFile;
+
+    @FXML
+    private HBox hbListFiles;
+
     private String getStrYesOrNo(){
         if (rbYes.isSelected()){
             return "Sim";
@@ -245,6 +251,32 @@ public class AddFirstDataViewController implements Initializable {
     private void onRbNoClick(){
         dpFinish.getEditor().clear();
         dpFinish.setDisable(true);
+    }
+
+    @FXML
+    private void onHbNewFileClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onHbListFilesClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 
