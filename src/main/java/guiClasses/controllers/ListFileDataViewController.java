@@ -4,13 +4,16 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.entities.Game;
 import model.entities.TypeDLC;
 import org.apache.poi.ss.usermodel.Row;
@@ -24,6 +27,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ListFileDataViewController implements Initializable {
@@ -52,23 +56,74 @@ public class ListFileDataViewController implements Initializable {
     @FXML
     private Label lbTableName;
 
+
+    private void warningDelete(String msg) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(null);
+        alert.setHeaderText(null); // Pode personalizar se quiser
+        alert.setContentText(msg);
+
+        // tira a imagem do Alert
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setGraphic(null);
+
+        dialogPane.setStyle(
+                "-fx-background-color: #272727; " +
+                "-fx-background-radius: 20px; " +
+                        "-fx-border-color: #FFFFFF; " +
+                        "-fx-border-width: 5px; " +
+                        "-fx-border-radius: 20px;"
+        );
+
+        // Remove a barra de título
+        Stage stage = (Stage) dialogPane.getScene().getWindow();
+
+        stage.initStyle(StageStyle.TRANSPARENT);
+        dialogPane.getScene().setFill(Color.TRANSPARENT);
+
+
+
+        dialogPane.getStyleClass().add("custom-dialog");
+        dialogPane.setStyle(dialogPane.getStyle() +
+                " -fx-text-fill: white; ");
+
+        // Solução definitiva para o conteúdo:
+        Label contentLabel = (Label) dialogPane.lookup(".content.label");
+        if (contentLabel != null) {
+            contentLabel.setStyle(
+                    "-fx-text-fill: white; " +
+                            "-fx-font-size: 18px; " +
+                            "-fx-font-weight: bold;"
+            );
+        }
+
+        ButtonType btYes = new ButtonType("Sim");
+        ButtonType btNo = new ButtonType("Não");
+
+        alert.getButtonTypes().setAll(btYes, btNo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+
+        if (result.isPresent() && result.get() == btYes) {
+            File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
+            fileToDelete.delete();
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+                Parent root = loader.load();
+                Scene scene = imgvClose.getScene();
+                scene.setRoot(root);
+            } catch (IOException e) {
+                //System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
     @FXML
     private void onHbDeleteFileClick(){
-        File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
-
-        // mostrar um warning perguntando se deseja msm excluir a tabela
-        fileToDelete.delete(); // se sim
-
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
-            Parent root = loader.load();
-            Scene scene = imgvClose.getScene();
-            scene.setRoot(root);
-        } catch (IOException e) {
-            //System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
+        warningDelete("Tem certeza que deseja excluir a tabela " + ListFilesViewController.fileToAccess + "?");
     }
 
     @FXML

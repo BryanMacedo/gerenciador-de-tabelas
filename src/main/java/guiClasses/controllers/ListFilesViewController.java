@@ -102,7 +102,6 @@ public class ListFilesViewController implements Initializable {
                     //ir para a tela que mostra os dados do arquivo
                     try {
                         fileToAccess = fileWithOutFinal;
-
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFileDataView.fxml"));
                         Parent root = loader.load();
                         Scene scene = imgvClose.getScene();
