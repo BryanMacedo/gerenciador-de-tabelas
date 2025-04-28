@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entities.Game;
@@ -60,7 +61,7 @@ public class ListFileDataViewController implements Initializable {
     private void warningDelete(String msg) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(null);
-        alert.setHeaderText(null); // Pode personalizar se quiser
+        alert.setHeaderText(null);
         alert.setContentText(msg);
 
         // tira a imagem do Alert
@@ -69,17 +70,21 @@ public class ListFileDataViewController implements Initializable {
 
         dialogPane.setStyle(
                 "-fx-background-color: #272727; " +
-                "-fx-background-radius: 20px; " +
+                        "-fx-background-radius: 20px; " +
                         "-fx-border-color: #FFFFFF; " +
                         "-fx-border-width: 5px; " +
                         "-fx-border-radius: 20px;"
         );
 
-        // Remove a barra de título
         Stage stage = (Stage) dialogPane.getScene().getWindow();
+
+
+
+
 
         stage.initStyle(StageStyle.TRANSPARENT);
         dialogPane.getScene().setFill(Color.TRANSPARENT);
+
 
 
 
@@ -87,7 +92,6 @@ public class ListFileDataViewController implements Initializable {
         dialogPane.setStyle(dialogPane.getStyle() +
                 " -fx-text-fill: white; ");
 
-        // Solução definitiva para o conteúdo:
         Label contentLabel = (Label) dialogPane.lookup(".content.label");
         if (contentLabel != null) {
             contentLabel.setStyle(
@@ -101,6 +105,34 @@ public class ListFileDataViewController implements Initializable {
         ButtonType btNo = new ButtonType("Não");
 
         alert.getButtonTypes().setAll(btYes, btNo);
+
+
+
+        Button btnYes = (Button) dialogPane.lookupButton(btYes);
+        Button btnNo = (Button) dialogPane.lookupButton(btNo);
+
+
+        btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
+
+        btnYes.setOnMouseEntered(e -> {
+            btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
+        });
+        btnYes.setOnMouseExited(e -> {
+            btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
+
+        });
+
+
+
+        btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
+
+        btnNo.setOnMouseEntered(e -> {
+            btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
+        });
+
+        btnNo.setOnMouseExited(e -> {
+            btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
+        });
 
         Optional<ButtonType> result = alert.showAndWait();
 
@@ -122,7 +154,7 @@ public class ListFileDataViewController implements Initializable {
     }
 
     @FXML
-    private void onHbDeleteFileClick(){
+    private void onHbDeleteFileClick() {
         warningDelete("Tem certeza que deseja excluir a tabela " + ListFilesViewController.fileToAccess + "?");
     }
 
@@ -139,7 +171,8 @@ public class ListFileDataViewController implements Initializable {
         }
     }
 
-    @FXML void onHbInsertNewGameClick(){
+    @FXML
+    void onHbInsertNewGameClick() {
         try {
             fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/AddNewDataView.fxml"));
@@ -153,7 +186,7 @@ public class ListFileDataViewController implements Initializable {
     }
 
     @FXML
-    private void onHbListFilesClick(){
+    private void onHbListFilesClick() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
             Parent root = loader.load();
@@ -184,11 +217,11 @@ public class ListFileDataViewController implements Initializable {
                     TypeDLC dlc = TypeDLC.valueOf(row.getCell(4).toString());
                     Game newGame;
 
-                    if (row.getCell(2).toString().equals("Jogo não finalizado")){
+                    if (row.getCell(2).toString().equals("Jogo não finalizado")) {
                         String textDate = row.getCell(2).toString();
                         newGame = new Game(row.getCell(0).toString(), row.getCell(1).toString(),
                                 rating, dlc, row.getCell(5).toString(), textDate);
-                    }else{
+                    } else {
                         LocalDate date = LocalDate.parse(row.getCell(2).toString());
                         newGame = new Game(row.getCell(0).toString(), row.getCell(1).toString(),
                                 rating, dlc, row.getCell(5).toString(), date);
@@ -202,9 +235,9 @@ public class ListFileDataViewController implements Initializable {
 
                     Label labelDate;
 
-                    if (newGame.getFinishDate() == null){
+                    if (newGame.getFinishDate() == null) {
                         labelDate = new Label(newGame.getTextDate());
-                    }else {
+                    } else {
                         labelDate = new Label(newGame.getFinishDate().toString());
                     }
 
