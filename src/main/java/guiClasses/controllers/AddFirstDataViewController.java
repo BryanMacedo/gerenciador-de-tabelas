@@ -145,6 +145,9 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private RadioButton rbE_DLC;
 
+    @FXML
+    private Label lbWarning;
+
     private String getStrYesOrNo(){
         if (rbYes.isSelected()){
             return "Sim";
@@ -178,7 +181,13 @@ public class AddFirstDataViewController implements Initializable {
 
         System.out.println(newGame);
 
-        writeFirstData(newGame);
+        if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
+        typeDLC == null || strRbYesOrNo.isEmpty()){
+            lbWarning.setStyle("-fx-text-fill: #ffffff;");
+        }else {
+            writeFirstData(newGame);
+        }
+
 
     }
 

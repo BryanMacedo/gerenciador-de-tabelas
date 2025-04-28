@@ -78,6 +78,9 @@ public class AddNewDataViewController implements Initializable {
     @FXML
     private HBox hbListFiles;
 
+    @FXML
+    private Label lbWarning;
+
     private String getStrYesOrNo(){
         if (rbYes.isSelected()){
             return "Sim";
@@ -111,9 +114,13 @@ public class AddNewDataViewController implements Initializable {
 
         System.out.println(newGame);
 
-        // adicionar na tabela
+        if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
+                typeDLC == null || strRbYesOrNo.isEmpty()){
+            lbWarning.setStyle("-fx-text-fill: #ffffff;");
+        }else {
+            writeData(newGame);
+        }
 
-        writeData(newGame);
     }
 
     private void writeData(Game game){

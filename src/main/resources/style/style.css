@@ -290,3 +290,8 @@
 .hbStyleHover:hover{
         -fx-border-color: #ffffff;
 }
+
+.LabelWarning{
+    -fx-text-fill: transparent;
+    -fx-font-size: 30px;
+}
