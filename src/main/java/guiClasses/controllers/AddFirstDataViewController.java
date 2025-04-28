@@ -26,6 +26,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -227,6 +228,8 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private void onRbYesClick(){
         dpFinish.setDisable(false);
+        LocalDate DateNow = LocalDate.now();
+        dpFinish.setValue(DateNow);
     }
 
     @FXML
