@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -78,6 +79,11 @@ public class ListFileDataViewController implements Initializable {
 
         Stage stage = (Stage) dialogPane.getScene().getWindow();
 
+        Stage mainStage = (Stage) imgvMinimize.getScene().getWindow();
+        Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+
+        alertStage.setX(mainStage.getX() + mainStage.getWidth() - 810);
+        alertStage.setY(mainStage.getY() + 390);
 
 
 
