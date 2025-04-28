@@ -18,6 +18,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -46,7 +47,29 @@ public class ListFileDataViewController implements Initializable {
     private HBox hbNewFile;
 
     @FXML
+    private HBox hbDeleteFile;
+
+    @FXML
     private Label lbTableName;
+
+    @FXML
+    private void onHbDeleteFileClick(){
+        File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
+
+        // mostrar um warning perguntando se deseja msm excluir a tabela
+        fileToDelete.delete(); // se sim
+
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void onHbNewFileClick() {
