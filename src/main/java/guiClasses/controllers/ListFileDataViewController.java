@@ -4,8 +4,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -13,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entities.Game;
@@ -208,7 +205,7 @@ public class ListFileDataViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(ListFilesViewController.fileToAccess);
 
-        lbTableName.setText(" Nome da tabela: " + ListFilesViewController.fileToAccess);
+        lbTableName.setText(ListFilesViewController.fileToAccess);
 
         try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
              Workbook workbook = new XSSFWorkbook(fis)) {
@@ -258,8 +255,7 @@ public class ListFileDataViewController implements Initializable {
                     Label labelFinish = new Label(newGame.getFinish());
                     labelFinish.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 122; -fx-pref-height: 37; -fx-alignment: center;");
 
-                    HBox newHbox = new HBox(labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate
-                    );
+                    HBox newHbox = new HBox(labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
                     newHbox.setStyle("-fx-alignment: top_center;");
 
                     vbList.getChildren().add(newHbox);
