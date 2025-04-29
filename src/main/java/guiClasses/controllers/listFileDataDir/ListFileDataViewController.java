@@ -1,4 +1,4 @@
-package guiClasses.controllers.listFilesDataDir;
+package guiClasses.controllers.listFileDataDir;
 
 import guiClasses.controllers.listFilesDir.ListFilesViewController;
 import javafx.application.Platform;
@@ -36,6 +36,7 @@ public class ListFileDataViewController implements Initializable {
     public static String fileNameToAccessFromListData;
     private List<Game> games = new ArrayList<>();
     private List<HBox> hBoxList = new ArrayList<>();
+    static Game gameToEdit;
 
     @FXML
     private ImageView imgvClose;
@@ -187,7 +188,7 @@ public class ListFileDataViewController implements Initializable {
     void onHbInsertNewGameClick() {
         try {
             fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDataDir/AddNewDataView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/AddNewDataView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
@@ -281,8 +282,20 @@ public class ListFileDataViewController implements Initializable {
                     newHbox.setMouseTransparent(true);
 
                     newHbox.setOnMouseClicked(e -> {
-                        Game gameToEdit = newGame;
+                        gameToEdit = newGame;
                         System.out.println(gameToEdit);
+
+                        // ir para a view que ira editar a linha.
+                        try {
+                            fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/EditDataView.fxml"));
+                            Parent root = loader.load();
+                            Scene scene = imgvClose.getScene();
+                            scene.setRoot(root);
+                        } catch (IOException ex) {
+                            //System.out.println(e.getMessage());
+                            ex.printStackTrace();
+                        }
                     });
 
                     vbList.getChildren().add(newHbox);
