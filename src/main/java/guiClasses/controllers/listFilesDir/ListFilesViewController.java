@@ -1,4 +1,4 @@
-package guiClasses.controllers;
+package guiClasses.controllers.listFilesDir;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -11,19 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.entities.Game;
-import model.entities.TypeDLC;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ListFilesViewController implements Initializable {
@@ -55,7 +46,7 @@ public class ListFilesViewController implements Initializable {
     @FXML
     private void onHbNewFileClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
@@ -102,7 +93,7 @@ public class ListFilesViewController implements Initializable {
                     //ir para a tela que mostra os dados do arquivo
                     try {
                         fileToAccess = fileWithOutFinal;
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFileDataView.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDataDir/ListFileDataView.fxml"));
                         Parent root = loader.load();
                         Scene scene = imgvClose.getScene();
                         scene.setRoot(root);

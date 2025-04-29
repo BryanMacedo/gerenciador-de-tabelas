@@ -21,7 +21,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.AddFirstDataViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.newFileDir.AddFirstDataViewController">
    <left>
       <StackPane BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -34,7 +34,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_profile.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_profile.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -58,7 +58,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_new_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_new_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -85,7 +85,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_edit_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_edit_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -112,7 +112,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_list_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_list_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -419,7 +419,7 @@
                      <children>
                         <ImageView fx:id="imgvMinimize" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvMinimizeClick" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_minimize.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_minimize.png" />
                            </image>
                            <HBox.margin>
                               <Insets top="15.0" />
@@ -431,7 +431,7 @@
                         </ImageView>
                         <ImageView fx:id="imgvClose" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvCloseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_Close.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_Close.png" />
                            </image>
                            <styleClass>
                               <String fx:value="imageview" />

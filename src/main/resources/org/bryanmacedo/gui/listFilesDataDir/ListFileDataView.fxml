@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.ListFileDataViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.listFilesDataDir.ListFileDataViewController">
    <left>
       <StackPane prefWidth="173.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -24,7 +24,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_profile.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_profile.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -48,7 +48,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_new_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_new_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -75,7 +75,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_edit_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_edit_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -102,7 +102,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_list_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_list_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -139,7 +139,7 @@
                      <children>
                         <ImageView fx:id="imgvMinimize" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvMinimizeClick" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_minimize.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_minimize.png" />
                            </image>
                            <HBox.margin>
                               <Insets top="15.0" />
@@ -151,7 +151,7 @@
                         </ImageView>
                         <ImageView fx:id="imgvClose" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvCloseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_Close.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_Close.png" />
                            </image>
                            <styleClass>
                               <String fx:value="imageview" />
@@ -184,7 +184,7 @@
                                  <children>
                                     <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../imgs/imgListData/ic-insert.png" />
+                                          <Image url="@../../../../imgs/imgListData/ic-insert.png" />
                                        </image>
                                     </ImageView>
                                     <Label prefHeight="27.0" prefWidth="184.0" text="Inserir um novo jogo">
@@ -204,11 +204,11 @@
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </HBox>
-                              <HBox prefHeight="33.0" prefWidth="197.0">
+                              <HBox fx:id="hbEditGameLine" onMouseClicked="#onHbEditGameLineClick" prefHeight="33.0" prefWidth="197.0">
                                  <children>
                                     <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../imgs/imgListData/ic_edit.png" />
+                                          <Image url="@../../../../imgs/imgListData/ic_edit.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Editar uma linha">
@@ -232,7 +232,7 @@
                                  <children>
                                     <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../imgs/imgListData/ic_delete.png" />
+                                          <Image url="@../../../../imgs/imgListData/ic_delete.png" />
                                        </image>
                                     </ImageView>
                                     <Label prefHeight="27.0" prefWidth="154.0" text="Deletar uma linha">
@@ -256,7 +256,7 @@
                                  <children>
                                     <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../imgs/imgListData/ic_delete_table.png" />
+                                          <Image url="@../../../../imgs/imgListData/ic_delete_table.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Deletar tabela">

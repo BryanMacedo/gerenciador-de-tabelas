@@ -2,9 +2,8 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,20 +11,20 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.NewFileViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.listFilesDir.ListFilesViewController">
    <left>
-      <StackPane BorderPane.alignment="CENTER">
+      <StackPane prefWidth="173.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="40.0" top="40.0" />
          </BorderPane.margin>
          <children>
-            <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
+            <VBox alignment="CENTER" prefHeight="708.0" prefWidth="193.0" styleClass="borderRight">
                <children>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="319.0" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_profile.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_profile.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -45,11 +44,11 @@
                         <Insets bottom="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+                  <HBox fx:id="hbNewFile" alignment="CENTER" onMouseClicked="#onHbNewFileClick" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_new_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_new_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -76,7 +75,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_edit_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_edit_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -99,11 +98,11 @@
                         <Insets bottom="5.0" />
                      </padding>
                   </HBox>
-                  <HBox fx:id="hbListFiles" alignment="CENTER" onMouseClicked="#onHbListFilesClick" prefHeight="0.0" prefWidth="142.0">
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_list_file.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_list_file.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
@@ -132,52 +131,46 @@
       </StackPane>
    </left>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <StackPane prefHeight="813.0" prefWidth="516.0" styleClass="scrollpane" BorderPane.alignment="CENTER">
          <children>
-            <VBox>
-               <children>
-                  <HBox alignment="CENTER" prefHeight="829.0" prefWidth="1107.0">
+            <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="scrollpane" StackPane.alignment="CENTER">
+               <StackPane.margin>
+                  <Insets bottom="40.0" top="40.0" />
+               </StackPane.margin>
+               <content>
+                  <HBox fx:id="hbCentralContent" alignment="TOP_CENTER" prefHeight="733.0" prefWidth="1107.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="172.0" prefWidth="278.0" styleClass="bkElements">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="256.0" text="Digite o nome do arquivo:">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField fx:id="tfFileName" focusTraversable="false" prefHeight="25.0" prefWidth="0.0" promptText="jogos-2025" styleClass="textFild">
-                                 <VBox.margin>
-                                    <Insets left="20.0" right="20.0" top="10.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <Button fx:id="btCreate" mnemonicParsing="false" onAction="#onBtCreateAction" text="Criar">
-                                 <VBox.margin>
-                                    <Insets top="15.0" />
-                                 </VBox.margin>
-                                 <styleClass>
-                                    <String fx:value="buton" />
-                                    <String fx:value="butonHover" />
-                                 </styleClass>
-                              </Button>
-                           </children>
+                        <VBox fx:id="vb01" alignment="TOP_CENTER" prefHeight="1360.0" prefWidth="180.0">
                            <HBox.margin>
-                              <Insets />
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="vb02" alignment="TOP_CENTER" layoutX="364.0" layoutY="10.0" prefHeight="1360.0" prefWidth="180.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="vb03" alignment="TOP_CENTER" prefHeight="1360.0" prefWidth="180.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox fx:id="vb04" alignment="TOP_CENTER" layoutX="654.0" layoutY="10.0" prefHeight="1360.0" prefWidth="180.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
-                     <VBox.margin>
-                        <Insets bottom="320.0" top="320.0" />
-                     </VBox.margin>
                   </HBox>
-               </children>
-            </VBox>
+               </content>
+            </ScrollPane>
             <StackPane prefHeight="64.0" prefWidth="1107.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="TOP_RIGHT" prefHeight="64.0" prefWidth="78.0">
                      <children>
                         <ImageView fx:id="imgvMinimize" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvMinimizeClick" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_minimize.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_minimize.png" />
                            </image>
                            <HBox.margin>
                               <Insets top="15.0" />
@@ -189,7 +182,7 @@
                         </ImageView>
                         <ImageView fx:id="imgvClose" fitHeight="59.0" fitWidth="38.0" onMouseClicked="#onImgvCloseClick" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../imgs/imgUI/ic_Close.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_Close.png" />
                            </image>
                            <styleClass>
                               <String fx:value="imageview" />
@@ -200,6 +193,9 @@
                            </HBox.margin>
                         </ImageView>
                      </children>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
                   </HBox>
                </children>
                <StackPane.margin>
@@ -207,6 +203,9 @@
                </StackPane.margin>
             </StackPane>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </StackPane>
    </center>
 </BorderPane>

@@ -1,5 +1,6 @@
-package guiClasses.controllers;
+package guiClasses.controllers.listFilesDataDir;
 
+import guiClasses.controllers.listFilesDir.ListFilesViewController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,11 +27,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ListFileDataViewController implements Initializable {
     public static String fileNameToAccessFromListData;
+    private List<Game> games = new ArrayList<>();
+    private List<HBox> hBoxList = new ArrayList<>();
+
     @FXML
     private ImageView imgvClose;
 
@@ -51,6 +57,9 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private HBox hbDeleteFile;
+
+    @FXML
+    private HBox hbEditGameLine;
 
     @FXML
     private Label lbTableName;
@@ -145,7 +154,7 @@ public class ListFileDataViewController implements Initializable {
             fileToDelete.delete();
 
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
                 Parent root = loader.load();
                 Scene scene = imgvClose.getScene();
                 scene.setRoot(root);
@@ -164,7 +173,7 @@ public class ListFileDataViewController implements Initializable {
     @FXML
     private void onHbNewFileClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
@@ -178,7 +187,7 @@ public class ListFileDataViewController implements Initializable {
     void onHbInsertNewGameClick() {
         try {
             fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/AddNewDataView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDataDir/AddNewDataView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
@@ -191,13 +200,21 @@ public class ListFileDataViewController implements Initializable {
     @FXML
     private void onHbListFilesClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
             //System.out.println(e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onHbEditGameLineClick(){
+        for (HBox hBox : hBoxList) {
+            hBox.setMouseTransparent(false);
+            hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
         }
     }
 
@@ -230,6 +247,8 @@ public class ListFileDataViewController implements Initializable {
                                 rating, dlc, row.getCell(5).toString(), date);
                     }
 
+                   games.add(newGame);
+
                     Label labelName = new Label(newGame.getName());
                     labelName.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 363; -fx-pref-height: 37; -fx-alignment: center;");
 
@@ -258,7 +277,16 @@ public class ListFileDataViewController implements Initializable {
                     HBox newHbox = new HBox(labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
                     newHbox.setStyle("-fx-alignment: top_center;");
 
+                    //newHbox.setDisable(true);
+                    newHbox.setMouseTransparent(true);
+
+                    newHbox.setOnMouseClicked(e -> {
+                        Game gameToEdit = newGame;
+                        System.out.println(gameToEdit);
+                    });
+
                     vbList.getChildren().add(newHbox);
+                    hBoxList.add(newHbox);
                 }
             }
 

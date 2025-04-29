@@ -4,9 +4,16 @@ module org.bryanmacedo.projetogerenciadordetabelas {
     requires org.apache.poi.ooxml;
 
 
-    opens guiClasses.controllers to javafx.fxml, javafx.graphics;
-    exports guiClasses.controllers to javafx.fxml;
+//    opens guiClasses.controllers to javafx.fxml, javafx.graphics;
+//    exports guiClasses.controllers to javafx.fxml;
 
     opens org.bryanmacedo.projetogerenciadordetabelas to javafx.fxml;
     exports org.bryanmacedo.projetogerenciadordetabelas;
+
+    exports guiClasses.controllers.newFileDir to javafx.fxml;
+    opens guiClasses.controllers.newFileDir to javafx.fxml, javafx.graphics;
+    exports guiClasses.controllers.listFilesDir to javafx.fxml;
+    opens guiClasses.controllers.listFilesDir to javafx.fxml, javafx.graphics;
+    exports guiClasses.controllers.listFilesDataDir to javafx.fxml;
+    opens guiClasses.controllers.listFilesDataDir to javafx.fxml, javafx.graphics;
 }

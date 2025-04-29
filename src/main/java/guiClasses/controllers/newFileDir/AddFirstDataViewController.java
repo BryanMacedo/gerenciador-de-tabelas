@@ -1,4 +1,4 @@
-package guiClasses.controllers;
+package guiClasses.controllers.newFileDir;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -18,7 +19,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -28,10 +28,24 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddNewDataViewController implements Initializable {
+public class AddFirstDataViewController implements Initializable {
+    private final Image imgSelected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Selected.png"));
+    private final Image imgUnselected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Unselected.png"));
+
     private List<String> plataforms = new ArrayList<>(Arrays.asList
             ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "PC", "XBOX SX"
                     , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX"));
+
+    private List<String> dlc = new ArrayList<>();
+    private List<ImageView> imageViewClicked = new ArrayList<>();
+
+    private List<String> finish = new ArrayList<>();
+    private List<ImageView> imageViewFinishClicked = new ArrayList<>();
+
+    private List<Boolean> yesOrNo = new ArrayList<>();
+    private List<TypeDLC> typeDLCChoice = new ArrayList<>();
+
+    NewFileViewController controller = new NewFileViewController();
 
     String strRbYesOrNo = null;
     TypeDLC typeDLC = null;
@@ -46,13 +60,68 @@ public class AddNewDataViewController implements Initializable {
     private TextField tfName;
 
     @FXML
+    private Label finishDLC;
+
+    @FXML
+    private Label unfinishDLC;
+
+    @FXML
+    private Label isDLC;
+
+    @FXML
+    private ImageView imgvRbfinishDLC;
+    @FXML
+    private ImageView imgvRbunfinishDLC;
+    @FXML
+    private ImageView imgvRbisDLC;
+    @FXML
+    private ImageView imgvRbDontHaveDLC;
+
+    @FXML
+    private ImageView imgvRbFinishYes;
+
+    @FXML
+    private ImageView imgvRbFinishNo;
+
+
+    @FXML
+    private HBox hbfinishDLC;
+
+    @FXML
+    private HBox hbUnfinishDLC;
+
+    @FXML
+    private HBox hbUnIsDLC;
+
+    @FXML
+    private HBox hbDontHaveDLC;
+
+    @FXML
     private ChoiceBox<String> cbPlataforms;
+
+    @FXML
+    private HBox hbFinishYes;
+
+    @FXML
+    private HBox hbFinishNo;
+
+    @FXML
+    private TextField tfDate;
 
     @FXML
     private Spinner<Integer> spnRating;
 
     @FXML
+    private Button btAddGame;
+
+    @FXML
     private DatePicker dpFinish;
+
+    @FXML
+    private ToggleGroup tgYesOrNo;
+
+    @FXML
+    private ToggleGroup tgDLC;
 
     @FXML
     private RadioButton rbYes;
@@ -73,13 +142,13 @@ public class AddNewDataViewController implements Initializable {
     private RadioButton rbE_DLC;
 
     @FXML
+    private Label lbWarning;
+
+    @FXML
     private HBox hbNewFile;
 
     @FXML
     private HBox hbListFiles;
-
-    @FXML
-    private Label lbWarning;
 
     private String getStrYesOrNo(){
         if (rbYes.isSelected()){
@@ -115,20 +184,21 @@ public class AddNewDataViewController implements Initializable {
         System.out.println(newGame);
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
-                typeDLC == null || strRbYesOrNo.isEmpty()){
+        typeDLC == null || strRbYesOrNo.isEmpty()){
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
         }else {
-            writeData(newGame);
+            writeFirstData(newGame);
         }
+
 
     }
 
-    private void writeData(Game game){
-        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx");
+    private void writeFirstData(Game game){
+        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + NewFileViewController.nameNewFile);
              Workbook workbook = WorkbookFactory.create(fis);
-             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx")){
+             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + NewFileViewController.nameNewFile)) {
 
-            Sheet sheet = workbook.getSheetAt(0);
+            Sheet sheet = workbook.getSheetAt(0); // Pega a primeira planilha
 
             // Encontra a última linha preenchida
             int lastRow = sheet.getLastRowNum();
@@ -150,23 +220,20 @@ public class AddNewDataViewController implements Initializable {
 
             // salva no arquivo
             workbook.write(fos);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }catch (IOException e){
+            e.printStackTrace();
         }
 
         try {
-            ListFilesViewController.fileToAccess = ListFileDataViewController.fileNameToAccessFromListData;
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFileDataView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
-        } catch (IOException exc) {
+        } catch (IOException e) {
             //System.out.println(e.getMessage());
-            exc.printStackTrace();
+            e.printStackTrace();
         }
+
     }
 
     @FXML
@@ -185,7 +252,7 @@ public class AddNewDataViewController implements Initializable {
     @FXML
     private void onHbNewFileClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/NewFileView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
@@ -198,7 +265,7 @@ public class AddNewDataViewController implements Initializable {
     @FXML
     private void onHbListFilesClick(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
@@ -207,6 +274,7 @@ public class AddNewDataViewController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -220,7 +288,6 @@ public class AddNewDataViewController implements Initializable {
         spnRating.setValueFactory(valueFactory);
         spnRating.getEditor().setDisable(true);
         spnRating.getEditor().setOpacity(1.0);
-
     }
 
     // fechar e minimizar
@@ -234,4 +301,5 @@ public class AddNewDataViewController implements Initializable {
         Stage stage = (Stage) imgvMinimize.getScene().getWindow();
         stage.setIconified(true);
     }
+
 }

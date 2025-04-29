@@ -1,4 +1,4 @@
-package guiClasses.controllers;
+package guiClasses.controllers.newFileDir;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -50,7 +50,7 @@ public class NewFileViewController implements Initializable {
     @FXML
     private void onHbListFilesClick(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/ListFilesView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
@@ -122,7 +122,7 @@ public class NewFileViewController implements Initializable {
         }
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/AddFirstDataView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/AddFirstDataView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
