@@ -98,7 +98,7 @@ public class EditDataViewController implements Initializable {
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
                 typeDLC == null || strRbYesOrNo.isEmpty()){
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
-        }else if (ListFileDataViewController.gameToEdit.equals(gameEdited)){
+        }else if (gameToEdit.equals(gameEdited)){
             lbWarning.setText("Edite os dados para alterar a linha.");
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
         }else {

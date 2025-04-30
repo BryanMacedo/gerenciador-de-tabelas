@@ -17,29 +17,23 @@ public class Game {
 
     @Override
     public boolean equals(Object game) {
-//        if(!(game instanceof Game)) return false;
-//        if (game == this) return true;
-
-        // Verificação básica: mesma instância?
+        if (game == null) return false;
         if (this == game) return true;
-
-        // Verificação básica: null ou classe diferente?
-        if (game == null || getClass() != game.getClass()) return false;
+        if (this.getClass() != game.getClass()) return false;
 
         Game newGame = (Game) game;
 
-        return Objects.equals(this.name, newGame.name) &&
-                Objects.equals(this.platform, newGame.platform) &&
-                this.rating == newGame.rating &&
-                Objects.equals(this.dlc, newGame.dlc) &&
-                Objects.equals(this.finish, newGame.finish) &&
-                Objects.equals(this.finishDate, newGame.finishDate) &&
-                Objects.equals(this.textDate, newGame.textDate);
+        return Objects.equals(name, newGame.name) &&
+                Objects.equals(platform, newGame.platform) &&
+                rating == newGame.rating &&
+                Objects.equals(dlc, newGame.dlc) && // Compara os objetos DLC diretamente ou implementa equals em DLC
+                Objects.equals(finish, newGame.finish) &&
+                Objects.equals(finishDate, newGame.finishDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, platform, rating, dlc, finish, finishDate, textDate);
+        return Objects.hash(name, platform, rating, dlc, finish, finishDate);
     }
 
 
