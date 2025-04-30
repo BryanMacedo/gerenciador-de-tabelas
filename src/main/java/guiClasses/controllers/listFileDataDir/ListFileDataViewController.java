@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 
 public class ListFileDataViewController implements Initializable {
     public static String fileNameToAccessFromListData;
-    private List<Game> games = new ArrayList<>();
+    public static List<Game> games = new ArrayList<>();
     private List<HBox> hBoxList = new ArrayList<>();
     static Game gameToEdit;
 
@@ -221,7 +221,8 @@ public class ListFileDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(ListFilesViewController.fileToAccess);
+        games.clear();
+        //System.out.println(ListFilesViewController.fileToAccess);
 
         lbTableName.setText(ListFilesViewController.fileToAccess);
 

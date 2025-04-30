@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class NewFileViewController implements Initializable {
-    List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
+    private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
     public static String nameNewFile;
 
     @FXML
