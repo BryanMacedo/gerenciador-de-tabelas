@@ -295,3 +295,8 @@
     -fx-text-fill: transparent;
     -fx-font-size: 30px;
 }
+
+.root{
+-fx-border-color: #FFFFFF;
+    -fx-border-width: 5px;
+}

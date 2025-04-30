@@ -65,6 +65,9 @@ public class ListFileDataViewController implements Initializable {
     @FXML
     private Label lbTableName;
 
+    @FXML
+    private Label lbTip;
+
 
     private void warningDelete(String msg) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -213,6 +216,8 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private void onHbEditGameLineClick(){
+        lbTip.setText("Clique" +
+                " na linha que deseja editar.");
         for (HBox hBox : hBoxList) {
             hBox.setMouseTransparent(false);
             hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
