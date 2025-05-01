@@ -16,27 +16,26 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entities.Game;
 import model.entities.TypeDLC;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ListFileDataViewController implements Initializable {
     public static String fileNameToAccessFromListData;
     public static List<Game> games = new ArrayList<>();
     private List<HBox> hBoxList = new ArrayList<>();
     static Game gameToEdit;
+    private int optionFunction;
+    private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
+
 
     @FXML
     private ImageView imgvClose;
@@ -61,6 +60,9 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private HBox hbEditGameLine;
+
+    @FXML
+    private HBox hbDeleteLine;
 
     @FXML
     private Label lbTableName;
@@ -95,14 +97,8 @@ public class ListFileDataViewController implements Initializable {
         alertStage.setX(mainStage.getX() + mainStage.getWidth() - 810);
         alertStage.setY(mainStage.getY() + 390);
 
-
-
-
         stage.initStyle(StageStyle.TRANSPARENT);
         dialogPane.getScene().setFill(Color.TRANSPARENT);
-
-
-
 
         dialogPane.getStyleClass().add("custom-dialog");
         dialogPane.setStyle(dialogPane.getStyle() +
@@ -122,11 +118,8 @@ public class ListFileDataViewController implements Initializable {
 
         alert.getButtonTypes().setAll(btYes, btNo);
 
-
-
         Button btnYes = (Button) dialogPane.lookupButton(btYes);
         Button btnNo = (Button) dialogPane.lookupButton(btNo);
-
 
         btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
@@ -137,8 +130,6 @@ public class ListFileDataViewController implements Initializable {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
         });
-
-
 
         btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
@@ -154,23 +145,129 @@ public class ListFileDataViewController implements Initializable {
 
 
         if (result.isPresent() && result.get() == btYes) {
-            File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
-            fileToDelete.delete();
+            switch (optionFunction){
+                case 2->{
+                    //excluir linha
+                    List<Game> listAux = new ArrayList<>();
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
-                Parent root = loader.load();
-                Scene scene = imgvClose.getScene();
-                scene.setRoot(root);
-            } catch (IOException e) {
-                //System.out.println(e.getMessage());
-                e.printStackTrace();
+                    for (Game game : games) {
+                        listAux.add(game);
+                    }
+                    games.clear();
+
+                    for (Game aux : listAux) {
+                        if (!aux.equals(gameToEdit)) {
+                            games.add(aux);
+                        }
+                    }
+
+                    File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
+                    fileToDelete.delete();
+
+                    Path path = Paths.get("C:\\tabelas-GT");
+                    Path fullPath = Paths.get(path.toString(), ListFilesViewController.fileToAccess + ".xlsx");
+
+                    try (XSSFWorkbook workbook = new XSSFWorkbook();
+                         FileOutputStream fileOutputStream = new FileOutputStream(fullPath.toString())) {
+
+                        // cria a planilha
+                        XSSFSheet sheet = workbook.createSheet(ListFilesViewController.fileToAccess);
+
+                        //cria a primeira linha que será usada como cabeçalho/colunas
+                        Row headerRow = sheet.createRow(0);
+
+                        for (int i = 0; i < columns.size(); i++) {
+                            Cell cell = headerRow.createCell(i);
+                            cell.setCellValue(columns.get(i));
+                        }
+
+                        //Deixa o tamanho da célula igual ao do seu conteúdo
+                        for(int i = 0; i < columns.size(); i++) {
+                            sheet.autoSizeColumn(i);
+                        }
+
+                        workbook.write(fileOutputStream);
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    for(Game game : games){
+                        writeData(game);
+                    }
+
+                    // abre novamente a view atual
+
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/ListFileDataView.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = imgvClose.getScene();
+                        scene.setRoot(root);
+                    } catch (IOException e) {
+                        //System.out.println(e.getMessage());
+                        e.printStackTrace();
+                    }
+
+                }
+                case 3 ->{
+                    File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
+                    fileToDelete.delete();
+
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = imgvClose.getScene();
+                        scene.setRoot(root);
+                    } catch (IOException e) {
+                        //System.out.println(e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
             }
+
+        }
+    }
+
+    private void writeData(Game game) {
+        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx");
+             Workbook workbook = WorkbookFactory.create(fis);
+             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx")) {
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            // Encontra a última linha preenchida
+            int lastRow = sheet.getLastRowNum();
+
+            // Cria uma nova linha após a última
+            Row row = sheet.createRow(lastRow + 1);
+
+            // Preenche os dados nas células
+            row.createCell(0).setCellValue(game.getName());
+            row.createCell(1).setCellValue(game.getPlatform());
+
+            if (game.getFinish().equals("Não")) {
+                row.createCell(2).setCellValue("Jogo não finalizado");
+            } else {
+                row.createCell(2).setCellValue(game.getFinishDate().toString());
+            }
+            row.createCell(3).setCellValue(game.getRating());
+            row.createCell(4).setCellValue(game.getDlc().toString());
+            row.createCell(5).setCellValue(game.getFinish());
+
+            // salva no arquivo
+            workbook.write(fos);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     @FXML
     private void onHbDeleteFileClick() {
+        lbTip.setText("");
+        optionFunction = 3;
         warningDelete("Tem certeza que deseja excluir a tabela " + ListFilesViewController.fileToAccess + "?");
     }
 
@@ -188,7 +285,30 @@ public class ListFileDataViewController implements Initializable {
     }
 
     @FXML
-    void onHbInsertNewGameClick() {
+    private void onHbDeleteLineClick(){
+        lbTip.setText("Clique na linha que deseja excluir.");
+
+        optionFunction = 2;
+
+        for (HBox hBox : hBoxList) {
+            hBox.setMouseTransparent(false);
+            hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
+        }
+    }
+
+    @FXML
+    private void onHbEditGameLineClick(){
+        lbTip.setText("Clique na linha que deseja editar.");
+
+        optionFunction = 1;
+
+        for (HBox hBox : hBoxList) {
+            hBox.setMouseTransparent(false);
+            hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
+        }
+    }
+    @FXML
+    private void onHbInsertNewGameClick() {
         try {
             fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/AddNewDataView.fxml"));
@@ -214,15 +334,7 @@ public class ListFileDataViewController implements Initializable {
         }
     }
 
-    @FXML
-    private void onHbEditGameLineClick(){
-        lbTip.setText("Clique" +
-                " na linha que deseja editar.");
-        for (HBox hBox : hBoxList) {
-            hBox.setMouseTransparent(false);
-            hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
-        }
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -291,17 +403,25 @@ public class ListFileDataViewController implements Initializable {
                         gameToEdit = newGame;
                         System.out.println(gameToEdit);
 
-                        // ir para a view que ira editar a linha.
-                        try {
-                            fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/EditDataView.fxml"));
-                            Parent root = loader.load();
-                            Scene scene = imgvClose.getScene();
-                            scene.setRoot(root);
-                        } catch (IOException ex) {
-                            //System.out.println(e.getMessage());
-                            ex.printStackTrace();
+                        switch (optionFunction){
+                            case 1 ->{
+                                try {
+                                    fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/EditDataView.fxml"));
+                                    Parent root = loader.load();
+                                    Scene scene = imgvClose.getScene();
+                                    scene.setRoot(root);
+                                } catch (IOException ex) {
+                                    //System.out.println(e.getMessage());
+                                    ex.printStackTrace();
+                                }
+                            }
+                            case 2 ->{
+                                warningDelete("Tem certeza que deseja excluir esta Linha?");
+                            }
                         }
+
+
                     });
 
                     vbList.getChildren().add(newHbox);

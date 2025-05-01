@@ -228,7 +228,7 @@
                                     <Insets bottom="5.0" left="8.0" right="8.0" top="5.0" />
                                  </padding>
                               </HBox>
-                              <HBox prefHeight="33.0" prefWidth="208.0">
+                              <HBox fx:id="hbDeleteLine" onMouseClicked="#onHbDeleteLineClick" prefHeight="33.0" prefWidth="208.0">
                                  <children>
                                     <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
