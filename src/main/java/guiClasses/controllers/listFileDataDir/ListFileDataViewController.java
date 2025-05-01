@@ -200,6 +200,7 @@ public class ListFileDataViewController implements Initializable {
                     // abre novamente a view atual
 
                     try {
+                        System.out.println(ListFilesViewController.fileToAccess);
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/ListFileDataView.fxml"));
                         Parent root = loader.load();
                         Scene scene = imgvClose.getScene();
@@ -230,9 +231,9 @@ public class ListFileDataViewController implements Initializable {
     }
 
     private void writeData(Game game) {
-        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx");
+        try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
              Workbook workbook = WorkbookFactory.create(fis);
-             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx")) {
+             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx")) {
 
             Sheet sheet = workbook.getSheetAt(0);
 
