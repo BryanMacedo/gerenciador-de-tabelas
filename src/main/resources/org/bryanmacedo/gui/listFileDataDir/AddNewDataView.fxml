@@ -53,6 +53,9 @@
                      <padding>
                         <Insets bottom="5.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox fx:id="hbNewFile" alignment="CENTER" onMouseClicked="#onHbNewFileClick" prefHeight="0.0" prefWidth="142.0">
                      <children>
@@ -75,40 +78,13 @@
                         <String fx:value="Hbox" />
                      </styleClass>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
-                     <children>
-                        <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
-                           <image>
-                              <Image url="@../../../../imgs/imgUI/ic_edit_file.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Editar tabela" textAlignment="RIGHT">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <styleClass>
-                        <String fx:value="HboxHover" />
-                        <String fx:value="Hbox" />
-                     </styleClass>
-                     <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <padding>
                         <Insets bottom="5.0" />
                      </padding>
                   </HBox>
-                  <HBox fx:id="hbListFiles" alignment="CENTER" onMouseClicked="#onHbListFilesClick" prefHeight="0.0" prefWidth="142.0">
+                  <HBox fx:id="hbListFiles" alignment="BOTTOM_CENTER" onMouseClicked="#onHbListFilesClick" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>

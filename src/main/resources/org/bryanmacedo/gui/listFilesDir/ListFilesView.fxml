@@ -18,7 +18,7 @@
             <Insets bottom="40.0" top="40.0" />
          </BorderPane.margin>
          <children>
-            <VBox alignment="CENTER" prefHeight="708.0" prefWidth="193.0" styleClass="borderRight">
+            <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
                <children>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="319.0" prefHeight="0.0" prefWidth="142.0">
                      <children>
@@ -43,6 +43,9 @@
                      <padding>
                         <Insets bottom="5.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </HBox>
                   <HBox fx:id="hbNewFile" alignment="CENTER" onMouseClicked="#onHbNewFileClick" prefHeight="0.0" prefWidth="142.0">
                      <children>
@@ -65,40 +68,13 @@
                         <String fx:value="Hbox" />
                      </styleClass>
                      <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
-                     <children>
-                        <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
-                           <image>
-                              <Image url="@../../../../imgs/imgUI/ic_edit_file.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Editar tabela" textAlignment="RIGHT">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <styleClass>
-                        <String fx:value="HboxHover" />
-                        <String fx:value="Hbox" />
-                     </styleClass>
-                     <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <padding>
                         <Insets bottom="5.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="142.0">
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
