@@ -2,6 +2,8 @@ module org.bryanmacedo.projetogerenciadordetabelas {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.apache.poi.ooxml;
+    requires java.desktop;
+    requires javafx.media;
 
 
 //    opens guiClasses.controllers to javafx.fxml, javafx.graphics;

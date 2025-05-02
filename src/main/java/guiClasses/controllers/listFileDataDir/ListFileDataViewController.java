@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -20,7 +21,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Path;
@@ -35,7 +35,10 @@ public class ListFileDataViewController implements Initializable {
     static Game gameToEdit;
     private int optionFunction;
     private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
+    private List<HBox> hBoxeBtns = new ArrayList<>();
 
+    private AudioClip clickSound;
+    private AudioClip hoverSound;
 
     @FXML
     private ImageView imgvClose;
@@ -267,6 +270,7 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private void onHbDeleteFileClick() {
+        clickSound.play();
         lbTip.setText("");
         optionFunction = 3;
         warningDelete("Tem certeza que deseja excluir a tabela " + ListFilesViewController.fileToAccess + "?");
@@ -287,6 +291,7 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private void onHbDeleteLineClick(){
+        clickSound.play();
         lbTip.setText("Clique na linha que deseja excluir.");
 
         optionFunction = 2;
@@ -299,6 +304,7 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private void onHbEditGameLineClick(){
+        clickSound.play();
         lbTip.setText("Clique na linha que deseja editar.");
 
         optionFunction = 1;
@@ -310,6 +316,7 @@ public class ListFileDataViewController implements Initializable {
     }
     @FXML
     private void onHbInsertNewGameClick() {
+        clickSound.play();
         try {
             fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/AddNewDataView.fxml"));
@@ -339,6 +346,27 @@ public class ListFileDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        hBoxeBtns.add(hbDeleteFile);
+        hBoxeBtns.add(hbDeleteLine);
+        hBoxeBtns.add(hbInsertNewGame);
+        hBoxeBtns.add(hbEditGameLine);
+
+        String ClickPath = getClass().getResource("/sounds/soundClick01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(0.7);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(1.0);
+
+        for (HBox hBox : hBoxeBtns) {
+            hBox.setOnMouseEntered(event -> {
+                hoverSound.stop();
+                hoverSound.play();
+            });
+        }
+
+
         games.clear();
         //System.out.println(ListFilesViewController.fileToAccess);
 
