@@ -35,7 +35,7 @@ public class ListFileDataViewController implements Initializable {
     static Game gameToEdit;
     private int optionFunction;
     private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
-    private List<HBox> hBoxeBtns = new ArrayList<>();
+    private List<HBox> hBoxeBtns;
 
     private AudioClip clickSound;
     private AudioClip hoverSound;
@@ -346,10 +346,8 @@ public class ListFileDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        hBoxeBtns.add(hbDeleteFile);
-        hBoxeBtns.add(hbDeleteLine);
-        hBoxeBtns.add(hbInsertNewGame);
-        hBoxeBtns.add(hbEditGameLine);
+        hBoxeBtns = new ArrayList<>(Arrays.asList(hbInsertNewGame, hbEditGameLine, hbDeleteLine, hbDeleteFile));
+
 
         String ClickPath = getClass().getResource("/sounds/soundClick01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
@@ -357,11 +355,11 @@ public class ListFileDataViewController implements Initializable {
 
         String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
         this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(1.0);
+        this.hoverSound.setVolume(0.2);
 
         for (HBox hBox : hBoxeBtns) {
             hBox.setOnMouseEntered(event -> {
-                hoverSound.stop();
+                //hoverSound.stop();
                 hoverSound.play();
             });
         }
