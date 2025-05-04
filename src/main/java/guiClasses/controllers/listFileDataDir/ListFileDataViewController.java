@@ -148,6 +148,7 @@ public class ListFileDataViewController implements Initializable {
 
 
         if (result.isPresent() && result.get() == btYes) {
+            clickSound.play();
             switch (optionFunction){
                 case 2->{
                     //excluir linha
@@ -230,6 +231,8 @@ public class ListFileDataViewController implements Initializable {
                 }
             }
 
+        }else {
+            clickSound.play();
         }
     }
 
@@ -278,6 +281,7 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private void onHbNewFileClick() {
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
@@ -331,6 +335,7 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private void onHbListFilesClick() {
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
@@ -349,13 +354,15 @@ public class ListFileDataViewController implements Initializable {
         hBoxeBtns = new ArrayList<>(Arrays.asList(hbInsertNewGame, hbEditGameLine, hbDeleteLine, hbDeleteFile));
 
 
-        String ClickPath = getClass().getResource("/sounds/soundClick01.mp3").toString();
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(0.7);
+        this.clickSound.setVolume(1.0);
+        clickSound.setPriority(1);
 
         String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
         this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.2);
+        this.hoverSound.setVolume(1.0);
+        hoverSound.setPriority(1);
 
         for (HBox hBox : hBoxeBtns) {
             hBox.setOnMouseEntered(event -> {
@@ -427,6 +434,7 @@ public class ListFileDataViewController implements Initializable {
                     newHbox.setMouseTransparent(true);
 
                     newHbox.setOnMouseClicked(e -> {
+                        clickSound.play();
                         gameToEdit = newGame;
                         System.out.println(gameToEdit);
 
@@ -466,11 +474,13 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private void onImgvCloseClick() {
+        clickSound.play();
         Platform.exit();
     }
 
     @FXML
     private void onImgvMinimizeClick() {
+        clickSound.play();
         Stage stage = (Stage) imgvMinimize.getScene().getWindow();
         stage.setIconified(true);
     }
