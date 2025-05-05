@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -32,6 +33,10 @@ public class NewFileViewController implements Initializable {
     private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
     public static String nameNewFile;
 
+    private AudioClip clickSound;
+    private AudioClip hoverSound;
+    private AudioClip errorSound;
+
     @FXML
     private Button btCreate;
 
@@ -49,6 +54,7 @@ public class NewFileViewController implements Initializable {
 
     @FXML
     private void onHbListFilesClick(){
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
@@ -62,11 +68,13 @@ public class NewFileViewController implements Initializable {
 
     @FXML
     private void onImgvCloseClick() {
+        clickSound.play();
         Platform.exit();
     }
 
     @FXML
     private void onImgvMinimizeClick() {
+        clickSound.play();
         Stage stage = (Stage) imgvMinimize.getScene().getWindow();
         stage.setIconified(true);
     }
@@ -74,13 +82,14 @@ public class NewFileViewController implements Initializable {
     @FXML
     private void onBtCreateAction() {
         Path path = Paths.get("C:\\tabelas-GT");
-        String fileName = null;
-        fileName = tfFileName.getText().trim();
+        String fileName = tfFileName.getText().trim();
 
         if (fileName.isEmpty()) {
             System.out.println("Por favor digíte um nome para o arquivo!");
+            errorSound.play();
             return;
         }
+        clickSound.play();
 
         //verificando se já existe um arquivo com o nome informado
         String fileNameXlsx = fileName + ".xlsx";
@@ -135,6 +144,39 @@ public class NewFileViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(1.0);
+        clickSound.setPriority(1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(1.0);
+        hoverSound.setPriority(1);
+
+        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
+        this.errorSound = new AudioClip(errorPath);
+        this.errorSound.setVolume(1.0);
+        errorSound.setPriority(1);
+
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        btCreate.setOnMouseEntered(event -> {
+            //hoverSound.stop();
+            hoverSound.play();
+        });
+
+        tfFileName.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+
         //tirar a criação da pasta daqui quando tiver a tela inicial
         Path path = Paths.get("C://tabelas-GT");
 
