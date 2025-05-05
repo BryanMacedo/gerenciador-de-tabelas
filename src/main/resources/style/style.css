@@ -5,8 +5,6 @@
 .borderRight{
     -fx-border-width: 0 5px 0 0;
     -fx-border-color: #ffffff;
-    -fx-background-color: #272727;
-    -fx-background-radius: 20px 0 0 20px;
 }
 
 .label{
@@ -28,12 +26,13 @@
 }
 
 .Hbox{
-    -fx-background-color: #272727;
+    -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-border-width: 2px;
 }
 
 .HboxHover:hover{
+    -fx-background-color: #272727;
     -fx-border-color: #ffffff;
     -fx-cursor: hand;
 }

@@ -15,7 +15,7 @@
    <left>
       <StackPane prefWidth="173.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets />
+            <Insets bottom="40.0" top="40.0" />
          </BorderPane.margin>
          <children>
             <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
