@@ -287,6 +287,7 @@ public class AddFirstDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
 
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
@@ -305,6 +306,12 @@ public class AddFirstDataViewController implements Initializable {
         errorSound.setPriority(1);
 
         //audios
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
         tfName.setOnMouseClicked(event -> {
             clickSound.play();
         });
@@ -355,11 +362,13 @@ public class AddFirstDataViewController implements Initializable {
     // fechar e minimizar
     @FXML
     private void onImgvCloseClick() {
+        clickSound.play();
         Platform.exit();
     }
 
     @FXML
     private void onImgvMinimizeClick() {
+        clickSound.play();
         Stage stage = (Stage) imgvMinimize.getScene().getWindow();
         stage.setIconified(true);
     }

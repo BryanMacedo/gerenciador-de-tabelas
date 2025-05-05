@@ -10,15 +10,24 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ListFilesViewController implements Initializable {
     public static String fileToAccess;
+
+    private AudioClip clickSound;
+    private AudioClip hoverSound;
+
+
     @FXML
     private ImageView imgvClose;
 
@@ -45,6 +54,7 @@ public class ListFilesViewController implements Initializable {
 
     @FXML
     private void onHbNewFileClick() {
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
@@ -58,6 +68,24 @@ public class ListFilesViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(1.0);
+        clickSound.setPriority(1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(1.0);
+        hoverSound.setPriority(1);
+
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
         File path = new File("C:\\tabelas-GT");
         File[] files = path.listFiles((dir, nome) -> nome.endsWith(".xlsx"));
 
@@ -68,9 +96,9 @@ public class ListFilesViewController implements Initializable {
                 String fileWithOutFinal = file.getName().substring(0, file.getName().length() - 5);
                 Label newLabel = new Label(fileWithOutFinal);
 
-                newLabel.setStyle("-fx-border-color: #A9A9A9; -fx-border-width: 4px; " +
-                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #A9A9A9; -fx-max-width: infinity;" +
-                        "-fx-alignment: center;");
+                newLabel.setStyle("-fx-border-color: #ffffff; -fx-border-width: 4px; " +
+                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #ffffff; -fx-max-width: infinity;" +
+                        "-fx-alignment: center; -fx-background-color: transparent;");
 
                 vb01.setSpacing(15);
                 vb02.setSpacing(15);
@@ -78,16 +106,21 @@ public class ListFilesViewController implements Initializable {
                 vb04.setSpacing(15);
 
                 // efeito de hover
-                newLabel.setOnMouseEntered(e -> newLabel.setStyle(" -fx-border-color: #ffffff; -fx-border-width: 4px;" +
-                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #ffffff; -fx-max-width: infinity;" +
-                        "-fx-alignment: center;"));
+                newLabel.setOnMouseEntered(e -> {
+                    newLabel.setStyle(" -fx-border-color: #ffffff; -fx-border-width: 4px;" +
+                            "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #ffffff; -fx-max-width: infinity;" +
+                            "-fx-alignment: center; -fx-background-color: #272727;");
 
-                newLabel.setOnMouseExited(e -> newLabel.setStyle("-fx-border-color: #A9A9A9; -fx-border-width: 4px;" +
-                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #A9A9A9; -fx-max-width: infinity;" +
-                        "-fx-alignment: center;"));
+                    hoverSound.play();
+                });
+
+                newLabel.setOnMouseExited(e -> newLabel.setStyle("-fx-border-color: #ffffff; -fx-border-width: 4px;" +
+                        "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #ffffff; -fx-max-width: infinity;" +
+                        "-fx-alignment: center; -fx-background-color: transparent;"));
 
 
                 newLabel.setOnMouseClicked(e -> {
+                    clickSound.play();
                     System.out.println("Arquivo clicado: " + fileWithOutFinal);
 
                     //ir para a tela que mostra os dados do arquivo
@@ -131,11 +164,13 @@ public class ListFilesViewController implements Initializable {
     // fechar e minimizar
     @FXML
     private void onImgvCloseClick() {
+        clickSound.play();
         Platform.exit();
     }
 
     @FXML
     private void onImgvMinimizeClick() {
+        clickSound.play();
         Stage stage = (Stage) imgvMinimize.getScene().getWindow();
         stage.setIconified(true);
     }
