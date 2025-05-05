@@ -85,6 +85,9 @@ public class AddNewDataViewController implements Initializable {
     private HBox hbListFiles;
 
     @FXML
+    private HBox hbProfile;
+
+    @FXML
     private Label lbWarning;
 
     @FXML
@@ -195,6 +198,7 @@ public class AddNewDataViewController implements Initializable {
 
     @FXML
     private void onHbNewFileClick() {
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
@@ -208,6 +212,7 @@ public class AddNewDataViewController implements Initializable {
 
     @FXML
     private void onHbListFilesClick(){
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
@@ -223,6 +228,7 @@ public class AddNewDataViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbProfile));
 
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
@@ -242,6 +248,12 @@ public class AddNewDataViewController implements Initializable {
         //audios
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
                 hoverSound.play();
             });
         }

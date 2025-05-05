@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.entities.Game;
 import model.entities.TypeDLC;
@@ -38,6 +40,10 @@ public class EditDataViewController implements Initializable {
     TypeDLC typeDLC = null;
     Game gameToEdit;
     Game gameEdited;
+
+    private AudioClip clickSound;
+    private AudioClip hoverSound;
+    private AudioClip errorSound;
 
     @FXML
     private ImageView imgvClose;
@@ -85,7 +91,16 @@ public class EditDataViewController implements Initializable {
     private Button btEditLine;
 
     @FXML
-    private void onBtEditLineClick(){
+    private HBox hbListFiles;
+
+    @FXML
+    private HBox hbNewFile;
+
+    @FXML
+    private HBox hbProfile;
+
+    @FXML
+    private void onBtEditLineClick() {
         strRbYesOrNo = getStrYesOrNo();
         typeDLC = getTypeDLC();
 
@@ -96,12 +111,15 @@ public class EditDataViewController implements Initializable {
         System.out.println("gameEdited: " + gameEdited);
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
-                typeDLC == null || strRbYesOrNo.isEmpty()){
+                typeDLC == null || strRbYesOrNo.isEmpty()) {
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
-        }else if (gameToEdit.equals(gameEdited)){
+            errorSound.play();
+        } else if (gameToEdit.equals(gameEdited)) {
             lbWarning.setText("Edite os dados para alterar a linha.");
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
-        }else {
+            errorSound.play();
+        } else {
+            clickSound.play();
             List<Game> listAux = new ArrayList<>();
 
             for (Game game : ListFileDataViewController.games) {
@@ -142,7 +160,7 @@ public class EditDataViewController implements Initializable {
                 }
 
                 //Deixa o tamanho da célula igual ao do seu conteúdo
-                for(int i = 0; i < columns.size(); i++) {
+                for (int i = 0; i < columns.size(); i++) {
                     sheet.autoSizeColumn(i);
                 }
 
@@ -151,7 +169,7 @@ public class EditDataViewController implements Initializable {
                 throw new RuntimeException(e);
             }
 
-            for(Game game : ListFileDataViewController.games){
+            for (Game game : ListFileDataViewController.games) {
                 writeData(game);
             }
 
@@ -209,7 +227,7 @@ public class EditDataViewController implements Initializable {
     }
 
 
-        private String getStrYesOrNo() {
+    private String getStrYesOrNo() {
         if (rbYes.isSelected()) {
             return "Sim";
         } else if (rbNo.isSelected()) {
@@ -246,6 +264,7 @@ public class EditDataViewController implements Initializable {
 
     @FXML
     private void onHbNewFileClick() {
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
@@ -259,6 +278,7 @@ public class EditDataViewController implements Initializable {
 
     @FXML
     private void onHbListFilesClick() {
+        clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
@@ -273,6 +293,73 @@ public class EditDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+        List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbProfile));
+
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(1.0);
+        clickSound.setPriority(1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(1.0);
+        hoverSound.setPriority(1);
+
+        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
+        this.errorSound = new AudioClip(errorPath);
+        this.errorSound.setVolume(1.0);
+        errorSound.setPriority(1);
+
+        //audios
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        tfName.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        cbPlataforms.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        cbPlataforms.setOnAction(event -> {
+            if (cbPlataforms.getValue() != null) {
+                clickSound.play();
+            }
+        });
+
+        spnRating.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        for (RadioButton rb : rbs) {
+            rb.setOnMouseClicked(event -> {
+                clickSound.play();
+            });
+        }
+
+        dpFinish.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        dpFinish.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                clickSound.play();
+            }
+        });
+
+
         cbPlataforms.getItems().addAll(plataforms);
 
         // spinner config
@@ -297,12 +384,12 @@ public class EditDataViewController implements Initializable {
             case "É DLC" -> rbE_DLC.setSelected(true);
         }
 
-        switch (gameToEdit.getFinish()){
+        switch (gameToEdit.getFinish()) {
             case "Sim" -> rbYes.setSelected(true);
             case "Não" -> rbNo.setSelected(true);
         }
 
-        if (gameToEdit.getTextDate() == null){
+        if (gameToEdit.getTextDate() == null) {
             dpFinish.setValue(gameToEdit.getFinishDate());
             dpFinish.setDisable(false);
         }

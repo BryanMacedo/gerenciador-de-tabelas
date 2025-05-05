@@ -53,6 +53,12 @@ public class ListFilesViewController implements Initializable {
     private HBox hbNewFile;
 
     @FXML
+    private HBox hbListFiles;
+
+    @FXML
+    private HBox hbProfile;
+
+    @FXML
     private void onHbNewFileClick() {
         clickSound.play();
         try {
@@ -69,6 +75,7 @@ public class ListFilesViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbProfile));
 
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
@@ -82,6 +89,12 @@ public class ListFilesViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
                 hoverSound.play();
             });
         }

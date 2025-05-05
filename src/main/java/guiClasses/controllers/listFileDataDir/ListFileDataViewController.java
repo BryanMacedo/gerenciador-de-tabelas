@@ -53,6 +53,9 @@ public class ListFileDataViewController implements Initializable {
     private HBox hbListFiles;
 
     @FXML
+    private HBox hbProfile;
+
+    @FXML
     private HBox hbInsertNewGame;
 
     @FXML
@@ -356,7 +359,7 @@ public class ListFileDataViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<HBox> hBoxeBtns = new ArrayList<>(Arrays.asList(hbInsertNewGame, hbEditGameLine, hbDeleteLine, hbDeleteFile));
-
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbProfile));
 
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
@@ -377,6 +380,12 @@ public class ListFileDataViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
                 hoverSound.play();
             });
         }

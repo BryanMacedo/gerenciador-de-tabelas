@@ -27,11 +27,15 @@
     -fx-border-radius: 20px;
 }
 
+.Hbox{
+    -fx-background-color: #272727;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+}
 
 .HboxHover:hover{
+    -fx-border-color: #ffffff;
     -fx-cursor: hand;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
 }
 
 .backgroundStackPane{
