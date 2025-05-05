@@ -3,9 +3,10 @@
 }
 
 .borderRight{
-    -fx-border-width: 0 2 0 0;
-    -fx-border-width: 0 6px 0 0;
+    -fx-border-width: 0 5px 0 0;
     -fx-border-color: #ffffff;
+    -fx-background-color: #272727;
+    -fx-background-radius: 20px 0 0 20px;
 }
 
 .label{

@@ -16,7 +16,7 @@
    <left>
       <StackPane BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="40.0" top="40.0" />
+            <Insets />
          </BorderPane.margin>
          <children>
             <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
@@ -116,7 +116,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="172.0" prefWidth="278.0" styleClass="bkElements">
                            <children>
-                              <Label prefHeight="27.0" prefWidth="256.0" text="Digite o nome do arquivo:">
+                              <Label prefHeight="27.0" prefWidth="256.0" text="Digite o nome da tabela:">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </VBox.margin>
