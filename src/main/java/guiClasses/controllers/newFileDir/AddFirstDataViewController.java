@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.entities.Game;
 import model.entities.TypeDLC;
@@ -49,6 +50,10 @@ public class AddFirstDataViewController implements Initializable {
 
     String strRbYesOrNo = null;
     TypeDLC typeDLC = null;
+
+    private AudioClip clickSound;
+    private AudioClip hoverSound;
+    private AudioClip errorSound;
 
     @FXML
     private ImageView imgvClose;
@@ -186,8 +191,10 @@ public class AddFirstDataViewController implements Initializable {
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
         typeDLC == null || strRbYesOrNo.isEmpty()){
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
+            errorSound.play();
         }else {
             writeFirstData(newGame);
+            clickSound.play();
         }
 
 
@@ -276,8 +283,63 @@ public class AddFirstDataViewController implements Initializable {
     }
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
+
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(1.0);
+        clickSound.setPriority(1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(1.0);
+        hoverSound.setPriority(1);
+
+        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
+        this.errorSound = new AudioClip(errorPath);
+        this.errorSound.setVolume(1.0);
+        errorSound.setPriority(1);
+
+        //audios
+        tfName.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        cbPlataforms.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        cbPlataforms.setOnAction(event ->{
+            if (cbPlataforms.getValue() != null){
+                clickSound.play();
+            }
+        });
+
+        spnRating.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        for (RadioButton rb : rbs) {
+            rb.setOnMouseClicked(event -> {
+                clickSound.play();
+            });
+        }
+
+        dpFinish.setOnMouseClicked(event -> {
+            clickSound.play();
+        });
+
+        dpFinish.valueProperty().addListener((observable, oldValue, newValue) ->{
+            if (newValue != null){
+                clickSound.play();
+            }
+        });
+
+
         cbPlataforms.getItems().addAll(plataforms);
 
         // spinner config
