@@ -278,6 +278,7 @@
 .marg{ /*borda para testar o alinhamento*/
     -fx-border-color: #FFFFFF;
     -fx-border-width: 5px;
+    -fx-background-color: #272727;
 }
 
 .hbStyle{
@@ -288,7 +289,8 @@
 }
 
 .hbStyleHover:hover{
-        -fx-border-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-background-color: #272727;
 }
 
 .LabelWarning{
@@ -297,6 +299,6 @@
 }
 
 .root{
--fx-border-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
     -fx-border-width: 5px;
 }
