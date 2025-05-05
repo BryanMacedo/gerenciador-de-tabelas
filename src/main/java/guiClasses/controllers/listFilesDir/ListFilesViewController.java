@@ -79,12 +79,12 @@ public class ListFilesViewController implements Initializable {
 
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(1.0);
+        this.clickSound.setVolume(0.1);
         clickSound.setPriority(1);
 
         String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
         this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(1.0);
+        this.hoverSound.setVolume(0.1);
         hoverSound.setPriority(1);
 
         for (ImageView imgv : imageViews) {
