@@ -124,10 +124,12 @@ public class ListFileDataViewController implements Initializable {
         Button btnYes = (Button) dialogPane.lookupButton(btYes);
         Button btnNo = (Button) dialogPane.lookupButton(btNo);
 
+
         btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
         btnYes.setOnMouseEntered(e -> {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
+            hoverSound.play();
         });
         btnYes.setOnMouseExited(e -> {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
@@ -138,6 +140,7 @@ public class ListFileDataViewController implements Initializable {
 
         btnNo.setOnMouseEntered(e -> {
             btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
+            hoverSound.play();
         });
 
         btnNo.setOnMouseExited(e -> {
