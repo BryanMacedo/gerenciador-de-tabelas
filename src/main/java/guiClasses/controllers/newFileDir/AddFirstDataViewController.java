@@ -54,6 +54,8 @@ public class AddFirstDataViewController implements Initializable {
     private AudioClip clickSound;
     private AudioClip hoverSound;
     private AudioClip errorSound;
+    private AudioClip typingSound;
+    private AudioClip typingDeleteSound;
 
     @FXML
     private ImageView imgvClose;
@@ -158,8 +160,8 @@ public class AddFirstDataViewController implements Initializable {
     @FXML
     private HBox hbProfile;
 
-    private String getStrYesOrNo(){
-        if (rbYes.isSelected()){
+    private String getStrYesOrNo() {
+        if (rbYes.isSelected()) {
             return "Sim";
         } else if (rbNo.isSelected()) {
             return "Não";
@@ -167,12 +169,12 @@ public class AddFirstDataViewController implements Initializable {
         return "";
     }
 
-    private TypeDLC getTypeDLC(){
-        if (rbE_DLC.isSelected()){
+    private TypeDLC getTypeDLC() {
+        if (rbE_DLC.isSelected()) {
             return TypeDLC.E_DLC;
         } else if (rbTERMINEI.isSelected()) {
             return TypeDLC.TERMINEI;
-        }else if (rbNAO_TERMINEI.isSelected()) {
+        } else if (rbNAO_TERMINEI.isSelected()) {
             return TypeDLC.NAO_TERMINEI;
         } else if (rbNAO_TEM.isSelected()) {
             return TypeDLC.NAO_TEM;
@@ -192,10 +194,10 @@ public class AddFirstDataViewController implements Initializable {
         System.out.println(newGame);
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
-        typeDLC == null || strRbYesOrNo.isEmpty()){
+                typeDLC == null || strRbYesOrNo.isEmpty()) {
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
             errorSound.play();
-        }else {
+        } else {
             writeFirstData(newGame);
             clickSound.play();
         }
@@ -203,7 +205,7 @@ public class AddFirstDataViewController implements Initializable {
 
     }
 
-    private void writeFirstData(Game game){
+    private void writeFirstData(Game game) {
         try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + NewFileViewController.nameNewFile);
              Workbook workbook = WorkbookFactory.create(fis);
              FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + NewFileViewController.nameNewFile)) {
@@ -219,9 +221,9 @@ public class AddFirstDataViewController implements Initializable {
             // Preenche os dados nas células
             row.createCell(0).setCellValue(game.getName());
             row.createCell(1).setCellValue(game.getPlatform());
-            if (strRbYesOrNo.equals("Não")){
+            if (strRbYesOrNo.equals("Não")) {
                 row.createCell(2).setCellValue("Jogo não finalizado");
-            }else{
+            } else {
                 row.createCell(2).setCellValue(game.getFinishDate().toString());
             }
             row.createCell(3).setCellValue(game.getRating());
@@ -230,7 +232,7 @@ public class AddFirstDataViewController implements Initializable {
 
             // salva no arquivo
             workbook.write(fos);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -247,14 +249,14 @@ public class AddFirstDataViewController implements Initializable {
     }
 
     @FXML
-    private void onRbYesClick(){
+    private void onRbYesClick() {
         dpFinish.setDisable(false);
         LocalDate DateNow = LocalDate.now();
         dpFinish.setValue(DateNow);
     }
 
     @FXML
-    private void onRbNoClick(){
+    private void onRbNoClick() {
         dpFinish.getEditor().clear();
         dpFinish.setDisable(true);
     }
@@ -274,7 +276,7 @@ public class AddFirstDataViewController implements Initializable {
     }
 
     @FXML
-    private void onHbListFilesClick(){
+    private void onHbListFilesClick() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
@@ -286,8 +288,6 @@ public class AddFirstDataViewController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
 
 
     @Override
@@ -310,6 +310,16 @@ public class AddFirstDataViewController implements Initializable {
         this.errorSound = new AudioClip(errorPath);
         this.errorSound.setVolume(0.1);
         errorSound.setPriority(1);
+
+        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
+        this.typingSound = new AudioClip(typingPath);
+        this.typingSound.setVolume(0.3);
+        typingSound.setPriority(1);
+
+        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
+        this.typingDeleteSound = new AudioClip(typingDeletePath);
+        this.typingDeleteSound.setVolume(0.3);
+        typingDeleteSound.setPriority(1);
 
         //audios
         for (ImageView imgv : imageViews) {
@@ -336,8 +346,8 @@ public class AddFirstDataViewController implements Initializable {
             clickSound.play();
         });
 
-        cbPlataforms.setOnAction(event ->{
-            if (cbPlataforms.getValue() != null){
+        cbPlataforms.setOnAction(event -> {
+            if (cbPlataforms.getValue() != null) {
                 clickSound.play();
             }
         });
@@ -356,12 +366,19 @@ public class AddFirstDataViewController implements Initializable {
             clickSound.play();
         });
 
-        dpFinish.valueProperty().addListener((observable, oldValue, newValue) ->{
-            if (newValue != null){
+        dpFinish.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
                 clickSound.play();
             }
         });
 
+        tfName.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > oldValue.length()) {
+                typingSound.play();
+            } else {
+                typingDeleteSound.play();
+            }
+        });
 
         cbPlataforms.getItems().addAll(plataforms);
 

@@ -36,6 +36,8 @@ public class NewFileViewController implements Initializable {
     private AudioClip clickSound;
     private AudioClip hoverSound;
     private AudioClip errorSound;
+    private AudioClip typingSound;
+    private AudioClip typingDeleteSound;
 
     @FXML
     private Button btCreate;
@@ -70,19 +72,6 @@ public class NewFileViewController implements Initializable {
             //System.out.println(e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    private void onImgvCloseClick() {
-        clickSound.play();
-        Platform.exit();
-    }
-
-    @FXML
-    private void onImgvMinimizeClick() {
-        clickSound.play();
-        Stage stage = (Stage) imgvMinimize.getScene().getWindow();
-        stage.setIconified(true);
     }
 
     @FXML
@@ -168,6 +157,16 @@ public class NewFileViewController implements Initializable {
         this.errorSound.setVolume(0.1);
         errorSound.setPriority(1);
 
+        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
+        this.typingSound = new AudioClip(typingPath);
+        this.typingSound.setVolume(0.3);
+        typingSound.setPriority(1);
+
+        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
+        this.typingDeleteSound = new AudioClip(typingDeletePath);
+        this.typingDeleteSound.setVolume(0.3);
+        typingDeleteSound.setPriority(1);
+
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
                 hoverSound.play();
@@ -188,6 +187,14 @@ public class NewFileViewController implements Initializable {
             clickSound.play();
         });
 
+        tfFileName.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > oldValue.length()) {
+                typingSound.play();
+            } else {
+                typingDeleteSound.play();
+            }
+        });
+
 
         //tirar a criação da pasta daqui quando tiver a tela inicial
         Path path = Paths.get("C://tabelas-GT");
@@ -199,5 +206,19 @@ public class NewFileViewController implements Initializable {
                 System.out.println("Pasta não criada." + e.getMessage());
             }
         }
+
+    }
+
+    @FXML
+    private void onImgvCloseClick() {
+        clickSound.play();
+        Platform.exit();
+    }
+
+    @FXML
+    private void onImgvMinimizeClick() {
+        clickSound.play();
+        Stage stage = (Stage) imgvMinimize.getScene().getWindow();
+        stage.setIconified(true);
     }
 }

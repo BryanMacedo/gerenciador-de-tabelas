@@ -68,16 +68,19 @@
 }
 
 .imageview{
-    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
 }
 
 .imageviewHover:hover{
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
+    -fx-background-color: #272727;
+    -fx-border-color: #ffffff;
+    -fx-cursor: hand;
 }
 
 .root {
-    -fx-background-radius: 25;
+    -fx-background-radius: 35;
     -fx-border-radius: 25;
     -fx-border-color: #161616;
     -fx-border-width: 10;

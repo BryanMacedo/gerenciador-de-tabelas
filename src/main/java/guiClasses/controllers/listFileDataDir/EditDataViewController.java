@@ -44,6 +44,8 @@ public class EditDataViewController implements Initializable {
     private AudioClip clickSound;
     private AudioClip hoverSound;
     private AudioClip errorSound;
+    private AudioClip typingSound;
+    private AudioClip typingDeleteSound;
 
     @FXML
     private ImageView imgvClose;
@@ -312,6 +314,16 @@ public class EditDataViewController implements Initializable {
         this.errorSound.setVolume(0.1);
         errorSound.setPriority(1);
 
+        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
+        this.typingSound = new AudioClip(typingPath);
+        this.typingSound.setVolume(0.3);
+        typingSound.setPriority(1);
+
+        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
+        this.typingDeleteSound = new AudioClip(typingDeletePath);
+        this.typingDeleteSound.setVolume(0.3);
+        typingDeleteSound.setPriority(1);
+
         //audios
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
@@ -356,6 +368,14 @@ public class EditDataViewController implements Initializable {
         dpFinish.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 clickSound.play();
+            }
+        });
+
+        tfName.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > oldValue.length()) {
+                typingSound.play();
+            } else {
+                typingDeleteSound.play();
             }
         });
 
