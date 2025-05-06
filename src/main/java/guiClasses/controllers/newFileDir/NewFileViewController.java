@@ -154,7 +154,7 @@ public class NewFileViewController implements Initializable {
 
         String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
         this.errorSound = new AudioClip(errorPath);
-        this.errorSound.setVolume(0.1);
+        this.errorSound.setVolume(0.5);
         errorSound.setPriority(1);
 
         String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
