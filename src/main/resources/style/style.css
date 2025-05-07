@@ -68,15 +68,13 @@
 }
 
 .imageview{
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 2px;
+    -fx-cursor: hand;
 }
 
 .imageviewHover:hover{
-    -fx-background-color: #272727;
-    -fx-border-color: #ffffff;
-    -fx-cursor: hand;
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+
 }
 
 .root {
@@ -282,7 +280,7 @@
     -fx-opacity: 0;
 }
 
-.marg{ /*borda para testar o alinhamento*/
+.marg{
     -fx-border-color: #FFFFFF;
     -fx-border-width: 5px;
     -fx-background-color: #272727;
