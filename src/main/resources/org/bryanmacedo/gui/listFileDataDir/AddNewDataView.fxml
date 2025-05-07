@@ -28,6 +28,23 @@
             <Insets bottom="40.0" top="40.0" />
          </BorderPane.margin>
          <children>
+            <HBox alignment="TOP_CENTER" prefHeight="743.0" prefWidth="124.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imgs/imgAppIcon/ic_app_icon_AppView.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="27.0" prefWidth="87.0" text="G-TABLES">
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets right="10.0" />
+               </StackPane.margin>
+            </HBox>
             <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
                <children>
                   <HBox fx:id="hbProfile" alignment="CENTER" layoutX="10.0" layoutY="319.0" prefHeight="0.0" prefWidth="142.0">
@@ -119,7 +136,7 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="415.0" prefWidth="880.0" StackPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="415.0" prefWidth="705.0" StackPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="229.0" prefWidth="1107.0">
                      <children>

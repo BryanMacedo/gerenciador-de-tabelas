@@ -18,7 +18,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 1445, 833);
         scene.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setTitle("Game Tables");
+        primaryStage.setTitle("G-Tables");
         primaryStage.setScene(scene);
         primaryStage.show();
 
