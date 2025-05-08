@@ -26,6 +26,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ListFileDataViewController implements Initializable {
@@ -36,6 +37,7 @@ public class ListFileDataViewController implements Initializable {
     private int optionFunction;
     private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
 
+    DateTimeFormatter dateTimeFormatterBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private AudioClip clickSound;
     private AudioClip hoverSound;
@@ -432,7 +434,7 @@ public class ListFileDataViewController implements Initializable {
                     if (newGame.getFinishDate() == null) {
                         labelDate = new Label(newGame.getTextDate());
                     } else {
-                        labelDate = new Label(newGame.getFinishDate().toString());
+                        labelDate = new Label(newGame.getFinishDate().format(dateTimeFormatterBR));
                     }
 
                     labelDate.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 182; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
