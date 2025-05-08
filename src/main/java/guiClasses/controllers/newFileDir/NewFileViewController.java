@@ -58,7 +58,21 @@ public class NewFileViewController implements Initializable {
     private HBox hbNewFile;
 
     @FXML
-    private HBox hbProfile;
+    private HBox hbStatistics;
+
+    @FXML
+    private void onHbStatistics(){
+        clickSound.play();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void onHbListFilesClick(){
@@ -140,7 +154,7 @@ public class NewFileViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
-        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbProfile));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
 
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);

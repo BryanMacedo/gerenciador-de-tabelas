@@ -289,7 +289,6 @@
 .hbStyle{
     -fx-cursor: hand;
     -fx-border-color: transparent;
-
     -fx-border-width: 2px;
 }
 
@@ -306,4 +305,9 @@
 .root{
     -fx-border-color: #FFFFFF;
     -fx-border-width: 5px;
+}
+
+.txtStatics{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, black, 20, 0, 0, 0);
 }

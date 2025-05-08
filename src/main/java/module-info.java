@@ -18,4 +18,6 @@ module org.bryanmacedo.projetogerenciadordetabelas {
     opens guiClasses.controllers.listFilesDir to javafx.fxml, javafx.graphics;
     exports guiClasses.controllers.listFileDataDir to javafx.fxml;
     opens guiClasses.controllers.listFileDataDir to javafx.fxml, javafx.graphics;
+    exports guiClasses.controllers.StatisticsDir to javafx.fxml;
+    opens guiClasses.controllers.StatisticsDir to javafx.fxml, javafx.graphics;
 }
