@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1300.0" styleClass="background" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiClasses.controllers.StatisticsDir.StatisticsViewController">
    <left>
@@ -126,112 +125,36 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox>
+            <VBox alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="829.0" prefWidth="1117.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="192.0" prefWidth="538.0" styleClass="bkElements">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <children>
-                              <HBox prefHeight="0.0" prefWidth="647.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" styleClass="txtStatics" text="Quantidade de  jogos finalizados: ">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="53.0" />
-                                       </font>
-                                    </Label>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" text="78">
-                                       <font>
-                                          <Font size="53.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="37.0" prefWidth="523.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" styleClass="txtStatics" text="Quantidade de  jogos não finalizados: ">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" text="12">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="0.0" prefWidth="647.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" styleClass="txtStatics" text="Plataforma mais jogada: ">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" text="PS5">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="0.0" prefWidth="647.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" styleClass="txtStatics" text="Quantidade de jogos com nota maxima:  ">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" text="6">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="0.0" prefWidth="647.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" styleClass="txtStatics" text="Jogo mais zerado: ">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" text="the legend of zelda breath of the wild">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" />
-                                 </VBox.margin>
-                              </HBox>
-                           </children>
-                        </VBox>
+                        <Label alignment="CENTER" prefWidth="600.0" styleClass="marg" text="Suas estatísticas" />
                      </children>
-                     <VBox.margin>
-                        <Insets bottom="320.0" top="320.0" />
-                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
+                     <children>
+                        <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos zerados" />
+                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="1.050" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
+                     <children>
+                        <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos não zerados" />
+                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="1.050" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
+                     <children>
+                        <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Plataforma mais jogada" />
+                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="PS5" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
+                     <children>
+                        <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos com nota maxima" />
+                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="6" />
+                     </children>
                   </HBox>
                </children>
             </VBox>
@@ -267,7 +190,7 @@
                   </HBox>
                </children>
                <StackPane.margin>
-                  <Insets bottom="700.0" left="1000.0" top="12.0" />
+                  <Insets bottom="700.0" left="1000.0" />
                </StackPane.margin>
             </StackPane>
          </children>

@@ -307,7 +307,8 @@
     -fx-border-width: 5px;
 }
 
-.txtStatics{
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(three-pass-box, black, 20, 0, 0, 0);
+.margStatistics{
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 5px 5px 5px 0;
+    -fx-background-color: #272727;
 }
