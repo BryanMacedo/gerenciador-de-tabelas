@@ -326,6 +326,7 @@ public class ListFileDataViewController implements Initializable {
             hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
         }
     }
+
     @FXML
     private void onHbInsertNewGameClick() {
         clickSound.play();

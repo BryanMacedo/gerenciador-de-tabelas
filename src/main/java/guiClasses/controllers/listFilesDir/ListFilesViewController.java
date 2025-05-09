@@ -100,7 +100,7 @@ public class ListFilesViewController implements Initializable {
         }
 
         File path = new File("C:\\tabelas-GT");
-        File[] files = path.listFiles((dir, nome) -> nome.endsWith(".xlsx"));
+        File[] files = path.listFiles((dir, name) -> name.endsWith(".xlsx"));
 
         int count = 1;
 

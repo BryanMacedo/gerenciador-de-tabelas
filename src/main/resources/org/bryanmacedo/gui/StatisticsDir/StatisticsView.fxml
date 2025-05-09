@@ -135,25 +135,25 @@
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos zerados" />
-                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="1.050" />
+                        <Label fx:id="lbFinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos não zerados" />
-                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="1.050" />
+                        <Label fx:id="lbUnfinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Plataforma mais jogada" />
-                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="PS5" />
+                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="null" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos com nota maxima" />
-                        <Label alignment="CENTER" prefWidth="200.0" styleClass="marg" text="6" />
+                        <Label fx:id="lbMaxRating" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                </children>
