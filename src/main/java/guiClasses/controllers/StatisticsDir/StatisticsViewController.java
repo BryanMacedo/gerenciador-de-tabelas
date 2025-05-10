@@ -51,6 +51,9 @@ public class StatisticsViewController implements Initializable {
     private Label lbMaxRating;
 
     @FXML
+    private Label lbPlatform;
+
+    @FXML
     private void onHbNewFileClick() {
         clickSound.play();
         try {
@@ -132,19 +135,27 @@ public class StatisticsViewController implements Initializable {
 
         //plataforma mais jogada
 
-//        Map<String, Integer> counter = new HashMap<>();
-//
-//        for (Game gamePlatform : gamesToStatistics) {
-//            String plataforma = gamePlatform.getPlatform();
-//            counter.put(plataforma, counter.getOrDefault(plataforma, 0) + 1);
-//        }
-//
-//        System.out.println(counter);
+        Map<String, Integer> counterPlatforms = new HashMap<>();
 
+        for (Game gamePlatform : gamesToStatistics) {
+            String platform = gamePlatform.getPlatform();
+            counterPlatforms.put(platform, counterPlatforms.getOrDefault(platform, 0) + 1);
+        }
+
+        System.out.println(counterPlatforms);
+
+        Map.Entry<String, Integer> maxEntry = null;
+        for (Map.Entry<String, Integer> entry : counterPlatforms.entrySet()){
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0){
+                maxEntry = entry;
+            }
+        }
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
+        lbPlatform.setText(maxEntry.getKey());
         lbMaxRating.setText(String.valueOf(countMaxRating));
+
     }
 
     @FXML
