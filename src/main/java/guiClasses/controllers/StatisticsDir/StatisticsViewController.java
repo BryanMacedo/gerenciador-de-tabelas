@@ -34,6 +34,7 @@ public class StatisticsViewController implements Initializable {
     private List<Game> gamesToStatistics = new ArrayList<>();
 
     private AudioClip clickSound;
+    private AudioClip hoverSound;
     private MediaPlayer ps5;
     private MediaPlayer ps4;
     private MediaPlayer ps3;
@@ -75,6 +76,9 @@ public class StatisticsViewController implements Initializable {
 
     @FXML
     private HBox hbListFiles;
+
+    @FXML
+    private HBox hbStatistics;
 
     @FXML
     private void onHbListFilesClick() {
@@ -220,7 +224,22 @@ public class StatisticsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
+
         loadSounds();
+
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
 
         // pega os nomes das tabelas
         File path = new File("C:\\tabelas-GT");
@@ -380,6 +399,11 @@ public class StatisticsViewController implements Initializable {
         Media mediaSwitch = new Media(audioSwitch);
         nSwitch = new MediaPlayer(mediaSwitch);
         nSwitch.setVolume(0.1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(0.1);
+        hoverSound.setPriority(1);
     }
 
     @FXML
