@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import model.entities.Game;
 import model.entities.TypeDLC;
@@ -30,7 +32,20 @@ import java.util.*;
 
 public class StatisticsViewController implements Initializable {
     private List<Game> gamesToStatistics = new ArrayList<>();
+
     private AudioClip clickSound;
+    private MediaPlayer ps5;
+    private MediaPlayer ps4;
+    private MediaPlayer ps3;
+    private MediaPlayer ps2;
+    private MediaPlayer ps1;
+    private MediaPlayer psp;
+    private MediaPlayer psVita;
+    private MediaPlayer pc;
+    private MediaPlayer xboxS;
+    private MediaPlayer xboxOne;
+    private MediaPlayer xbox360;
+    private MediaPlayer xbox;
 
     @FXML
     private ImageView imgvClose;
@@ -54,6 +69,104 @@ public class StatisticsViewController implements Initializable {
     private Label lbPlatform;
 
     @FXML
+    private HBox hbLogo;
+
+    @FXML
+    private void onHbLogoClick(){
+        // tocar um audio conforme a plataforma mais jogada
+        hbLogo.setMouseTransparent(true);
+        switch (lbPlatform.getText()){
+            case "PS5" ->{
+                ps5.seek(javafx.util.Duration.ZERO);
+                ps5.play();
+                ps5.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "PS4" -> {
+                ps4.seek(javafx.util.Duration.ZERO);
+                ps4.play();
+                ps4.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "PS3" -> {
+                ps3.seek(javafx.util.Duration.ZERO);
+                ps3.play();
+                ps3.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "PS2" -> {
+                ps2.seek(javafx.util.Duration.ZERO);
+                ps2.play();
+                ps2.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "PS1" -> {
+                ps1.seek(javafx.util.Duration.ZERO);
+                ps1.play();
+                ps1.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "PSP" -> {
+                psp.seek(javafx.util.Duration.ZERO);
+                psp.play();
+                psp.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "PSVITA" -> {
+                psVita.seek(javafx.util.Duration.ZERO);
+                psVita.play();
+                psVita.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "PC" -> {
+                pc.seek(javafx.util.Duration.ZERO);
+                pc.play();
+                pc.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "XBOX SX", "XBOX SS" -> {
+                xboxS.seek(javafx.util.Duration.ZERO);
+                xboxS.play();
+                xboxS.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+
+            case "XBOX ONE"-> {
+                xboxOne.seek(javafx.util.Duration.ZERO);
+                xboxOne.play();
+                xboxOne.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+
+            case "XBOX 360"-> {
+                xbox360.seek(javafx.util.Duration.ZERO);
+                xbox360.play();
+                xbox360.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+            case "XBOX"-> {
+                xbox.seek(javafx.util.Duration.ZERO);
+                xbox.play();
+                xbox.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+
+        }
+    }
+
+    @FXML
     private void onHbNewFileClick() {
         clickSound.play();
         try {
@@ -74,6 +187,66 @@ public class StatisticsViewController implements Initializable {
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);
         clickSound.setPriority(1);
+
+        String audioFilePs5 = getClass().getResource("/sounds/easter_egg_sounds/ps5.mp3").toString();
+        Media mediaPs5 = new Media(audioFilePs5);
+        ps5 = new MediaPlayer(mediaPs5);
+        ps5.setVolume(0.1);
+
+        String audioFilePs4 = getClass().getResource("/sounds/easter_egg_sounds/ps4.mp3").toString();
+        Media mediaPs4 = new Media(audioFilePs4);
+        ps4 = new MediaPlayer(mediaPs4);
+        ps4.setVolume(0.1);
+
+        String audioFilePs3 = getClass().getResource("/sounds/easter_egg_sounds/ps3.mp3").toString();
+        Media mediaPs3 = new Media(audioFilePs3);
+        ps3 = new MediaPlayer(mediaPs3);
+        ps3.setVolume(0.1);
+
+        String audioFilePs2 = getClass().getResource("/sounds/easter_egg_sounds/ps2.mp3").toString();
+        Media mediaPs2 = new Media(audioFilePs2);
+        ps2 = new MediaPlayer(mediaPs2);
+        ps2.setVolume(0.1);
+
+        String audioFilePs1 = getClass().getResource("/sounds/easter_egg_sounds/ps1.mp3").toString();
+        Media mediaPs1 = new Media(audioFilePs1);
+        ps1 = new MediaPlayer(mediaPs1);
+        ps1.setVolume(0.1);
+
+        String audioFilePsp = getClass().getResource("/sounds/easter_egg_sounds/psp.mp3").toString();
+        Media mediaPsp = new Media(audioFilePsp);
+        psp = new MediaPlayer(mediaPsp);
+        psp.setVolume(0.1);
+
+        String audioFilePsVita = getClass().getResource("/sounds/easter_egg_sounds/psvita.mp3").toString();
+        Media mediaPsVita = new Media(audioFilePsVita);
+        psVita = new MediaPlayer(mediaPsVita);
+        psVita.setVolume(0.1);
+
+        String audioPc = getClass().getResource("/sounds/easter_egg_sounds/pc.mp3").toString();
+        Media mediaPc = new Media(audioPc);
+        pc = new MediaPlayer(mediaPc);
+        pc.setVolume(0.1);
+
+        String audioXboxS = getClass().getResource("/sounds/easter_egg_sounds/xboxS.mp3").toString();
+        Media mediaXboxS = new Media(audioXboxS);
+        xboxS = new MediaPlayer(mediaXboxS);
+        xboxS.setVolume(0.1);
+
+        String audioXboxOne = getClass().getResource("/sounds/easter_egg_sounds/xboxOne.mp3").toString();
+        Media mediaXboxOne = new Media(audioXboxOne);
+        xboxOne = new MediaPlayer(mediaXboxOne);
+        xboxOne.setVolume(0.1);
+
+        String audioXbox360 = getClass().getResource("/sounds/easter_egg_sounds/xbox360.mp3").toString();
+        Media mediaXbox360 = new Media(audioXbox360);
+        xbox360 = new MediaPlayer(mediaXbox360);
+        xbox360.setVolume(0.1);
+
+        String audioXbox = getClass().getResource("/sounds/easter_egg_sounds/xbox.mp3").toString();
+        Media mediaXbox = new Media(audioXbox);
+        xbox = new MediaPlayer(mediaXbox);
+        xbox.setVolume(0.1);
 
         // pega os nomes das tabelas
         File path = new File("C:\\tabelas-GT");
@@ -153,7 +326,8 @@ public class StatisticsViewController implements Initializable {
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
-        lbPlatform.setText(maxEntry.getKey());
+        //lbPlatform.setText(maxEntry.getKey());
+        lbPlatform.setText("XBOX");
         lbMaxRating.setText(String.valueOf(countMaxRating));
 
     }

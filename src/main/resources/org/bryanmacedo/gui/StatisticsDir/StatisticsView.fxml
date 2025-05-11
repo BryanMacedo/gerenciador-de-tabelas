@@ -17,23 +17,6 @@
             <Insets bottom="40.0" top="40.0" />
          </BorderPane.margin>
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="743.0" prefWidth="124.0">
-               <children>
-                  <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../imgs/imgAppIcon/ic_app_icon_AppView.png" />
-                     </image>
-                  </ImageView>
-                  <Label prefHeight="27.0" prefWidth="87.0" text="G-TABLES">
-                     <HBox.margin>
-                        <Insets left="5.0" top="10.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-               <StackPane.margin>
-                  <Insets right="10.0" />
-               </StackPane.margin>
-            </HBox>
             <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
                <children>
                   <HBox fx:id="hbStatistics" alignment="CENTER" layoutX="10.0" layoutY="319.0" prefHeight="0.0" prefWidth="142.0">
@@ -119,6 +102,23 @@
                   </HBox>
                </children>
             </VBox>
+            <HBox fx:id="hbLogo" alignment="TOP_CENTER" onMouseClicked="#onHbLogoClick" prefHeight="268.0" prefWidth="163.0" styleClass="LogoCursor">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../imgs/imgAppIcon/ic_app_icon_AppView.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="27.0" prefWidth="87.0" text="G-TABLES">
+                     <HBox.margin>
+                        <Insets left="5.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="690.0" right="10.0" />
+               </StackPane.margin>
+            </HBox>
          </children>
       </StackPane>
    </left>

@@ -312,3 +312,7 @@
     -fx-border-width: 5px 5px 5px 0;
     -fx-background-color: #272727;
 }
+
+.LogoCursor{
+    -fx-cursor: hand;
+}
