@@ -46,6 +46,8 @@ public class StatisticsViewController implements Initializable {
     private MediaPlayer xboxOne;
     private MediaPlayer xbox360;
     private MediaPlayer xbox;
+    private MediaPlayer deck;
+    private MediaPlayer nSwitch;
 
     @FXML
     private ImageView imgvClose;
@@ -163,6 +165,22 @@ public class StatisticsViewController implements Initializable {
                 });
             }
 
+            case "STEAM DECK"-> {
+                deck.seek(javafx.util.Duration.ZERO);
+                deck.play();
+                deck.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+
+            case "SWITCH", "SWITCH 2" -> {
+                nSwitch.seek(javafx.util.Duration.ZERO);
+                nSwitch.play();
+                nSwitch.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }
+
         }
     }
 
@@ -183,70 +201,7 @@ public class StatisticsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
-        this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(0.1);
-        clickSound.setPriority(1);
-
-        String audioFilePs5 = getClass().getResource("/sounds/easter_egg_sounds/ps5.mp3").toString();
-        Media mediaPs5 = new Media(audioFilePs5);
-        ps5 = new MediaPlayer(mediaPs5);
-        ps5.setVolume(0.1);
-
-        String audioFilePs4 = getClass().getResource("/sounds/easter_egg_sounds/ps4.mp3").toString();
-        Media mediaPs4 = new Media(audioFilePs4);
-        ps4 = new MediaPlayer(mediaPs4);
-        ps4.setVolume(0.1);
-
-        String audioFilePs3 = getClass().getResource("/sounds/easter_egg_sounds/ps3.mp3").toString();
-        Media mediaPs3 = new Media(audioFilePs3);
-        ps3 = new MediaPlayer(mediaPs3);
-        ps3.setVolume(0.1);
-
-        String audioFilePs2 = getClass().getResource("/sounds/easter_egg_sounds/ps2.mp3").toString();
-        Media mediaPs2 = new Media(audioFilePs2);
-        ps2 = new MediaPlayer(mediaPs2);
-        ps2.setVolume(0.1);
-
-        String audioFilePs1 = getClass().getResource("/sounds/easter_egg_sounds/ps1.mp3").toString();
-        Media mediaPs1 = new Media(audioFilePs1);
-        ps1 = new MediaPlayer(mediaPs1);
-        ps1.setVolume(0.1);
-
-        String audioFilePsp = getClass().getResource("/sounds/easter_egg_sounds/psp.mp3").toString();
-        Media mediaPsp = new Media(audioFilePsp);
-        psp = new MediaPlayer(mediaPsp);
-        psp.setVolume(0.1);
-
-        String audioFilePsVita = getClass().getResource("/sounds/easter_egg_sounds/psvita.mp3").toString();
-        Media mediaPsVita = new Media(audioFilePsVita);
-        psVita = new MediaPlayer(mediaPsVita);
-        psVita.setVolume(0.1);
-
-        String audioPc = getClass().getResource("/sounds/easter_egg_sounds/pc.mp3").toString();
-        Media mediaPc = new Media(audioPc);
-        pc = new MediaPlayer(mediaPc);
-        pc.setVolume(0.1);
-
-        String audioXboxS = getClass().getResource("/sounds/easter_egg_sounds/xboxS.mp3").toString();
-        Media mediaXboxS = new Media(audioXboxS);
-        xboxS = new MediaPlayer(mediaXboxS);
-        xboxS.setVolume(0.1);
-
-        String audioXboxOne = getClass().getResource("/sounds/easter_egg_sounds/xboxOne.mp3").toString();
-        Media mediaXboxOne = new Media(audioXboxOne);
-        xboxOne = new MediaPlayer(mediaXboxOne);
-        xboxOne.setVolume(0.1);
-
-        String audioXbox360 = getClass().getResource("/sounds/easter_egg_sounds/xbox360.mp3").toString();
-        Media mediaXbox360 = new Media(audioXbox360);
-        xbox360 = new MediaPlayer(mediaXbox360);
-        xbox360.setVolume(0.1);
-
-        String audioXbox = getClass().getResource("/sounds/easter_egg_sounds/xbox.mp3").toString();
-        Media mediaXbox = new Media(audioXbox);
-        xbox = new MediaPlayer(mediaXbox);
-        xbox.setVolume(0.1);
+        loadSounds();
 
         // pega os nomes das tabelas
         File path = new File("C:\\tabelas-GT");
@@ -326,10 +281,86 @@ public class StatisticsViewController implements Initializable {
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
-        //lbPlatform.setText(maxEntry.getKey());
-        lbPlatform.setText("XBOX");
+        lbPlatform.setText(maxEntry.getKey());
         lbMaxRating.setText(String.valueOf(countMaxRating));
 
+    }
+
+    private void loadSounds(){
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(0.1);
+        clickSound.setPriority(1);
+
+        String audioFilePs5 = getClass().getResource("/sounds/easter_egg_sounds/ps5.mp3").toString();
+        Media mediaPs5 = new Media(audioFilePs5);
+        ps5 = new MediaPlayer(mediaPs5);
+        ps5.setVolume(0.1);
+
+        String audioFilePs4 = getClass().getResource("/sounds/easter_egg_sounds/ps4.mp3").toString();
+        Media mediaPs4 = new Media(audioFilePs4);
+        ps4 = new MediaPlayer(mediaPs4);
+        ps4.setVolume(0.1);
+
+        String audioFilePs3 = getClass().getResource("/sounds/easter_egg_sounds/ps3.mp3").toString();
+        Media mediaPs3 = new Media(audioFilePs3);
+        ps3 = new MediaPlayer(mediaPs3);
+        ps3.setVolume(0.1);
+
+        String audioFilePs2 = getClass().getResource("/sounds/easter_egg_sounds/ps2.mp3").toString();
+        Media mediaPs2 = new Media(audioFilePs2);
+        ps2 = new MediaPlayer(mediaPs2);
+        ps2.setVolume(0.1);
+
+        String audioFilePs1 = getClass().getResource("/sounds/easter_egg_sounds/ps1.mp3").toString();
+        Media mediaPs1 = new Media(audioFilePs1);
+        ps1 = new MediaPlayer(mediaPs1);
+        ps1.setVolume(0.1);
+
+        String audioFilePsp = getClass().getResource("/sounds/easter_egg_sounds/psp.mp3").toString();
+        Media mediaPsp = new Media(audioFilePsp);
+        psp = new MediaPlayer(mediaPsp);
+        psp.setVolume(0.1);
+
+        String audioFilePsVita = getClass().getResource("/sounds/easter_egg_sounds/psvita.mp3").toString();
+        Media mediaPsVita = new Media(audioFilePsVita);
+        psVita = new MediaPlayer(mediaPsVita);
+        psVita.setVolume(0.1);
+
+        String audioPc = getClass().getResource("/sounds/easter_egg_sounds/pc.mp3").toString();
+        Media mediaPc = new Media(audioPc);
+        pc = new MediaPlayer(mediaPc);
+        pc.setVolume(0.1);
+
+        String audioXboxS = getClass().getResource("/sounds/easter_egg_sounds/xboxS.mp3").toString();
+        Media mediaXboxS = new Media(audioXboxS);
+        xboxS = new MediaPlayer(mediaXboxS);
+        xboxS.setVolume(0.1);
+
+        String audioXboxOne = getClass().getResource("/sounds/easter_egg_sounds/xboxOne.mp3").toString();
+        Media mediaXboxOne = new Media(audioXboxOne);
+        xboxOne = new MediaPlayer(mediaXboxOne);
+        xboxOne.setVolume(0.1);
+
+        String audioXbox360 = getClass().getResource("/sounds/easter_egg_sounds/xbox360.mp3").toString();
+        Media mediaXbox360 = new Media(audioXbox360);
+        xbox360 = new MediaPlayer(mediaXbox360);
+        xbox360.setVolume(0.1);
+
+        String audioXbox = getClass().getResource("/sounds/easter_egg_sounds/xbox.mp3").toString();
+        Media mediaXbox = new Media(audioXbox);
+        xbox = new MediaPlayer(mediaXbox);
+        xbox.setVolume(0.1);
+
+        String audioDeck = getClass().getResource("/sounds/easter_egg_sounds/deck.mp3").toString();
+        Media mediaDeck = new Media(audioDeck);
+        deck = new MediaPlayer(mediaDeck);
+        deck.setVolume(0.1);
+
+        String audioSwitch = getClass().getResource("/sounds/easter_egg_sounds/switch.mp3").toString();
+        Media mediaSwitch = new Media(audioSwitch);
+        nSwitch = new MediaPlayer(mediaSwitch);
+        nSwitch.setVolume(0.1);
     }
 
     @FXML

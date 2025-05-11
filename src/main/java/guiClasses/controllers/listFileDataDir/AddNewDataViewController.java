@@ -32,8 +32,8 @@ import java.util.ResourceBundle;
 
 public class AddNewDataViewController implements Initializable {
     private List<String> plataforms = new ArrayList<>(Arrays.asList
-            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "PC", "XBOX SX"
-                    , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX"));
+            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "STEAM DECK", "PC", "XBOX SX"
+                    , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX", "SWITCH 2", "SWITCH"));
 
     String strRbYesOrNo = null;
     TypeDLC typeDLC = null;
@@ -95,8 +95,8 @@ public class AddNewDataViewController implements Initializable {
     @FXML
     private Button btAddGame;
 
-    private String getStrYesOrNo(){
-        if (rbYes.isSelected()){
+    private String getStrYesOrNo() {
+        if (rbYes.isSelected()) {
             return "Sim";
         } else if (rbNo.isSelected()) {
             return "Não";
@@ -104,12 +104,12 @@ public class AddNewDataViewController implements Initializable {
         return "";
     }
 
-    private TypeDLC getTypeDLC(){
-        if (rbE_DLC.isSelected()){
+    private TypeDLC getTypeDLC() {
+        if (rbE_DLC.isSelected()) {
             return TypeDLC.E_DLC;
         } else if (rbTERMINEI.isSelected()) {
             return TypeDLC.TERMINEI;
-        }else if (rbNAO_TERMINEI.isSelected()) {
+        } else if (rbNAO_TERMINEI.isSelected()) {
             return TypeDLC.NAO_TERMINEI;
         } else if (rbNAO_TEM.isSelected()) {
             return TypeDLC.NAO_TEM;
@@ -129,20 +129,20 @@ public class AddNewDataViewController implements Initializable {
         System.out.println(newGame);
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
-                typeDLC == null || strRbYesOrNo.isEmpty()){
+                typeDLC == null || strRbYesOrNo.isEmpty()) {
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
             errorSound.play();
-        }else {
+        } else {
             writeData(newGame);
             clickSound.play();
         }
 
     }
 
-    private void writeData(Game game){
+    private void writeData(Game game) {
         try (FileInputStream fis = new FileInputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx");
              Workbook workbook = WorkbookFactory.create(fis);
-             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx")){
+             FileOutputStream fos = new FileOutputStream("C:\\tabelas-GT\\" + ListFileDataViewController.fileNameToAccessFromListData + ".xlsx")) {
 
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -155,9 +155,9 @@ public class AddNewDataViewController implements Initializable {
             // Preenche os dados nas células
             row.createCell(0).setCellValue(game.getName());
             row.createCell(1).setCellValue(game.getPlatform());
-            if (strRbYesOrNo.equals("Não")){
+            if (strRbYesOrNo.equals("Não")) {
                 row.createCell(2).setCellValue("Jogo não finalizado");
-            }else{
+            } else {
                 row.createCell(2).setCellValue(game.getFinishDate().toString());
             }
             row.createCell(3).setCellValue(game.getRating());
@@ -186,14 +186,14 @@ public class AddNewDataViewController implements Initializable {
     }
 
     @FXML
-    private void onRbYesClick(){
+    private void onRbYesClick() {
         dpFinish.setDisable(false);
         LocalDate DateNow = LocalDate.now();
         dpFinish.setValue(DateNow);
     }
 
     @FXML
-    private void onRbNoClick(){
+    private void onRbNoClick() {
         dpFinish.getEditor().clear();
         dpFinish.setDisable(true);
     }
@@ -213,7 +213,7 @@ public class AddNewDataViewController implements Initializable {
     }
 
     @FXML
-    private void onHbListFilesClick(){
+    private void onHbListFilesClick() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
@@ -278,8 +278,8 @@ public class AddNewDataViewController implements Initializable {
             clickSound.play();
         });
 
-        cbPlataforms.setOnAction(event ->{
-            if (cbPlataforms.getValue() != null){
+        cbPlataforms.setOnAction(event -> {
+            if (cbPlataforms.getValue() != null) {
                 clickSound.play();
             }
         });
@@ -298,8 +298,8 @@ public class AddNewDataViewController implements Initializable {
             clickSound.play();
         });
 
-        dpFinish.valueProperty().addListener((observable, oldValue, newValue) ->{
-            if (newValue != null){
+        dpFinish.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
                 clickSound.play();
             }
         });

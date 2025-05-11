@@ -31,8 +31,8 @@ import java.util.ResourceBundle;
 
 public class EditDataViewController implements Initializable {
     private List<String> plataforms = new ArrayList<>(Arrays.asList
-            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "PC", "XBOX SX"
-                    , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX"));
+            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "STEAM DECK", "PC", "XBOX SX"
+                    , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX", "SWITCH 2", "SWITCH"));
     private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
 
 

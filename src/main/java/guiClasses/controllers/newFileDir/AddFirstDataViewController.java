@@ -34,8 +34,8 @@ public class AddFirstDataViewController implements Initializable {
     private final Image imgUnselected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Unselected.png"));
 
     private List<String> plataforms = new ArrayList<>(Arrays.asList
-            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "PC", "XBOX SX"
-                    , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX"));
+            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "STEAM DECK" ,"PC","XBOX SX"
+                    , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX", "SWITCH 2", "SWITCH"));
 
     private List<String> dlc = new ArrayList<>();
     private List<ImageView> imageViewClicked = new ArrayList<>();
