@@ -316,3 +316,17 @@
 .LogoCursor{
     -fx-cursor: hand;
 }
+
+.labelCursor{
+    -fx-cursor: hand;
+}
+
+.labelMarg{
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 5px;
+    -fx-background-color: transparent;
+}
+
+.labelHover:hover{
+    -fx-background-color: #272727;
+}
