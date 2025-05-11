@@ -74,8 +74,27 @@ public class StatisticsViewController implements Initializable {
     private HBox hbLogo;
 
     @FXML
+    private HBox hbListFiles;
+
+    @FXML
+    private void onHbListFilesClick() {
+        clickSound.play();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
     private void onHbLogoClick(){
         // tocar um audio conforme a plataforma mais jogada
+        clickSound.play();
         hbLogo.setMouseTransparent(true);
         switch (lbPlatform.getText()){
             case "PS5" ->{

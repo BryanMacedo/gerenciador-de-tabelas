@@ -87,13 +87,27 @@ public class AddNewDataViewController implements Initializable {
     private HBox hbListFiles;
 
     @FXML
-    private HBox hbProfile;
-
-    @FXML
     private Label lbWarning;
 
     @FXML
     private Button btAddGame;
+
+    @FXML
+    private HBox hbStatistics;
+
+    @FXML
+    private void onHbStatistics(){
+        clickSound.play();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
+            Parent root = loader.load();
+            Scene scene = imgvClose.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            //System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     private String getStrYesOrNo() {
         if (rbYes.isSelected()) {
@@ -230,7 +244,7 @@ public class AddNewDataViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
-        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbProfile));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
 
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);

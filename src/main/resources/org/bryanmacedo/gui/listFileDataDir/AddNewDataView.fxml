@@ -47,17 +47,17 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="708.0" prefWidth="173.0" styleClass="borderRight">
                <children>
-                  <HBox fx:id="hbProfile" alignment="CENTER" layoutX="10.0" layoutY="319.0" prefHeight="0.0" prefWidth="142.0">
+                  <HBox fx:id="hbStatistics" alignment="CENTER" onMouseClicked="#onHbStatistics" prefHeight="0.0" prefWidth="142.0">
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageHover">
                            <image>
-                              <Image url="@../../../../imgs/imgUI/ic_profile.png" />
+                              <Image url="@../../../../imgs/imgUI/ic_statistics.png" />
                            </image>
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Seu perfil">
+                        <Label prefHeight="27.0" prefWidth="120.0" styleClass="labelHover" text="Estatísticas">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -70,9 +70,6 @@
                      <padding>
                         <Insets bottom="5.0" />
                      </padding>
-                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </VBox.margin>
                   </HBox>
                   <HBox fx:id="hbNewFile" alignment="CENTER" onMouseClicked="#onHbNewFileClick" prefHeight="0.0" prefWidth="142.0">
                      <children>
