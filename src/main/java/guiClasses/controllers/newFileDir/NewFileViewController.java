@@ -153,33 +153,26 @@ public class NewFileViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadSounds();
+
+        setInitialsSounds();
+
+        //tirar a criação da pasta daqui quando tiver a tela inicial
+        Path path = Paths.get("C://tabelas-GT");
+
+        if (!Files.exists(path) && !Files.isDirectory(path)) {
+            try {
+                Files.createDirectory(path);
+            } catch (IOException e) {
+                System.out.println("Pasta não criada." + e.getMessage());
+            }
+        }
+
+    }
+
+    private void setInitialsSounds(){
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
-
-        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
-        this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(0.1);
-        clickSound.setPriority(1);
-
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
-
-        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
-        this.errorSound = new AudioClip(errorPath);
-        this.errorSound.setVolume(0.5);
-        errorSound.setPriority(1);
-
-        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
-        this.typingSound = new AudioClip(typingPath);
-        this.typingSound.setVolume(0.3);
-        typingSound.setPriority(1);
-
-        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
-        this.typingDeleteSound = new AudioClip(typingDeletePath);
-        this.typingDeleteSound.setVolume(0.3);
-        typingDeleteSound.setPriority(1);
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
@@ -208,19 +201,33 @@ public class NewFileViewController implements Initializable {
                 typingDeleteSound.play();
             }
         });
+    }
 
+    private void loadSounds(){
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(0.1);
+        clickSound.setPriority(1);
 
-        //tirar a criação da pasta daqui quando tiver a tela inicial
-        Path path = Paths.get("C://tabelas-GT");
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(0.1);
+        hoverSound.setPriority(1);
 
-        if (!Files.exists(path) && !Files.isDirectory(path)) {
-            try {
-                Files.createDirectory(path);
-            } catch (IOException e) {
-                System.out.println("Pasta não criada." + e.getMessage());
-            }
-        }
+        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
+        this.errorSound = new AudioClip(errorPath);
+        this.errorSound.setVolume(0.5);
+        errorSound.setPriority(1);
 
+        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
+        this.typingSound = new AudioClip(typingPath);
+        this.typingSound.setVolume(0.3);
+        typingSound.setPriority(1);
+
+        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
+        this.typingDeleteSound = new AudioClip(typingDeletePath);
+        this.typingDeleteSound.setVolume(0.3);
+        typingDeleteSound.setPriority(1);
     }
 
     @FXML

@@ -109,6 +109,11 @@ public class InitialViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSounds();
+
+        setInitialsSounds();
+    }
+
+    private void setInitialsSounds(){
         List<Label> labelList = new ArrayList<>(Arrays.asList(lbListFiles, lbNewFile, lbStatistics));
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
 

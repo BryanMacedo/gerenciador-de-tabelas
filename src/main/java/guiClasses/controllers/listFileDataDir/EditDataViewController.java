@@ -309,36 +309,50 @@ public class EditDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadSounds();
+
+        setInitialsSounds();
+
+        cbPlataforms.getItems().addAll(plataforms);
+
+        // spinner config
+        SpinnerValueFactory<Integer> valueFactory =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
+        valueFactory.setValue(0);
+
+        spnRating.setValueFactory(valueFactory);
+        spnRating.getEditor().setDisable(true);
+        spnRating.getEditor().setOpacity(1.0);
+
+        // adicionado os valores do obj no formulario para facilitar a edição
+        gameToEdit = ListFileDataViewController.gameToEdit;
+        tfName.setText(gameToEdit.getName());
+        cbPlataforms.setValue(gameToEdit.getPlatform());
+        spnRating.getValueFactory().setValue(gameToEdit.getRating());
+
+        switch (gameToEdit.getDlc().getStrDLC()) {
+            case "Não tem" -> rbNAO_TEM.setSelected(true);
+            case "Terminei" -> rbTERMINEI.setSelected(true);
+            case "Não terminei" -> rbNAO_TERMINEI.setSelected(true);
+            case "É DLC" -> rbE_DLC.setSelected(true);
+        }
+
+        switch (gameToEdit.getFinish()) {
+            case "Sim" -> rbYes.setSelected(true);
+            case "Não" -> rbNo.setSelected(true);
+        }
+
+        if (gameToEdit.getTextDate() == null) {
+            dpFinish.setValue(gameToEdit.getFinishDate());
+            dpFinish.setDisable(false);
+        }
+    }
+
+    private void setInitialsSounds(){
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
 
-        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
-        this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(0.1);
-        clickSound.setPriority(1);
-
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
-
-        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
-        this.errorSound = new AudioClip(errorPath);
-        this.errorSound.setVolume(0.5);
-        errorSound.setPriority(1);
-
-        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
-        this.typingSound = new AudioClip(typingPath);
-        this.typingSound.setVolume(0.3);
-        typingSound.setPriority(1);
-
-        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
-        this.typingDeleteSound = new AudioClip(typingDeletePath);
-        this.typingDeleteSound.setVolume(0.3);
-        typingDeleteSound.setPriority(1);
-
-        //audios
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
                 hoverSound.play();
@@ -396,41 +410,33 @@ public class EditDataViewController implements Initializable {
                 typingDeleteSound.play();
             }
         });
+    }
 
+    private void loadSounds(){
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(0.1);
+        clickSound.setPriority(1);
 
-        cbPlataforms.getItems().addAll(plataforms);
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(0.1);
+        hoverSound.setPriority(1);
 
-        // spinner config
-        SpinnerValueFactory<Integer> valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
-        valueFactory.setValue(0);
+        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
+        this.errorSound = new AudioClip(errorPath);
+        this.errorSound.setVolume(0.5);
+        errorSound.setPriority(1);
 
-        spnRating.setValueFactory(valueFactory);
-        spnRating.getEditor().setDisable(true);
-        spnRating.getEditor().setOpacity(1.0);
+        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
+        this.typingSound = new AudioClip(typingPath);
+        this.typingSound.setVolume(0.3);
+        typingSound.setPriority(1);
 
-        // adicionado os valores do obj no formulario para facilitar a edição
-        gameToEdit = ListFileDataViewController.gameToEdit;
-        tfName.setText(gameToEdit.getName());
-        cbPlataforms.setValue(gameToEdit.getPlatform());
-        spnRating.getValueFactory().setValue(gameToEdit.getRating());
-
-        switch (gameToEdit.getDlc().getStrDLC()) {
-            case "Não tem" -> rbNAO_TEM.setSelected(true);
-            case "Terminei" -> rbTERMINEI.setSelected(true);
-            case "Não terminei" -> rbNAO_TERMINEI.setSelected(true);
-            case "É DLC" -> rbE_DLC.setSelected(true);
-        }
-
-        switch (gameToEdit.getFinish()) {
-            case "Sim" -> rbYes.setSelected(true);
-            case "Não" -> rbNo.setSelected(true);
-        }
-
-        if (gameToEdit.getTextDate() == null) {
-            dpFinish.setValue(gameToEdit.getFinishDate());
-            dpFinish.setDisable(false);
-        }
+        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
+        this.typingDeleteSound = new AudioClip(typingDeletePath);
+        this.typingDeleteSound.setVolume(0.3);
+        typingDeleteSound.setPriority(1);
     }
 
     // fechar e minimizar

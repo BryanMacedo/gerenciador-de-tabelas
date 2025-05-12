@@ -34,7 +34,7 @@ public class AddFirstDataViewController implements Initializable {
     private final Image imgUnselected = new Image(getClass().getResourceAsStream("/imgs/imgAddData/ic_button_Unselected.png"));
 
     private List<String> plataforms = new ArrayList<>(Arrays.asList
-            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "STEAM DECK" ,"PC","XBOX SX"
+            ("PS5", "PS4", "PS3", "PS2", "PS1", "PSP", "PSVITA", "STEAM DECK", "PC", "XBOX SX"
                     , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX", "SWITCH 2", "SWITCH"));
 
     private List<String> dlc = new ArrayList<>();
@@ -161,7 +161,7 @@ public class AddFirstDataViewController implements Initializable {
     private HBox hbStatistics;
 
     @FXML
-    private void onHbStatistics(){
+    private void onHbStatistics() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
@@ -306,36 +306,27 @@ public class AddFirstDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadSounds();
+
+        setInitialsSounds();
+
+        cbPlataforms.getItems().addAll(plataforms);
+
+        // spinner config
+        SpinnerValueFactory<Integer> valueFactory =
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
+        valueFactory.setValue(0);
+
+        spnRating.setValueFactory(valueFactory);
+        spnRating.getEditor().setDisable(true);
+        spnRating.getEditor().setOpacity(1.0);
+    }
+
+    private void setInitialsSounds() {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
 
-        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
-        this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(0.1);
-        clickSound.setPriority(1);
-
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
-
-        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
-        this.errorSound = new AudioClip(errorPath);
-        this.errorSound.setVolume(0.5);
-        errorSound.setPriority(1);
-
-        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
-        this.typingSound = new AudioClip(typingPath);
-        this.typingSound.setVolume(0.3);
-        typingSound.setPriority(1);
-
-        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
-        this.typingDeleteSound = new AudioClip(typingDeletePath);
-        this.typingDeleteSound.setVolume(0.3);
-        typingDeleteSound.setPriority(1);
-
-        //audios
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
                 hoverSound.play();
@@ -393,17 +384,33 @@ public class AddFirstDataViewController implements Initializable {
                 typingDeleteSound.play();
             }
         });
+    }
 
-        cbPlataforms.getItems().addAll(plataforms);
+    private void loadSounds() {
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(0.1);
+        clickSound.setPriority(1);
 
-        // spinner config
-        SpinnerValueFactory<Integer> valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
-        valueFactory.setValue(0);
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(0.1);
+        hoverSound.setPriority(1);
 
-        spnRating.setValueFactory(valueFactory);
-        spnRating.getEditor().setDisable(true);
-        spnRating.getEditor().setOpacity(1.0);
+        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
+        this.errorSound = new AudioClip(errorPath);
+        this.errorSound.setVolume(0.5);
+        errorSound.setPriority(1);
+
+        String typingPath = getClass().getResource("/sounds/typing_sound_01.mp3").toString();
+        this.typingSound = new AudioClip(typingPath);
+        this.typingSound.setVolume(0.3);
+        typingSound.setPriority(1);
+
+        String typingDeletePath = getClass().getResource("/sounds/delete_typing_sound_01.mp3").toString();
+        this.typingDeleteSound = new AudioClip(typingDeletePath);
+        this.typingDeleteSound.setVolume(0.3);
+        typingDeleteSound.setPriority(1);
     }
 
     // fechar e minimizar

@@ -59,7 +59,7 @@ public class ListFilesViewController implements Initializable {
     private HBox hbStatistics;
 
     @FXML
-    private void onHbStatistics(){
+    private void onHbStatistics() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
@@ -88,30 +88,9 @@ public class ListFilesViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
-        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
+        loadSounds();
 
-        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
-        this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(0.1);
-        clickSound.setPriority(1);
-
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
-
-        for (ImageView imgv : imageViews) {
-            imgv.setOnMouseEntered(event -> {
-                hoverSound.play();
-            });
-        }
-
-        for (HBox hbv : hBoxViews) {
-            hbv.setOnMouseEntered(event -> {
-                hoverSound.play();
-            });
-        }
+        setInitialsSounds();
 
         File path = new File("C:\\tabelas-GT");
         File[] files = path.listFiles((dir, name) -> name.endsWith(".xlsx"));
@@ -186,6 +165,35 @@ public class ListFilesViewController implements Initializable {
         }
 
 
+    }
+
+    private void setInitialsSounds() {
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
+
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+    }
+
+    private void loadSounds() {
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(0.1);
+        clickSound.setPriority(1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(0.1);
+        hoverSound.setPriority(1);
     }
 
     // fechar e minimizar

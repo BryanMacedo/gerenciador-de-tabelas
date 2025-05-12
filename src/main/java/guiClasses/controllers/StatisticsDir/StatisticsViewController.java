@@ -96,12 +96,12 @@ public class StatisticsViewController implements Initializable {
 
 
     @FXML
-    private void onHbLogoClick(){
+    private void onHbLogoClick() {
         // tocar um audio conforme a plataforma mais jogada
         clickSound.play();
         hbLogo.setMouseTransparent(true);
-        switch (lbPlatform.getText()){
-            case "PS5" ->{
+        switch (lbPlatform.getText()) {
+            case "PS5" -> {
                 ps5.seek(javafx.util.Duration.ZERO);
                 ps5.play();
                 ps5.setOnEndOfMedia(() -> {
@@ -165,7 +165,7 @@ public class StatisticsViewController implements Initializable {
                 });
             }
 
-            case "XBOX ONE"-> {
+            case "XBOX ONE" -> {
                 xboxOne.seek(javafx.util.Duration.ZERO);
                 xboxOne.play();
                 xboxOne.setOnEndOfMedia(() -> {
@@ -173,14 +173,14 @@ public class StatisticsViewController implements Initializable {
                 });
             }
 
-            case "XBOX 360"-> {
+            case "XBOX 360" -> {
                 xbox360.seek(javafx.util.Duration.ZERO);
                 xbox360.play();
                 xbox360.setOnEndOfMedia(() -> {
                     hbLogo.setMouseTransparent(false);
                 });
             }
-            case "XBOX"-> {
+            case "XBOX" -> {
                 xbox.seek(javafx.util.Duration.ZERO);
                 xbox.play();
                 xbox.setOnEndOfMedia(() -> {
@@ -188,7 +188,7 @@ public class StatisticsViewController implements Initializable {
                 });
             }
 
-            case "STEAM DECK"-> {
+            case "STEAM DECK" -> {
                 deck.seek(javafx.util.Duration.ZERO);
                 deck.play();
                 deck.setOnEndOfMedia(() -> {
@@ -224,22 +224,10 @@ public class StatisticsViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
-        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
-
         loadSounds();
 
-        for (ImageView imgv : imageViews) {
-            imgv.setOnMouseEntered(event -> {
-                hoverSound.play();
-            });
-        }
+        setInitialsSounds();
 
-        for (HBox hbv : hBoxViews) {
-            hbv.setOnMouseEntered(event -> {
-                hoverSound.play();
-            });
-        }
 
         // pega os nomes das tabelas
         File path = new File("C:\\tabelas-GT");
@@ -284,7 +272,6 @@ public class StatisticsViewController implements Initializable {
         int countMaxRating = 0;
 
 
-
         for (Game game : gamesToStatistics) {
             // quantidades de jogos zerados / n zerdos
             if (game.getTextDate() != null) {
@@ -311,8 +298,8 @@ public class StatisticsViewController implements Initializable {
         System.out.println(counterPlatforms);
 
         Map.Entry<String, Integer> maxEntry = null;
-        for (Map.Entry<String, Integer> entry : counterPlatforms.entrySet()){
-            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0){
+        for (Map.Entry<String, Integer> entry : counterPlatforms.entrySet()) {
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
                 maxEntry = entry;
             }
         }
@@ -324,7 +311,24 @@ public class StatisticsViewController implements Initializable {
 
     }
 
-    private void loadSounds(){
+    private void setInitialsSounds() {
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
+
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+    }
+
+    private void loadSounds() {
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);

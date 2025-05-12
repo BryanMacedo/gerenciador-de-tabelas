@@ -374,42 +374,11 @@ public class ListFileDataViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
-        List<HBox> hBoxeBtns = new ArrayList<>(Arrays.asList(hbInsertNewGame, hbEditGameLine, hbDeleteLine, hbDeleteFile));
-        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
+        loadSounds();
 
-        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
-        this.clickSound = new AudioClip(ClickPath);
-        this.clickSound.setVolume(0.1);
-        clickSound.setPriority(1);
-
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
-
-        for (HBox hBox : hBoxeBtns) {
-            hBox.setOnMouseEntered(event -> {
-                //hoverSound.stop();
-                hoverSound.play();
-            });
-        }
-
-        for (ImageView imgv : imageViews) {
-            imgv.setOnMouseEntered(event -> {
-                hoverSound.play();
-            });
-        }
-
-        for (HBox hbv : hBoxViews) {
-            hbv.setOnMouseEntered(event -> {
-                hoverSound.play();
-            });
-        }
-
+        setInitialsSounds();
 
         games.clear();
-        //System.out.println(ListFilesViewController.fileToAccess);
 
         lbTableName.setText(ListFilesViewController.fileToAccess);
 
@@ -466,7 +435,6 @@ public class ListFileDataViewController implements Initializable {
                     HBox newHbox = new HBox(labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
                     newHbox.setStyle("-fx-alignment: top_center;");
 
-                    //newHbox.setDisable(true);
                     newHbox.setMouseTransparent(true);
 
                     newHbox.setOnMouseClicked(e -> {
@@ -491,21 +459,53 @@ public class ListFileDataViewController implements Initializable {
                                 warningDelete("Tem certeza que deseja excluir esta Linha?");
                             }
                         }
-
-
                     });
-
                     vbList.getChildren().add(newHbox);
                     hBoxList.add(newHbox);
                 }
             }
-
         } catch (FileNotFoundException ex) {
             throw new RuntimeException(ex);
         } catch (IOException exc) {
             throw new RuntimeException(exc);
         }
+    }
 
+    private void setInitialsSounds(){
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+        List<HBox> hBoxeBtns = new ArrayList<>(Arrays.asList(hbInsertNewGame, hbEditGameLine, hbDeleteLine, hbDeleteFile));
+        List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
+
+        for (HBox hBox : hBoxeBtns) {
+            hBox.setOnMouseEntered(event -> {
+                //hoverSound.stop();
+                hoverSound.play();
+            });
+        }
+
+        for (ImageView imgv : imageViews) {
+            imgv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (HBox hbv : hBoxViews) {
+            hbv.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+    }
+
+    private void loadSounds(){
+        String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
+        this.clickSound = new AudioClip(ClickPath);
+        this.clickSound.setVolume(0.1);
+        clickSound.setPriority(1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(0.1);
+        hoverSound.setPriority(1);
     }
 
     @FXML
