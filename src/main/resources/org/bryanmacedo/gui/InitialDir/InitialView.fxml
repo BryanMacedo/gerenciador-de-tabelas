@@ -21,6 +21,18 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <StackPane prefHeight="324.0" prefWidth="1306.0">
+               <children>
+                  <Label fx:id="lbWarning" alignment="CENTER" prefHeight="148.0" prefWidth="809.0" textAlignment="CENTER" wrapText="true">
+                     <StackPane.margin>
+                        <Insets bottom="20.0" />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="210.0" />
+               </StackPane.margin>
+            </StackPane>
             <VBox alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

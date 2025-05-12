@@ -12,12 +12,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class InitialViewController implements Initializable {
     private AudioClip clickSound;
+    private AudioClip hoverSound;
+    private AudioClip errorSound;
 
     @FXML
     private ImageView imgvClose;
@@ -35,15 +43,53 @@ public class InitialViewController implements Initializable {
     private Label lbStatistics;
 
     @FXML
+    private Label lbWarning;
+
+    @FXML
     private void onLbStatisticsClick(){
-        clickSound.play();
         // verificar se tem arquivos para entrar na pegar os dados
+
+        File folder = new File("C:\\tabelas-GT");
+        String[] files = folder.list();
+
+        if (files.length == 0){
+            errorSound.play();
+            lbWarning.setText("No momento, você não tem dados suficientes para visualizar suas estatísticas. Por favor, clique na opção \"Criar uma tabela\" para criar sua primeira tabela e fornecer os dados que serão analisados.");
+        }else{
+            clickSound.play();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
+                Parent root = loader.load();
+                Scene scene = imgvClose.getScene();
+                scene.setRoot(root);
+            } catch (IOException e) {
+                //System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
     private void onLbListFilesClick(){
-        clickSound.play();
         // verificar se tem arquivos para listar
+        File folder = new File("C:\\tabelas-GT");
+        String[] files = folder.list();
+
+        if (files.length == 0){
+            errorSound.play();
+            lbWarning.setText("No momento não há tabelas a serem listadas. Por favor, clique na opção \"Criar uma tabela\" para poder criar sua primeira tabela.");
+        }else{
+            clickSound.play();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
+                Parent root = loader.load();
+                Scene scene = imgvClose.getScene();
+                scene.setRoot(root);
+            } catch (IOException e) {
+                //System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -63,6 +109,20 @@ public class InitialViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSounds();
+        List<Label> labelList = new ArrayList<>(Arrays.asList(lbListFiles, lbNewFile, lbStatistics));
+        List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
+
+        for (Label label : labelList) {
+            label.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
+
+        for (ImageView imageView : imageViews) {
+            imageView.setOnMouseEntered(event -> {
+                hoverSound.play();
+            });
+        }
     }
 
     private void loadSounds(){
@@ -70,6 +130,16 @@ public class InitialViewController implements Initializable {
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);
         clickSound.setPriority(1);
+
+        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        this.hoverSound = new AudioClip(hoverPath);
+        this.hoverSound.setVolume(0.1);
+        hoverSound.setPriority(1);
+
+        String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
+        this.errorSound = new AudioClip(errorPath);
+        this.errorSound.setVolume(0.5);
+        errorSound.setPriority(1);
     }
 
     @FXML
