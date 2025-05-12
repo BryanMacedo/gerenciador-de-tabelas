@@ -148,8 +148,8 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                                  <styleClass>
-                                    <String fx:value="buton" />
-                                    <String fx:value="butonHover" />
+                                    <String fx:value="button" />
+                                    <String fx:value="buttonHover" />
                                  </styleClass>
                               </Button>
                            </children>

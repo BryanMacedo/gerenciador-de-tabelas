@@ -351,6 +351,10 @@ public class EditDataViewController implements Initializable {
             });
         }
 
+        btEditLine.setOnMouseEntered(event -> {
+            hoverSound.play();
+        });
+
         tfName.setOnMouseClicked(event -> {
             clickSound.play();
         });

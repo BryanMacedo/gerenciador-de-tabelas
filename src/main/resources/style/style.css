@@ -43,20 +43,21 @@
     -fx-border-radius: 20px;         /* Arredondamento das bordas */
 }
 
-.buton{
+.button{
     -fx-background-color: transparent;
     -fx-background-radius: 15px;
     -fx-text-fill: white;
     -fx-font-size: 18px;
     -fx-cursor: hand;
     -fx-font-weight: bold;
-    -fx-border-color: transparent;
+    -fx-border-color: #ffffff;
     -fx-border-radius: 20px;
     -fx-border-width: 2px;
 }
 
-.butonHover:hover{
-    -fx-border-color: #ffffff;
+.buttonHover:hover{
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
 }
 
 .textFild{
