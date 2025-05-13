@@ -2,13 +2,17 @@ package guiClasses.controllers.listFileDataDir;
 
 import guiClasses.controllers.listFilesDir.ListFilesViewController;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
@@ -345,6 +349,18 @@ public class EditDataViewController implements Initializable {
         if (gameToEdit.getTextDate() == null) {
             dpFinish.setValue(gameToEdit.getFinishDate());
             dpFinish.setDisable(false);
+        }
+
+        ObservableList<Node> form = FXCollections.observableArrayList(
+                tfName, cbPlataforms, spnRating,
+                rbNo,rbYes,rbTERMINEI,rbNAO_TERMINEI,rbNAO_TEM,rbE_DLC, dpFinish);
+
+        for (Node node : form) {
+            node.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER){
+                    btEditLine.fire();
+                }
+            });
         }
     }
 

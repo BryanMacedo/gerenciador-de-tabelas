@@ -1,15 +1,20 @@
 package guiClasses.controllers.newFileDir;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.entities.Game;
@@ -111,9 +116,6 @@ public class AddFirstDataViewController implements Initializable {
 
     @FXML
     private HBox hbFinishNo;
-
-    @FXML
-    private TextField tfDate;
 
     @FXML
     private Spinner<Integer> spnRating;
@@ -320,6 +322,18 @@ public class AddFirstDataViewController implements Initializable {
         spnRating.setValueFactory(valueFactory);
         spnRating.getEditor().setDisable(true);
         spnRating.getEditor().setOpacity(1.0);
+
+        ObservableList<Node> form = FXCollections.observableArrayList(
+                tfName, cbPlataforms, spnRating,
+                rbNo,rbYes,rbTERMINEI,rbNAO_TERMINEI,rbNAO_TEM,rbE_DLC, dpFinish);
+
+        for (Node node : form) {
+            node.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER){
+                    btAddGame.fire();
+                }
+            });
+        }
     }
 
     private void setInitialsSounds() {

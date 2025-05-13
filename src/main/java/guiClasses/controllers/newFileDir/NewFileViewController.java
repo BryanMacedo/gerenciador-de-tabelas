@@ -9,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Cell;
@@ -157,6 +159,11 @@ public class NewFileViewController implements Initializable {
 
         setInitialsSounds();
 
+        tfFileName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                btCreate.fire();
+            }
+        });
     }
 
     private void setInitialsSounds(){
