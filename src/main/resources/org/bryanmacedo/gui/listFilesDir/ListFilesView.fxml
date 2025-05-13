@@ -126,6 +126,11 @@
    <center>
       <StackPane prefHeight="813.0" prefWidth="516.0" styleClass="scrollpane" BorderPane.alignment="CENTER">
          <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="lbNoFiles" wrapText="true" />
+               </children>
+            </StackPane>
             <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="scrollpane" StackPane.alignment="CENTER">
                <StackPane.margin>
                   <Insets bottom="40.0" top="40.0" />

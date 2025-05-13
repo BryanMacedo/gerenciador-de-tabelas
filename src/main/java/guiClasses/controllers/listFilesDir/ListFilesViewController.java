@@ -59,6 +59,9 @@ public class ListFilesViewController implements Initializable {
     private HBox hbStatistics;
 
     @FXML
+    private Label lbNoFiles;
+
+    @FXML
     private void onHbStatistics() {
         clickSound.play();
         try {
@@ -97,7 +100,11 @@ public class ListFilesViewController implements Initializable {
 
         int count = 1;
 
-        if (files != null) {
+        if (files.length == 0) {
+            lbNoFiles.setText("Não há nenhuma tabela para ser listada no momento, por favor crie uma tabela para poder lista-lá.");
+            lbNoFiles.setStyle("-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;");
+
+        }else {
             for (File file : files) {
                 String fileWithOutFinal = file.getName().substring(0, file.getName().length() - 5);
                 Label newLabel = new Label(fileWithOutFinal);

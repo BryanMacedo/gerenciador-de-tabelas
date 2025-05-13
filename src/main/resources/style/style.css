@@ -327,7 +327,3 @@
     -fx-border-width: 5px;
     -fx-background-color: transparent;
 }
-
-.labelHover:hover{
-    -fx-background-color: #272727;
-}
