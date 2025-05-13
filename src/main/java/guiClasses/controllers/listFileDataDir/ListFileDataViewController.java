@@ -421,7 +421,7 @@ public class ListFileDataViewController implements Initializable {
                         labelDate = new Label(newGame.getFinishDate().format(dateTimeFormatterBR));
                     }
 
-                    labelDate.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 182; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+                    labelDate.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 192; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
 
                     Label labelRating = new Label(String.valueOf(newGame.getRating()));
                     labelRating.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 72; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
@@ -430,7 +430,7 @@ public class ListFileDataViewController implements Initializable {
                     labelDLC.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 134; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
 
                     Label labelFinish = new Label(newGame.getFinish());
-                    labelFinish.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 122; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+                    labelFinish.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 132; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
 
                     HBox newHbox = new HBox(labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
                     newHbox.setStyle("-fx-alignment: top_center;");

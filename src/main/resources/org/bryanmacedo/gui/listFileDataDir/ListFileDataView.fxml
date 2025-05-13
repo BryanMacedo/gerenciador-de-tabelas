@@ -278,7 +278,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1084.0">
                            <children>
-                              <Label fx:id="lbTableName" alignment="CENTER" prefWidth="1015.0" styleClass="marg">
+                              <Label fx:id="lbTableName" alignment="CENTER" prefWidth="1035.0" styleClass="marg">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -298,12 +298,12 @@
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="37.0" prefWidth="142.0" styleClass="marg" text="PLATAFORMA ">
+                              <Label alignment="CENTER" prefHeight="37.0" prefWidth="142.0" styleClass="marg" text="PLATAFORMA">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="699.0" layoutY="10.0" prefHeight="37.0" prefWidth="72.0" styleClass="marg" text="NOTA ">
+                              <Label alignment="CENTER" layoutX="699.0" layoutY="10.0" prefHeight="37.0" prefWidth="72.0" styleClass="marg" text="NOTA">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -313,12 +313,12 @@
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="748.0" layoutY="10.0" prefHeight="37.0" prefWidth="122.0" styleClass="marg" text="FINALIZADO">
+                              <Label alignment="CENTER" layoutX="748.0" layoutY="10.0" prefHeight="37.0" prefWidth="132.0" styleClass="marg" text="FINALIZADO">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="746.0" layoutY="10.0" prefHeight="37.0" prefWidth="182.0" styleClass="marg" text="DATA DE TERMINO">
+                              <Label alignment="CENTER" layoutX="746.0" layoutY="10.0" prefHeight="37.0" prefWidth="192.0" styleClass="marg" text="DATA DE TERMINO">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
