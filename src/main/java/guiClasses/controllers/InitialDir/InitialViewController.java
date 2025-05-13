@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -111,6 +112,16 @@ public class InitialViewController implements Initializable {
         loadSounds();
 
         setInitialsSounds();
+
+        Path path = Paths.get("C://tabelas-GT");
+
+        if (!Files.exists(path) && !Files.isDirectory(path)) {
+            try {
+                Files.createDirectory(path);
+            } catch (IOException e) {
+                System.out.println("Pasta não criada." + e.getMessage());
+            }
+        }
     }
 
     private void setInitialsSounds(){

@@ -157,17 +157,6 @@ public class NewFileViewController implements Initializable {
 
         setInitialsSounds();
 
-        //tirar a criação da pasta daqui quando tiver a tela inicial
-        Path path = Paths.get("C://tabelas-GT");
-
-        if (!Files.exists(path) && !Files.isDirectory(path)) {
-            try {
-                Files.createDirectory(path);
-            } catch (IOException e) {
-                System.out.println("Pasta não criada." + e.getMessage());
-            }
-        }
-
     }
 
     private void setInitialsSounds(){
