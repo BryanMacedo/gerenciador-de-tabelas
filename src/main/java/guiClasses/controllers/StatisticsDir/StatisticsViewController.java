@@ -306,7 +306,9 @@ public class StatisticsViewController implements Initializable {
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
-        lbPlatform.setText(maxEntry.getKey());
+        if (maxEntry != null){
+            lbPlatform.setText(maxEntry.getKey());
+        }
         lbMaxRating.setText(String.valueOf(countMaxRating));
 
     }
