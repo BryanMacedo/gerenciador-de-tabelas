@@ -3,7 +3,7 @@ package model.entities;
 public enum TypeDLC {
     NAO_TEM("Não tem"),
     TERMINEI("Terminei"),
-    NAO_TERMINEI("Não terminei"),
+    NAO_JOGUEI("Não joguei"),
     E_DLC("É DLC");
 
     private String strDLC;

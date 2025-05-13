@@ -145,7 +145,7 @@ public class AddFirstDataViewController implements Initializable {
     private RadioButton rbTERMINEI;
 
     @FXML
-    private RadioButton rbNAO_TERMINEI;
+    private RadioButton rbNAO_JOGUEI;
 
     @FXML
     private RadioButton rbE_DLC;
@@ -190,8 +190,8 @@ public class AddFirstDataViewController implements Initializable {
             return TypeDLC.E_DLC;
         } else if (rbTERMINEI.isSelected()) {
             return TypeDLC.TERMINEI;
-        } else if (rbNAO_TERMINEI.isSelected()) {
-            return TypeDLC.NAO_TERMINEI;
+        } else if (rbNAO_JOGUEI.isSelected()) {
+            return TypeDLC.NAO_JOGUEI;
         } else if (rbNAO_TEM.isSelected()) {
             return TypeDLC.NAO_TEM;
         }
@@ -325,7 +325,7 @@ public class AddFirstDataViewController implements Initializable {
 
         ObservableList<Node> form = FXCollections.observableArrayList(
                 tfName, cbPlataforms, spnRating,
-                rbNo,rbYes,rbTERMINEI,rbNAO_TERMINEI,rbNAO_TEM,rbE_DLC, dpFinish);
+                rbNo,rbYes,rbTERMINEI,rbNAO_JOGUEI,rbNAO_TEM,rbE_DLC, dpFinish);
 
         for (Node node : form) {
             node.setOnKeyPressed(event -> {
@@ -338,7 +338,7 @@ public class AddFirstDataViewController implements Initializable {
 
     private void setInitialsSounds() {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
-        List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_TERMINEI, rbTERMINEI, rbYes, rbNo));
+        List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_JOGUEI, rbTERMINEI, rbYes, rbNo));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
 
         for (ImageView imgv : imageViews) {

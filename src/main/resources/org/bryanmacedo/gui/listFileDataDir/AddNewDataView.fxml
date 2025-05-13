@@ -290,7 +290,7 @@
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </RadioButton>
-                                    <RadioButton fx:id="rbNAO_TERMINEI" mnemonicParsing="false" text="Não terminei" textFill="WHITE" toggleGroup="$tgDLC">
+                                    <RadioButton fx:id="rbNAO_JOGUEI" mnemonicParsing="false" text="Não joguei" textFill="WHITE" toggleGroup="$tgDLC">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
