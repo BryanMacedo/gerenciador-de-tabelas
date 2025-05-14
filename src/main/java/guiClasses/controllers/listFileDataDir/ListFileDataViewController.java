@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -40,7 +42,7 @@ public class ListFileDataViewController implements Initializable {
     DateTimeFormatter dateTimeFormatterBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private AudioClip clickSound;
-    private AudioClip hoverSound;
+    private MediaPlayer hover;
 
     @FXML
     private ImageView imgvClose;
@@ -148,7 +150,8 @@ public class ListFileDataViewController implements Initializable {
 
         btnYes.setOnMouseEntered(e -> {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
-            hoverSound.play();
+            hover.seek(javafx.util.Duration.ZERO);
+            hover.play();
         });
         btnYes.setOnMouseExited(e -> {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
@@ -159,7 +162,8 @@ public class ListFileDataViewController implements Initializable {
 
         btnNo.setOnMouseEntered(e -> {
             btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
-            hoverSound.play();
+            hover.seek(javafx.util.Duration.ZERO);
+            hover.play();
         });
 
         btnNo.setOnMouseExited(e -> {
@@ -479,19 +483,22 @@ public class ListFileDataViewController implements Initializable {
         for (HBox hBox : hBoxeBtns) {
             hBox.setOnMouseEntered(event -> {
                 //hoverSound.stop();
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
     }
@@ -502,10 +509,10 @@ public class ListFileDataViewController implements Initializable {
         this.clickSound.setVolume(0.1);
         clickSound.setPriority(1);
 
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
+        String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        Media mediaHover = new Media(audioHover);
+        hover = new MediaPlayer(mediaHover);
+        hover.setVolume(0.1);
     }
 
     @FXML

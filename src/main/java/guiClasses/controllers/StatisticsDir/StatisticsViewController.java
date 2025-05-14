@@ -34,7 +34,7 @@ public class StatisticsViewController implements Initializable {
     private List<Game> gamesToStatistics = new ArrayList<>();
 
     private AudioClip clickSound;
-    private AudioClip hoverSound;
+    private MediaPlayer hover;
     private MediaPlayer ps5;
     private MediaPlayer ps4;
     private MediaPlayer ps3;
@@ -319,13 +319,15 @@ public class StatisticsViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
     }
@@ -406,10 +408,10 @@ public class StatisticsViewController implements Initializable {
         nSwitch = new MediaPlayer(mediaSwitch);
         nSwitch.setVolume(0.1);
 
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
+        String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        Media mediaHover = new Media(audioHover);
+        hover = new MediaPlayer(mediaHover);
+        hover.setVolume(0.1);
     }
 
     @FXML

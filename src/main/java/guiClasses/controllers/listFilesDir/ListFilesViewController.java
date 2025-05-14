@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -25,7 +27,7 @@ public class ListFilesViewController implements Initializable {
     public static String fileToAccess;
 
     private AudioClip clickSound;
-    private AudioClip hoverSound;
+    private MediaPlayer hover;
 
 
     @FXML
@@ -124,7 +126,8 @@ public class ListFilesViewController implements Initializable {
                             "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #ffffff; -fx-max-width: infinity;" +
                             "-fx-alignment: center; -fx-background-color: #272727;");
 
-                    hoverSound.play();
+                    hover.seek(javafx.util.Duration.ZERO);
+                    hover.play();
                 });
 
                 newLabel.setOnMouseExited(e -> newLabel.setStyle("-fx-border-color: #ffffff; -fx-border-width: 4px;" +
@@ -180,13 +183,15 @@ public class ListFilesViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
     }
@@ -197,10 +202,10 @@ public class ListFilesViewController implements Initializable {
         this.clickSound.setVolume(0.1);
         clickSound.setPriority(1);
 
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
+        String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        Media mediaHover = new Media(audioHover);
+        hover = new MediaPlayer(mediaHover);
+        hover.setVolume(0.1);
     }
 
     // fechar e minimizar

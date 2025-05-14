@@ -15,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import model.entities.Game;
 import model.entities.TypeDLC;
@@ -46,7 +48,7 @@ public class EditDataViewController implements Initializable {
     Game gameEdited;
 
     private AudioClip clickSound;
-    private AudioClip hoverSound;
+    private MediaPlayer hover;
     private AudioClip errorSound;
     private AudioClip typingSound;
     private AudioClip typingDeleteSound;
@@ -371,18 +373,21 @@ public class EditDataViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hoverSound.play();
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
             });
         }
 
         btEditLine.setOnMouseEntered(event -> {
-            hoverSound.play();
+            hover.seek(javafx.util.Duration.ZERO);
+            hover.play();
         });
 
         tfName.setOnMouseClicked(event -> {
@@ -434,10 +439,10 @@ public class EditDataViewController implements Initializable {
         this.clickSound.setVolume(0.1);
         clickSound.setPriority(1);
 
-        String hoverPath = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        this.hoverSound = new AudioClip(hoverPath);
-        this.hoverSound.setVolume(0.1);
-        hoverSound.setPriority(1);
+        String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
+        Media mediaHover = new Media(audioHover);
+        hover = new MediaPlayer(mediaHover);
+        hover.setVolume(0.1);
 
         String errorPath = getClass().getResource("/sounds/error_sound_01.mp3").toString();
         this.errorSound = new AudioClip(errorPath);

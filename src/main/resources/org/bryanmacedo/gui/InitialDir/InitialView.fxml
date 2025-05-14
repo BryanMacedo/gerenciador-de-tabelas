@@ -60,9 +60,8 @@
                               <Insets bottom="15.0" top="15.0" />
                            </padding>
                            <styleClass>
-                              <String fx:value="labelMarg" />
-                              <String fx:value="labelCursor" />
-                              <String fx:value="labelHover" />
+                              <String fx:value="initialOptions" />
+                              <String fx:value="initialOptionsHover" />
                            </styleClass>
                         </Label>
                         <Label fx:id="lbListFiles" alignment="CENTER" onMouseClicked="#onLbListFilesClick" prefHeight="37.0" prefWidth="176.0" text="Listar tabelas">
@@ -73,9 +72,8 @@
                               <Insets bottom="15.0" top="15.0" />
                            </padding>
                            <styleClass>
-                              <String fx:value="labelMarg" />
-                              <String fx:value="labelCursor" />
-                              <String fx:value="labelHover" />
+                              <String fx:value="initialOptions" />
+                              <String fx:value="initialOptionsHover" />
                            </styleClass>
                         </Label>
                         <Label fx:id="lbStatistics" alignment="CENTER" onMouseClicked="#onLbStatisticsClick" prefHeight="37.0" prefWidth="176.0" text="Suas estatísticas">
@@ -86,9 +84,8 @@
                               <Insets bottom="15.0" top="15.0" />
                            </padding>
                            <styleClass>
-                              <String fx:value="labelMarg" />
-                              <String fx:value="labelCursor" />
-                              <String fx:value="labelHover" />
+                              <String fx:value="initialOptions" />
+                              <String fx:value="initialOptionsHover" />
                            </styleClass>
                         </Label>
                      </children>

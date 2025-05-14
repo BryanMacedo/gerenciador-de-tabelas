@@ -318,12 +318,14 @@
     -fx-cursor: hand;
 }
 
-.labelCursor{
+.initialOptions{
     -fx-cursor: hand;
-}
-
-.labelMarg{
     -fx-border-color: #FFFFFF;
     -fx-border-width: 5px;
     -fx-background-color: transparent;
 }
+
+.initialOptionsHover:hover{
+    -fx-background-color: #272727;
+}
+

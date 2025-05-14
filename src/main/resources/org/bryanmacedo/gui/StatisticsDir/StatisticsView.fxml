@@ -135,13 +135,13 @@
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos zerados" />
-                        <Label fx:id="lbFinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" text="Dados insulficientes" />
+                        <Label fx:id="lbFinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos não zerados" />
-                        <Label fx:id="lbUnfinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" text="Dados insulficientes" />
+                        <Label fx:id="lbUnfinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
@@ -153,7 +153,7 @@
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos com nota maxima" />
-                        <Label fx:id="lbMaxRating" alignment="CENTER" prefWidth="200.0" styleClass="marg" text="Dados insulficientes" />
+                        <Label fx:id="lbMaxRating" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                </children>
