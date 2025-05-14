@@ -50,6 +50,7 @@ public class StatisticsViewController implements Initializable {
     private MediaPlayer deck;
     private MediaPlayer nSwitch;
 
+
     @FXML
     private ImageView imgvClose;
 
@@ -82,7 +83,13 @@ public class StatisticsViewController implements Initializable {
 
     @FXML
     private void onHbListFilesClick() {
+        List<MediaPlayer> sounds = new ArrayList<>(Arrays.asList(ps5, ps4, ps3, ps2, ps1, psp, psVita, pc, xbox, xbox360, xboxOne, xboxS, deck, nSwitch));
+
         clickSound.play();
+
+        for (MediaPlayer sound : sounds) {
+            sound.stop();
+        }
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
@@ -209,7 +216,13 @@ public class StatisticsViewController implements Initializable {
 
     @FXML
     private void onHbNewFileClick() {
+        List<MediaPlayer> sounds = new ArrayList<>(Arrays.asList(ps5, ps4, ps3, ps2, ps1, psp, psVita, pc, xbox, xbox360, xboxOne, xboxS, deck, nSwitch));
+
         clickSound.play();
+
+        for (MediaPlayer sound : sounds) {
+            sound.stop();
+        }
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
             Parent root = loader.load();
@@ -306,7 +319,7 @@ public class StatisticsViewController implements Initializable {
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
-        if (maxEntry != null){
+        if (maxEntry != null) {
             lbPlatform.setText(maxEntry.getKey());
         }
         lbMaxRating.setText(String.valueOf(countMaxRating));
@@ -422,7 +435,15 @@ public class StatisticsViewController implements Initializable {
 
     @FXML
     private void onImgvMinimizeClick() {
+        List<MediaPlayer> sounds = new ArrayList<>(Arrays.asList(ps5, ps4, ps3, ps2, ps1, psp, psVita, pc, xbox, xbox360, xboxOne, xboxS, deck, nSwitch));
+
         clickSound.play();
+
+        for (MediaPlayer sound : sounds) {
+            sound.seek(javafx.util.Duration.ZERO);
+            sound.stop();
+            hbLogo.setMouseTransparent(false);
+        }
         Stage stage = (Stage) imgvMinimize.getScene().getWindow();
         stage.setIconified(true);
     }

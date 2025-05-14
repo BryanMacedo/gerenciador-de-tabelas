@@ -373,11 +373,13 @@ public class AddNewDataViewController implements Initializable {
     // fechar e minimizar
     @FXML
     private void onImgvCloseClick() {
+        clickSound.play();
         Platform.exit();
     }
 
     @FXML
     private void onImgvMinimizeClick() {
+        clickSound.play();
         Stage stage = (Stage) imgvMinimize.getScene().getWindow();
         stage.setIconified(true);
     }
