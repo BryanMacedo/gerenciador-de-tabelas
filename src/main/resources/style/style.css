@@ -342,3 +342,7 @@
     -fx-background-color: #272727;
 }
 
+.labelWarningFile{
+    -fx-font-size: 25px;
+}
+

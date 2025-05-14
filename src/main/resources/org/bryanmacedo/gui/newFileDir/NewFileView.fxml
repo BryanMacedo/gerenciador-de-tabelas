@@ -127,6 +127,15 @@
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="lbWarning" styleClass="labelWarningFile">
+                     <StackPane.margin>
+                        <Insets bottom="280.0" />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+            </StackPane>
             <VBox>
                <children>
                   <HBox alignment="CENTER" prefHeight="829.0" prefWidth="1107.0">

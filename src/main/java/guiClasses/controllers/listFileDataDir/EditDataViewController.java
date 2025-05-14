@@ -130,6 +130,7 @@ public class EditDataViewController implements Initializable {
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
                 typeDLC == null || strRbYesOrNo.isEmpty()) {
+            lbWarning.setText("Preencha todos os campos para editar a linha.");
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
             errorSound.play();
         } else if (gameToEdit.equals(gameEdited)) {

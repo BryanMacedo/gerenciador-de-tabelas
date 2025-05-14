@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -65,6 +66,9 @@ public class NewFileViewController implements Initializable {
     private HBox hbStatistics;
 
     @FXML
+    private Label lbWarning;
+
+    @FXML
     private void onHbStatistics(){
         clickSound.play();
         try {
@@ -96,11 +100,11 @@ public class NewFileViewController implements Initializable {
         String fileName = tfFileName.getText().trim();
 
         if (fileName.isEmpty()) {
-            System.out.println("Por favor digíte um nome para o arquivo!");
+            lbWarning.setText("Por favor digíte um nome para o arquivo.");
             errorSound.play();
             return;
         }
-        clickSound.play();
+
 
         //verificando se já existe um arquivo com o nome informado
         String fileNameXlsx = fileName + ".xlsx";
@@ -108,10 +112,13 @@ public class NewFileViewController implements Initializable {
 
         File checkFile = new File(path.toString(), fileNameXlsx);
         if (checkFile.exists()) {
-            System.out.println("Já existe um arquivo com este nome, por favor digite outro.");
+            errorSound.play();
+            lbWarning.setText("Já existe um arquivo com este nome, por favor digite outro.");
             tfFileName.clear();
             return;
         } else {
+            clickSound.play();
+
             // criando o arquivo
             Path fullPath = Paths.get(path.toString(), fileName + ".xlsx");
 
