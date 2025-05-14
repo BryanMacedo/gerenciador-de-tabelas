@@ -110,7 +110,6 @@ public class AddNewDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -145,8 +144,6 @@ public class AddNewDataViewController implements Initializable {
 
         Game newGame = new Game(tfName.getText(), cbPlataforms.getValue(),
                 spnRating.getValue(), typeDLC, strRbYesOrNo, dpFinish.getValue());
-
-        System.out.println(newGame);
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
                 typeDLC == null || strRbYesOrNo.isEmpty()) {
@@ -200,7 +197,6 @@ public class AddNewDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException exc) {
-            //System.out.println(e.getMessage());
             exc.printStackTrace();
         }
     }
@@ -227,7 +223,6 @@ public class AddNewDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -241,7 +236,6 @@ public class AddNewDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }

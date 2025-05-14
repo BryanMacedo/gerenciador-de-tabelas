@@ -73,7 +73,6 @@ public class NewFileViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -87,7 +86,6 @@ public class NewFileViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -149,7 +147,6 @@ public class NewFileViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
 

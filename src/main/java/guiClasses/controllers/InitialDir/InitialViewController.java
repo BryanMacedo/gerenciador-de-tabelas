@@ -66,7 +66,6 @@ public class InitialViewController implements Initializable {
                 Scene scene = imgvClose.getScene();
                 scene.setRoot(root);
             } catch (IOException e) {
-                //System.out.println(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -89,7 +88,6 @@ public class InitialViewController implements Initializable {
                 Scene scene = imgvClose.getScene();
                 scene.setRoot(root);
             } catch (IOException e) {
-                //System.out.println(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -104,7 +102,6 @@ public class InitialViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }

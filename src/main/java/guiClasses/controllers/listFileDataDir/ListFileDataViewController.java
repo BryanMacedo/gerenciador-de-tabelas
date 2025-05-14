@@ -89,7 +89,6 @@ public class ListFileDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -230,13 +229,11 @@ public class ListFileDataViewController implements Initializable {
                     // abre novamente a view atual
 
                     try {
-                        System.out.println(ListFilesViewController.fileToAccess);
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/ListFileDataView.fxml"));
                         Parent root = loader.load();
                         Scene scene = imgvClose.getScene();
                         scene.setRoot(root);
                     } catch (IOException e) {
-                        //System.out.println(e.getMessage());
                         e.printStackTrace();
                     }
 
@@ -251,7 +248,6 @@ public class ListFileDataViewController implements Initializable {
                         Scene scene = imgvClose.getScene();
                         scene.setRoot(root);
                     } catch (IOException e) {
-                        //System.out.println(e.getMessage());
                         e.printStackTrace();
                     }
                 }
@@ -314,7 +310,6 @@ public class ListFileDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -355,7 +350,6 @@ public class ListFileDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -369,7 +363,6 @@ public class ListFileDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -444,7 +437,6 @@ public class ListFileDataViewController implements Initializable {
                     newHbox.setOnMouseClicked(e -> {
                         clickSound.play();
                         gameToEdit = newGame;
-                        System.out.println(gameToEdit);
 
                         switch (optionFunction){
                             case 1 ->{
@@ -455,7 +447,6 @@ public class ListFileDataViewController implements Initializable {
                                     Scene scene = imgvClose.getScene();
                                     scene.setRoot(root);
                                 } catch (IOException ex) {
-                                    //System.out.println(e.getMessage());
                                     ex.printStackTrace();
                                 }
                             }

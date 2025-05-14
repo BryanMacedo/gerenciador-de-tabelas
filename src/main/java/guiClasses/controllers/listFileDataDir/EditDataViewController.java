@@ -116,7 +116,6 @@ public class EditDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -128,9 +127,6 @@ public class EditDataViewController implements Initializable {
 
         gameEdited = new Game(tfName.getText(), cbPlataforms.getValue(),
                 spnRating.getValue(), typeDLC, strRbYesOrNo, dpFinish.getValue());
-
-        System.out.println("gameToEdit: " + gameToEdit);
-        System.out.println("gameEdited: " + gameEdited);
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
                 typeDLC == null || strRbYesOrNo.isEmpty()) {
@@ -156,8 +152,6 @@ public class EditDataViewController implements Initializable {
                     ListFileDataViewController.games.add(gameEdited);
                 }
             }
-
-            System.out.println(ListFileDataViewController.games);
 
             //excluir a tabela e criar outra com o mesmo nome
             File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
@@ -203,7 +197,6 @@ public class EditDataViewController implements Initializable {
                 Scene scene = imgvClose.getScene();
                 scene.setRoot(root);
             } catch (IOException exc) {
-                //System.out.println(e.getMessage());
                 exc.printStackTrace();
             }
 
@@ -293,7 +286,6 @@ public class EditDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -307,7 +299,6 @@ public class EditDataViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }

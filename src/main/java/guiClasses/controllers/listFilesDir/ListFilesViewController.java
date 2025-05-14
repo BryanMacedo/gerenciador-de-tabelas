@@ -72,7 +72,6 @@ public class ListFilesViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -86,7 +85,6 @@ public class ListFilesViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -137,7 +135,6 @@ public class ListFilesViewController implements Initializable {
 
                 newLabel.setOnMouseClicked(e -> {
                     clickSound.play();
-                    System.out.println("Arquivo clicado: " + fileWithOutFinal);
 
                     //ir para a tela que mostra os dados do arquivo
                     try {
@@ -147,7 +144,6 @@ public class ListFilesViewController implements Initializable {
                         Scene scene = imgvClose.getScene();
                         scene.setRoot(root);
                     } catch (IOException exc) {
-                        //System.out.println(e.getMessage());
                         exc.printStackTrace();
                     }
                 });

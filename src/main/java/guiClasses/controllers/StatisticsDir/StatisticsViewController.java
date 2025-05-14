@@ -96,7 +96,6 @@ public class StatisticsViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -229,7 +228,6 @@ public class StatisticsViewController implements Initializable {
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);
         } catch (IOException e) {
-            //System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -307,8 +305,6 @@ public class StatisticsViewController implements Initializable {
             String platform = gamePlatform.getPlatform();
             counterPlatforms.put(platform, counterPlatforms.getOrDefault(platform, 0) + 1);
         }
-
-        System.out.println(counterPlatforms);
 
         Map.Entry<String, Integer> maxEntry = null;
         for (Map.Entry<String, Integer> entry : counterPlatforms.entrySet()) {
