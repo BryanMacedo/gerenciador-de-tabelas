@@ -102,7 +102,7 @@ public class AddNewDataViewController implements Initializable {
     private HBox hbStatistics;
 
     @FXML
-    private void onHbStatistics(){
+    private void onHbStatistics() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
@@ -265,18 +265,23 @@ public class AddNewDataViewController implements Initializable {
 
         ObservableList<Node> form = FXCollections.observableArrayList(
                 tfName, cbPlataforms, spnRating,
-                rbNo,rbYes,rbTERMINEI,rbNAO_JOGUEI,rbNAO_TEM,rbE_DLC, dpFinish);
+                rbNo, rbYes, rbTERMINEI, rbNAO_JOGUEI, rbNAO_TEM, rbE_DLC, dpFinish);
 
         for (Node node : form) {
             node.setOnKeyPressed(event -> {
-                if (event.getCode() == KeyCode.ENTER){
+                if (event.getCode() == KeyCode.ENTER) {
                     btAddGame.fire();
                 }
             });
         }
+
+
+
+
+
     }
 
-    private void setInitialsSounds(){
+    private void setInitialsSounds() {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_JOGUEI, rbTERMINEI, rbYes, rbNo));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
@@ -323,6 +328,8 @@ public class AddNewDataViewController implements Initializable {
             clickSound.play();
         });
 
+
+
         dpFinish.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 clickSound.play();
@@ -343,7 +350,7 @@ public class AddNewDataViewController implements Initializable {
         });
     }
 
-    private void loadSounds(){
+    private void loadSounds() {
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);

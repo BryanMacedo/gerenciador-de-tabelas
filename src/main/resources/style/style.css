@@ -168,6 +168,7 @@
     -fx-border-radius: 20px;
 }
 
+
 .date-picker-popup .month-year-pane {
     -fx-background-color: #000000;
 }
@@ -182,7 +183,14 @@
 .date-picker .arrow-button {
     -fx-background-color: transparent;
     -fx-cursor: hand;
+
 }
+
+.date-picker .left-arrow,
+.date-picker .right-arrow {
+    -fx-background-color: white;
+}
+
 
 .date-picker .arrow {
     -fx-background-color: #ffffff;
@@ -205,7 +213,12 @@
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-border-color: #ffffff;
-    -fx-border-width: 1px;
+    -fx-border-width: 2px 1px 1px 1px;
+}
+
+.date-picker .spinner .left-button,
+.date-picker .spinner .right-button {
+    -fx-border-color: transparent;
 }
 
 /* Estilo do círculo externo (fundo branco) */
