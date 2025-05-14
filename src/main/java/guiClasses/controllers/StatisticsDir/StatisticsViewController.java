@@ -1,6 +1,5 @@
 package guiClasses.controllers.StatisticsDir;
 
-import guiClasses.controllers.listFilesDir.ListFilesViewController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +24,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -238,7 +236,6 @@ public class StatisticsViewController implements Initializable {
         loadSounds();
 
         setInitialsSounds();
-
 
         // pega os nomes das tabelas
         File path = new File("C:\\tabelas-GT");

@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -324,6 +325,31 @@ public class ListFileDataViewController implements Initializable {
         for (HBox hBox : hBoxList) {
             hBox.setMouseTransparent(false);
             hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
+
+
+            hBox.setOnMouseEntered(e -> {
+                for (Node node : hBox.getChildren()) {
+                    if (node instanceof Label) {
+                        Label label = (Label) node;
+                        label.setStyle(label.getStyle() + "-fx-background-color: #000000;");
+                    }
+                }
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
+            });
+
+            hBox.setOnMouseExited(e -> {
+                for (Node node : hBox.getChildren()) {
+                    if (node instanceof Label) {
+                        Label label = (Label) node;
+                        label.setStyle(label.getStyle() + "-fx-background-color: #272727;");
+                    }
+                }
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
+            });
+
+
         }
     }
 
@@ -337,6 +363,31 @@ public class ListFileDataViewController implements Initializable {
         for (HBox hBox : hBoxList) {
             hBox.setMouseTransparent(false);
             hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
+
+
+            hBox.setOnMouseEntered(e -> {
+                for (Node node : hBox.getChildren()) {
+                    if (node instanceof Label) {
+                        Label label = (Label) node;
+                        label.setStyle(label.getStyle() + "-fx-background-color: #000000;");
+                    }
+                }
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
+            });
+
+            hBox.setOnMouseExited(e -> {
+                for (Node node : hBox.getChildren()) {
+                    if (node instanceof Label) {
+                        Label label = (Label) node;
+                        label.setStyle(label.getStyle() + "-fx-background-color: #272727;");
+                    }
+                }
+                hover.seek(javafx.util.Duration.ZERO);
+                hover.play();
+            });
+
+
         }
     }
 
