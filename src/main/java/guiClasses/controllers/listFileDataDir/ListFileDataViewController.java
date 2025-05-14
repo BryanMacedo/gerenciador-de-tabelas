@@ -106,7 +106,7 @@ public class ListFileDataViewController implements Initializable {
 
         dialogPane.setStyle(
                 "-fx-background-color: #272727; " +
-                        "-fx-background-radius: 20px; " +
+                        "-fx-background-radius: 25px; " +
                         "-fx-border-color: #FFFFFF; " +
                         "-fx-border-width: 5px; " +
                         "-fx-border-radius: 20px;"
