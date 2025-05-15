@@ -28,6 +28,7 @@ public class ListFilesViewController implements Initializable {
 
     private AudioClip clickSound;
     private MediaPlayer hover;
+    private Media mediaHover;
 
 
     @FXML
@@ -124,8 +125,10 @@ public class ListFilesViewController implements Initializable {
                             "-fx-padding: 15px; -fx-cursor: hand; -fx-text-fill: #ffffff; -fx-max-width: infinity;" +
                             "-fx-alignment: center; -fx-background-color: #272727;");
 
-                    hover.seek(javafx.util.Duration.ZERO);
-                    hover.play();
+                    MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                    newHoverPlayer.setVolume(0.1);
+                    newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                    newHoverPlayer.play();
                 });
 
                 newLabel.setOnMouseExited(e -> newLabel.setStyle("-fx-border-color: #ffffff; -fx-border-width: 4px;" +
@@ -179,15 +182,19 @@ public class ListFilesViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
     }
@@ -199,7 +206,7 @@ public class ListFilesViewController implements Initializable {
         clickSound.setPriority(1);
 
         String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        Media mediaHover = new Media(audioHover);
+        this.mediaHover = new Media(audioHover);
         hover = new MediaPlayer(mediaHover);
         hover.setVolume(0.1);
     }

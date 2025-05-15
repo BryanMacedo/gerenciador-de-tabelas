@@ -13,6 +13,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class InitialViewController implements Initializable {
     private AudioClip clickSound;
     private MediaPlayer hover;
     private AudioClip errorSound;
+    private Media mediaHover;
 
     @FXML
     private ImageView imgvClose;
@@ -49,16 +51,16 @@ public class InitialViewController implements Initializable {
     private Label lbWarning;
 
     @FXML
-    private void onLbStatisticsClick(){
+    private void onLbStatisticsClick() {
         // verificar se tem arquivos para entrar na pegar os dados
 
         File folder = new File("C:\\tabelas-GT");
         String[] files = folder.list();
 
-        if (files.length == 0){
+        if (files.length == 0) {
             errorSound.play();
             lbWarning.setText("No momento, você não tem dados suficientes para visualizar suas estatísticas. Por favor, clique na opção \"Criar uma tabela\" para criar sua primeira tabela e fornecer os dados que serão analisados.");
-        }else{
+        } else {
             clickSound.play();
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
@@ -72,15 +74,15 @@ public class InitialViewController implements Initializable {
     }
 
     @FXML
-    private void onLbListFilesClick(){
+    private void onLbListFilesClick() {
         // verificar se tem arquivos para listar
         File folder = new File("C:\\tabelas-GT");
         String[] files = folder.list();
 
-        if (files.length == 0){
+        if (files.length == 0) {
             errorSound.play();
             lbWarning.setText("No momento não há tabelas a serem listadas. Por favor, clique na opção \"Criar uma tabela\" para poder criar sua primeira tabela.");
-        }else{
+        } else {
             clickSound.play();
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
@@ -94,7 +96,7 @@ public class InitialViewController implements Initializable {
     }
 
     @FXML
-    private void onLbNewFileClick(){
+    private void onLbNewFileClick() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/newFileDir/NewFileView.fxml"));
@@ -123,33 +125,37 @@ public class InitialViewController implements Initializable {
         }
     }
 
-    private void setInitialsSounds(){
+    private void setInitialsSounds() {
         List<Label> labelList = new ArrayList<>(Arrays.asList(lbListFiles, lbNewFile, lbStatistics));
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
 
         for (Label label : labelList) {
             label.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
 
         for (ImageView imageView : imageViews) {
             imageView.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
     }
 
-    private void loadSounds(){
+    private void loadSounds() {
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);
         clickSound.setPriority(1);
 
         String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        Media mediaHover = new Media(audioHover);
+        this.mediaHover = new Media(audioHover);
         hover = new MediaPlayer(mediaHover);
         hover.setVolume(0.1);
 

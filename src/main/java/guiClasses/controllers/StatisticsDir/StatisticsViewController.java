@@ -48,6 +48,7 @@ public class StatisticsViewController implements Initializable {
     private MediaPlayer xbox;
     private MediaPlayer deck;
     private MediaPlayer nSwitch;
+    private Media mediaHover;
 
 
     @FXML
@@ -383,15 +384,19 @@ public class StatisticsViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
     }
@@ -473,7 +478,7 @@ public class StatisticsViewController implements Initializable {
         nSwitch.setVolume(0.1);
 
         String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        Media mediaHover = new Media(audioHover);
+        this.mediaHover = new Media(audioHover);
         hover = new MediaPlayer(mediaHover);
         hover.setVolume(0.1);
     }

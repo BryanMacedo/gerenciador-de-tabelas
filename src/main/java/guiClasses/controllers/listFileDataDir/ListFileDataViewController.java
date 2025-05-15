@@ -44,6 +44,7 @@ public class ListFileDataViewController implements Initializable {
 
     private AudioClip clickSound;
     private MediaPlayer hover;
+    private Media mediaHover;
 
     @FXML
     private ImageView imgvClose;
@@ -150,8 +151,10 @@ public class ListFileDataViewController implements Initializable {
 
         btnYes.setOnMouseEntered(e -> {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
-            hover.seek(javafx.util.Duration.ZERO);
-            hover.play();
+            MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+            newHoverPlayer.setVolume(0.1);
+            newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+            newHoverPlayer.play();
         });
         btnYes.setOnMouseExited(e -> {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
@@ -162,8 +165,10 @@ public class ListFileDataViewController implements Initializable {
 
         btnNo.setOnMouseEntered(e -> {
             btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: #ffffff; -fx-border-radius: 20px; -fx-border-width: 2px;");
-            hover.seek(javafx.util.Duration.ZERO);
-            hover.play();
+            MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+            newHoverPlayer.setVolume(0.1);
+            newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+            newHoverPlayer.play();
         });
 
         btnNo.setOnMouseExited(e -> {
@@ -334,8 +339,10 @@ public class ListFileDataViewController implements Initializable {
                         label.setStyle(label.getStyle() + "-fx-background-color: #000000;");
                     }
                 }
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.01);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
 
             hBox.setOnMouseExited(e -> {
@@ -345,8 +352,10 @@ public class ListFileDataViewController implements Initializable {
                         label.setStyle(label.getStyle() + "-fx-background-color: #272727;");
                     }
                 }
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
 
 
@@ -372,8 +381,10 @@ public class ListFileDataViewController implements Initializable {
                         label.setStyle(label.getStyle() + "-fx-background-color: #000000;");
                     }
                 }
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.01);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
 
             hBox.setOnMouseExited(e -> {
@@ -383,8 +394,10 @@ public class ListFileDataViewController implements Initializable {
                         label.setStyle(label.getStyle() + "-fx-background-color: #272727;");
                     }
                 }
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
 
 
@@ -524,23 +537,28 @@ public class ListFileDataViewController implements Initializable {
 
         for (HBox hBox : hBoxeBtns) {
             hBox.setOnMouseEntered(event -> {
-                //hoverSound.stop();
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
     }
@@ -552,7 +570,7 @@ public class ListFileDataViewController implements Initializable {
         clickSound.setPriority(1);
 
         String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        Media mediaHover = new Media(audioHover);
+        this.mediaHover = new Media(audioHover);
         hover = new MediaPlayer(mediaHover);
         hover.setVolume(0.1);
     }

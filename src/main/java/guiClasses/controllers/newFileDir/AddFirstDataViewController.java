@@ -63,6 +63,7 @@ public class AddFirstDataViewController implements Initializable {
     private AudioClip errorSound;
     private AudioClip typingSound;
     private AudioClip typingDeleteSound;
+    private Media mediaHover;
 
     @FXML
     private ImageView imgvClose;
@@ -339,21 +340,27 @@ public class AddFirstDataViewController implements Initializable {
 
         for (ImageView imgv : imageViews) {
             imgv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
 
         for (HBox hbv : hBoxViews) {
             hbv.setOnMouseEntered(event -> {
-                hover.seek(javafx.util.Duration.ZERO);
-                hover.play();
+                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+                newHoverPlayer.setVolume(0.1);
+                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+                newHoverPlayer.play();
             });
         }
 
         btAddGame.setOnMouseEntered(event -> {
-            hover.seek(javafx.util.Duration.ZERO);
-            hover.play();
+            MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
+            newHoverPlayer.setVolume(0.1);
+            newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
+            newHoverPlayer.play();
         });
 
         tfName.setOnMouseClicked(event -> {
@@ -406,7 +413,7 @@ public class AddFirstDataViewController implements Initializable {
         clickSound.setPriority(1);
 
         String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
-        Media mediaHover = new Media(audioHover);
+        this.mediaHover = new Media(audioHover);
         hover = new MediaPlayer(mediaHover);
         hover.setVolume(0.1);
 
