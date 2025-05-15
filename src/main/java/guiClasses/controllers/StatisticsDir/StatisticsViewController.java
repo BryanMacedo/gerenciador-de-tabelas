@@ -71,6 +71,9 @@ public class StatisticsViewController implements Initializable {
     private Label lbPlatform;
 
     @FXML
+    private Label lbAverage;
+
+    @FXML
     private HBox hbLogo;
 
     @FXML
@@ -310,10 +313,39 @@ public class StatisticsViewController implements Initializable {
             }
         }
 
+        //Média mensal
+
+        Map<String, Integer> counterMonthYear = new HashMap<>();
+
+        for (Game game : gamesToStatistics) {
+            if (game.getFinishDate() != null){
+                String monthYear =
+                        String.format("%02d-%d",
+                                game.getFinishDate().getMonthValue(),
+                                game.getFinishDate().getYear()
+                        );
+                counterMonthYear.put(monthYear, counterMonthYear.getOrDefault(monthYear, 0) + 1);
+            }
+        }
+
+
+        int sum = 0;
+        for (int quantity : counterMonthYear.values()) {
+            sum +=  quantity;
+        }
+
+        int average = (int) Math.round((double) sum / counterMonthYear.size());
+
+        System.out.println(average);
+
+
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
+        lbAverage.setText(String.valueOf(average));
         if (maxEntry != null) {
             lbPlatform.setText(maxEntry.getKey());
+        }else {
+            lbPlatform.setText("Dados insulficientes");
         }
         lbMaxRating.setText(String.valueOf(countMaxRating));
 
