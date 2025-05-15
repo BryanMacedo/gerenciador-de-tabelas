@@ -1,5 +1,6 @@
 package guiClasses.controllers.newFileDir;
 
+import guiClasses.controllers.listFilesDir.ListFilesViewController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -217,8 +218,6 @@ public class AddFirstDataViewController implements Initializable {
             writeFirstData(newGame);
             clickSound.play();
         }
-
-
     }
 
     private void writeFirstData(Game game) {
@@ -252,8 +251,9 @@ public class AddFirstDataViewController implements Initializable {
             e.printStackTrace();
         }
 
+        ListFilesViewController.fileToAccess = NewFileViewController.nameNewFile.replaceAll(".xlsx", "");
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/ListFileDataView.fxml"));
             Parent root = loader.load();
             Scene scene = imgvClose.getScene();
             scene.setRoot(root);

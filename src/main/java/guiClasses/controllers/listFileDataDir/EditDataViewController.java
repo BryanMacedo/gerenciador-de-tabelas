@@ -204,6 +204,7 @@ public class EditDataViewController implements Initializable {
             }
 
             try {
+                System.out.println(ListFileDataViewController.fileNameToAccessFromListData);
                 ListFilesViewController.fileToAccess = ListFileDataViewController.fileNameToAccessFromListData;
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/ListFileDataView.fxml"));
