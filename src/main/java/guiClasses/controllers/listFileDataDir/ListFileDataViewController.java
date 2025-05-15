@@ -259,7 +259,7 @@ public class ListFileDataViewController implements Initializable {
                 }
             }
 
-        }else {
+        } else {
             clickSound.play();
         }
     }
@@ -340,7 +340,7 @@ public class ListFileDataViewController implements Initializable {
                     }
                 }
                 MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
-                newHoverPlayer.setVolume(0.01);
+                newHoverPlayer.setVolume(0.1);
                 newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
                 newHoverPlayer.play();
             });
@@ -352,10 +352,6 @@ public class ListFileDataViewController implements Initializable {
                         label.setStyle(label.getStyle() + "-fx-background-color: #272727;");
                     }
                 }
-                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
-                newHoverPlayer.setVolume(0.1);
-                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
-                newHoverPlayer.play();
             });
 
 
@@ -382,7 +378,7 @@ public class ListFileDataViewController implements Initializable {
                     }
                 }
                 MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
-                newHoverPlayer.setVolume(0.01);
+                newHoverPlayer.setVolume(0.1);
                 newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
                 newHoverPlayer.play();
             });
@@ -394,10 +390,6 @@ public class ListFileDataViewController implements Initializable {
                         label.setStyle(label.getStyle() + "-fx-background-color: #272727;");
                     }
                 }
-                MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
-                newHoverPlayer.setVolume(0.1);
-                newHoverPlayer.setOnEndOfMedia(() -> newHoverPlayer.dispose());
-                newHoverPlayer.play();
             });
 
 
@@ -499,7 +491,6 @@ public class ListFileDataViewController implements Initializable {
                     newHbox.setMouseTransparent(true);
 
                     newHbox.setOnMouseClicked(e -> {
-                        clickSound.play();
                         gameToEdit = newGame;
 
                         switch (optionFunction){
