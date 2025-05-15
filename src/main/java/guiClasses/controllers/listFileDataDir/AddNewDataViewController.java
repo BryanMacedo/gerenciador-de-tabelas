@@ -146,14 +146,28 @@ public class AddNewDataViewController implements Initializable {
         Game newGame = new Game(tfName.getText(), cbPlataforms.getValue(),
                 spnRating.getValue(), typeDLC, strRbYesOrNo, dpFinish.getValue());
 
+        boolean isEqual = false;
+        for (Game game : ListFileDataViewController.games) {
+            if (newGame.equals(game)){
+                isEqual = true;
+            }
+        }
+
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
                 typeDLC == null || strRbYesOrNo.isEmpty()) {
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
+            lbWarning.setText("Preencha todos os campos para adicionar um jogo.");
+            errorSound.play();
+        } else if (isEqual) {
+            lbWarning.setStyle("-fx-text-fill: #ffffff;");
+            lbWarning.setText("Já existe um jogo com os mesmos dados informados.");
             errorSound.play();
         } else {
             writeData(newGame);
             clickSound.play();
         }
+
+
 
     }
 
@@ -271,9 +285,6 @@ public class AddNewDataViewController implements Initializable {
         }
 
 
-
-
-
     }
 
     private void setInitialsSounds() {
@@ -326,7 +337,6 @@ public class AddNewDataViewController implements Initializable {
         dpFinish.setOnMouseClicked(event -> {
             clickSound.play();
         });
-
 
 
         dpFinish.valueProperty().addListener((observable, oldValue, newValue) -> {

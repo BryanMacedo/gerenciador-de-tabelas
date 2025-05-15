@@ -506,6 +506,7 @@ public class ListFileDataViewController implements Initializable {
                                 }
                             }
                             case 2 ->{
+                                clickSound.play();
                                 warningDelete("Tem certeza que deseja excluir esta Linha?");
                             }
                         }
