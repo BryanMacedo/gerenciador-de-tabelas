@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -71,7 +72,10 @@ public class StatisticsViewController implements Initializable {
     private Label lbPlatform;
 
     @FXML
-    private Label lbAverage;
+    private Label lbAverageMonth;
+
+    @FXML
+    private Label lbAverageYear;
 
     @FXML
     private HBox hbLogo;
@@ -317,8 +321,10 @@ public class StatisticsViewController implements Initializable {
 
         Map<String, Integer> counterMonthYear = new HashMap<>();
 
+        DecimalFormat df = new DecimalFormat("#.0");
+
         for (Game game : gamesToStatistics) {
-            if (game.getFinishDate() != null){
+            if (game.getFinishDate() != null) {
                 String monthYear =
                         String.format("%02d-%d",
                                 game.getFinishDate().getMonthValue(),
@@ -331,20 +337,40 @@ public class StatisticsViewController implements Initializable {
 
         int sum = 0;
         for (int quantity : counterMonthYear.values()) {
-            sum +=  quantity;
+            sum += quantity;
         }
 
-        int average = (int) Math.round((double) sum / counterMonthYear.size());
+        double average =  (double) sum / counterMonthYear.size();
+        String formattedAverage = df.format(average);
 
-        System.out.println(average);
+        //Média anual
+
+        Map<String, Integer> counterYear = new HashMap<>();
+
+        for (Game game : gamesToStatistics) {
+            if (game.getFinishDate() != null) {
+                String year = String.valueOf(game.getFinishDate().getYear());
+                counterYear.put(year, counterYear.getOrDefault(year, 0) + 1);
+            }
+        }
+
+        sum = 0;
+        for (int quantity : counterYear.values()) {
+            sum += quantity;
+        }
+
+
+        double averageYear = (double) sum / counterYear.size();
+        String formattedAverageYear = df.format(averageYear);
 
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
-        lbAverage.setText(String.valueOf(average));
+        lbAverageMonth.setText(String.valueOf(formattedAverage));
+        lbAverageYear.setText(String.valueOf(formattedAverageYear));
         if (maxEntry != null) {
             lbPlatform.setText(maxEntry.getKey());
-        }else {
+        } else {
             lbPlatform.setText("Dados insulficientes");
         }
         lbMaxRating.setText(String.valueOf(countMaxRating));

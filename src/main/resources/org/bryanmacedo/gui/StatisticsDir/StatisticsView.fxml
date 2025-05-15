@@ -144,22 +144,28 @@
                         <Label fx:id="lbUnfinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
+                  <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="422.0" prefHeight="0.0" prefWidth="1117.0">
+                     <children>
+                        <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Média de jogos zerados por ano" />
+                        <Label fx:id="lbAverageYear" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
+                     </children>
+                  </HBox>
                   <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="440.0" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Média de jogos zerados por mês" />
-                        <Label fx:id="lbAverage" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Plataforma mais jogada" />
-                        <Label fx:id="lbPlatform" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
+                        <Label fx:id="lbAverageMonth" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos com nota maxima" />
                         <Label fx:id="lbMaxRating" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
+                     <children>
+                        <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Plataforma mais jogada" />
+                        <Label fx:id="lbPlatform" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
                </children>
