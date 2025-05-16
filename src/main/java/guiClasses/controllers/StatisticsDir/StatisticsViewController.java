@@ -421,47 +421,52 @@ public class StatisticsViewController implements Initializable {
         String audioFilePs5 = getClass().getResource("/sounds/easter_egg_sounds/ps5.mp3").toString();
         Media mediaPs5 = new Media(audioFilePs5);
         ps5 = new MediaPlayer(mediaPs5);
-        ps5.setVolume(0.1);
+        ps5.setVolume(0.2);
 
         String audioFilePs4 = getClass().getResource("/sounds/easter_egg_sounds/ps4.mp3").toString();
         Media mediaPs4 = new Media(audioFilePs4);
         ps4 = new MediaPlayer(mediaPs4);
-        ps4.setVolume(0.1);
+        ps4.setVolume(0.2);
 
         String audioFilePs3 = getClass().getResource("/sounds/easter_egg_sounds/ps3.mp3").toString();
         Media mediaPs3 = new Media(audioFilePs3);
         ps3 = new MediaPlayer(mediaPs3);
-        ps3.setVolume(0.1);
+        ps3.setVolume(0.2);
 
         String audioFilePs2 = getClass().getResource("/sounds/easter_egg_sounds/ps2.mp3").toString();
         Media mediaPs2 = new Media(audioFilePs2);
         ps2 = new MediaPlayer(mediaPs2);
-        ps2.setVolume(0.1);
+        ps2.setVolume(0.2);
 
         String audioFilePs1 = getClass().getResource("/sounds/easter_egg_sounds/ps1.mp3").toString();
         Media mediaPs1 = new Media(audioFilePs1);
         ps1 = new MediaPlayer(mediaPs1);
-        ps1.setVolume(0.1);
+        ps1.setVolume(0.2);
 
         String audioFilePsp = getClass().getResource("/sounds/easter_egg_sounds/psp.mp3").toString();
         Media mediaPsp = new Media(audioFilePsp);
         psp = new MediaPlayer(mediaPsp);
-        psp.setVolume(0.1);
+        psp.setVolume(0.2);
 
         String audioFilePsVita = getClass().getResource("/sounds/easter_egg_sounds/psvita.mp3").toString();
         Media mediaPsVita = new Media(audioFilePsVita);
         psVita = new MediaPlayer(mediaPsVita);
-        psVita.setVolume(0.1);
+        psVita.setVolume(0.2);
+
+        String audioDeck = getClass().getResource("/sounds/easter_egg_sounds/deck.mp3").toString();
+        Media mediaDeck = new Media(audioDeck);
+        deck = new MediaPlayer(mediaDeck);
+        deck.setVolume(0.2);
 
         String audioPc = getClass().getResource("/sounds/easter_egg_sounds/pc.mp3").toString();
         Media mediaPc = new Media(audioPc);
         pc = new MediaPlayer(mediaPc);
-        pc.setVolume(0.1);
+        pc.setVolume(0.2);
 
         String audioXboxS = getClass().getResource("/sounds/easter_egg_sounds/xboxS.mp3").toString();
         Media mediaXboxS = new Media(audioXboxS);
         xboxS = new MediaPlayer(mediaXboxS);
-        xboxS.setVolume(0.1);
+        xboxS.setVolume(0.2);
 
         String audioXboxOne = getClass().getResource("/sounds/easter_egg_sounds/xboxOne.mp3").toString();
         Media mediaXboxOne = new Media(audioXboxOne);
@@ -471,22 +476,17 @@ public class StatisticsViewController implements Initializable {
         String audioXbox360 = getClass().getResource("/sounds/easter_egg_sounds/xbox360.mp3").toString();
         Media mediaXbox360 = new Media(audioXbox360);
         xbox360 = new MediaPlayer(mediaXbox360);
-        xbox360.setVolume(0.1);
+        xbox360.setVolume(0.2);
 
         String audioXbox = getClass().getResource("/sounds/easter_egg_sounds/xbox.mp3").toString();
         Media mediaXbox = new Media(audioXbox);
         xbox = new MediaPlayer(mediaXbox);
-        xbox.setVolume(0.1);
-
-        String audioDeck = getClass().getResource("/sounds/easter_egg_sounds/deck.mp3").toString();
-        Media mediaDeck = new Media(audioDeck);
-        deck = new MediaPlayer(mediaDeck);
-        deck.setVolume(0.1);
+        xbox.setVolume(0.2);
 
         String audioSwitch = getClass().getResource("/sounds/easter_egg_sounds/switch.mp3").toString();
         Media mediaSwitch = new Media(audioSwitch);
         nSwitch = new MediaPlayer(mediaSwitch);
-        nSwitch.setVolume(0.1);
+        nSwitch.setVolume(0.2);
 
         String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
         this.mediaHover = new Media(audioHover);
