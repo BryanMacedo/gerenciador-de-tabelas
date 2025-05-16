@@ -24,6 +24,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Path;
@@ -80,10 +81,31 @@ public class ListFileDataViewController implements Initializable {
     private Label lbTip;
 
     @FXML
+    private Label lbNoData;
+
+    @FXML
+    private Label lbName;
+
+    @FXML
+    private Label lbPlatform;
+
+    @FXML
+    private Label lbRating;
+
+    @FXML
+    private Label lbDLC;
+
+    @FXML
+    private Label lbFinish;
+
+    @FXML
+    private Label lbFinishDate;
+
+    @FXML
     private HBox hbStatistics;
 
     @FXML
-    private void onHbStatistics(){
+    private void onHbStatistics() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
@@ -180,8 +202,8 @@ public class ListFileDataViewController implements Initializable {
 
         if (result.isPresent() && result.get() == btYes) {
             clickSound.play();
-            switch (optionFunction){
-                case 2->{
+            switch (optionFunction) {
+                case 2 -> {
                     //excluir linha
                     List<Game> listAux = new ArrayList<>();
 
@@ -217,7 +239,7 @@ public class ListFileDataViewController implements Initializable {
                         }
 
                         //Deixa o tamanho da célula igual ao do seu conteúdo
-                        for(int i = 0; i < columns.size(); i++) {
+                        for (int i = 0; i < columns.size(); i++) {
                             sheet.autoSizeColumn(i);
                         }
 
@@ -228,7 +250,7 @@ public class ListFileDataViewController implements Initializable {
                         throw new RuntimeException(e);
                     }
 
-                    for(Game game : games){
+                    for (Game game : games) {
                         writeData(game);
                     }
 
@@ -244,7 +266,7 @@ public class ListFileDataViewController implements Initializable {
                     }
 
                 }
-                case 3 ->{
+                case 3 -> {
                     File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
                     fileToDelete.delete();
 
@@ -321,7 +343,7 @@ public class ListFileDataViewController implements Initializable {
     }
 
     @FXML
-    private void onHbDeleteLineClick(){
+    private void onHbDeleteLineClick() {
         clickSound.play();
         lbTip.setText("Clique na linha que deseja excluir.");
 
@@ -359,7 +381,7 @@ public class ListFileDataViewController implements Initializable {
     }
 
     @FXML
-    private void onHbEditGameLineClick(){
+    private void onHbEditGameLineClick() {
         clickSound.play();
         lbTip.setText("Clique na linha que deseja editar.");
 
@@ -424,7 +446,6 @@ public class ListFileDataViewController implements Initializable {
     }
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSounds();
@@ -458,7 +479,7 @@ public class ListFileDataViewController implements Initializable {
                                 rating, dlc, row.getCell(5).toString(), date);
                     }
 
-                   games.add(newGame);
+                    games.add(newGame);
 
                     Label labelName = new Label(newGame.getName());
                     labelName.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 363; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
@@ -493,8 +514,8 @@ public class ListFileDataViewController implements Initializable {
                     newHbox.setOnMouseClicked(e -> {
                         gameToEdit = newGame;
 
-                        switch (optionFunction){
-                            case 1 ->{
+                        switch (optionFunction) {
+                            case 1 -> {
                                 try {
                                     fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
                                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/EditDataView.fxml"));
@@ -505,7 +526,7 @@ public class ListFileDataViewController implements Initializable {
                                     ex.printStackTrace();
                                 }
                             }
-                            case 2 ->{
+                            case 2 -> {
                                 clickSound.play();
                                 warningDelete("Tem certeza que deseja excluir esta Linha?");
                             }
@@ -520,9 +541,24 @@ public class ListFileDataViewController implements Initializable {
         } catch (IOException exc) {
             throw new RuntimeException(exc);
         }
+
+
+        if (hBoxList.isEmpty()){
+            lbNoData.setStyle(lbNoData.getStyle() + "-fx-font-size: 20px;");
+            lbNoData.setText("Tabela vazia, por favor clique em \"Inserir um novo jogo\" para inserir o primeiro jogo na tabela.");
+            List<Label> labelsDisabled = new ArrayList<>(Arrays.asList(lbName, lbPlatform,
+                    lbRating, lbDLC, lbFinish, lbFinishDate, lbTableName));
+
+            for (Label label : labelsDisabled) {
+                label.setDisable(true);
+            }
+
+            hbEditGameLine.setMouseTransparent(true);
+            hbDeleteLine.setMouseTransparent(true);
+        }
     }
 
-    private void setInitialsSounds(){
+    private void setInitialsSounds() {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<HBox> hBoxeBtns = new ArrayList<>(Arrays.asList(hbInsertNewGame, hbEditGameLine, hbDeleteLine, hbDeleteFile));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
@@ -555,7 +591,7 @@ public class ListFileDataViewController implements Initializable {
         }
     }
 
-    private void loadSounds(){
+    private void loadSounds() {
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);

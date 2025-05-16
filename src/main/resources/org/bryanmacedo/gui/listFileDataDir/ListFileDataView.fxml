@@ -126,6 +126,11 @@
    <center>
       <StackPane prefHeight="813.0" prefWidth="516.0" styleClass="scrollpane" BorderPane.alignment="CENTER">
          <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="lbNoData" />
+               </children>
+            </StackPane>
             <StackPane prefHeight="64.0" prefWidth="1107.0">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="64.0" prefWidth="78.0">
@@ -293,32 +298,32 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="1107.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="37.0" prefWidth="363.0" styleClass="marg" text="NOME ">
+                              <Label fx:id="lbName" alignment="CENTER" prefHeight="37.0" prefWidth="363.0" styleClass="marg" text="NOME ">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="37.0" prefWidth="142.0" styleClass="marg" text="PLATAFORMA">
+                              <Label fx:id="lbPlatform" alignment="CENTER" prefHeight="37.0" prefWidth="142.0" styleClass="marg" text="PLATAFORMA">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="699.0" layoutY="10.0" prefHeight="37.0" prefWidth="72.0" styleClass="marg" text="NOTA">
+                              <Label fx:id="lbRating" alignment="CENTER" layoutX="699.0" layoutY="10.0" prefHeight="37.0" prefWidth="72.0" styleClass="marg" text="NOTA">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="799.0" layoutY="10.0" prefHeight="37.0" prefWidth="134.0" styleClass="marg" text="DLC ">
+                              <Label fx:id="lbDLC" alignment="CENTER" layoutX="799.0" layoutY="10.0" prefHeight="37.0" prefWidth="134.0" styleClass="marg" text="DLC ">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="748.0" layoutY="10.0" prefHeight="37.0" prefWidth="132.0" styleClass="marg" text="FINALIZADO">
+                              <Label fx:id="lbFinish" alignment="CENTER" layoutX="748.0" layoutY="10.0" prefHeight="37.0" prefWidth="132.0" styleClass="marg" text="FINALIZADO">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" layoutX="746.0" layoutY="10.0" prefHeight="37.0" prefWidth="192.0" styleClass="marg" text="DATA DE TERMINO">
+                              <Label fx:id="lbFinishDate" alignment="CENTER" layoutX="746.0" layoutY="10.0" prefHeight="37.0" prefWidth="192.0" styleClass="marg" text="DATA DE TERMINO">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
