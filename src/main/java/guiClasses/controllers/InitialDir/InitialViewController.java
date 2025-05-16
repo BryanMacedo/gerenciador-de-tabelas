@@ -59,7 +59,7 @@ public class InitialViewController implements Initializable {
 
         if (files.length == 0) {
             errorSound.play();
-            lbWarning.setText("No momento, você não tem dados suficientes para visualizar suas estatísticas. Por favor, clique na opção \"Criar uma tabela\" para criar sua primeira tabela e fornecer os dados que serão analisados.");
+            lbWarning.setText("No momento não há tabelas a serem analizadas. Por favor, clique na opção \"Criar uma tabela\" para poder criar sua primeira tabela.");
         } else {
             clickSound.play();
             try {

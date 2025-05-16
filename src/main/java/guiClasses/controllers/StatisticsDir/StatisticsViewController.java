@@ -367,12 +367,23 @@ public class StatisticsViewController implements Initializable {
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
-        lbAverageMonth.setText(String.valueOf(formattedAverage));
-        lbAverageYear.setText(String.valueOf(formattedAverageYear));
+
+        if (Double.isNaN(average)){
+            lbAverageMonth.setText("0");
+        }else{
+            lbAverageMonth.setText(String.valueOf(formattedAverage));
+        }
+        if (Double.isNaN(averageYear)){
+            lbAverageYear.setText("0");
+        }else{
+            lbAverageYear.setText(String.valueOf(formattedAverageYear));
+        }
+
         if (maxEntry != null) {
             lbPlatform.setText(maxEntry.getKey());
         } else {
             lbPlatform.setText("Dados insulficientes");
+            hbLogo.setMouseTransparent(true);
         }
         lbMaxRating.setText(String.valueOf(countMaxRating));
 
