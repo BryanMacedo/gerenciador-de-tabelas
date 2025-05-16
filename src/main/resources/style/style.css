@@ -27,13 +27,11 @@
 
 .Hbox{
     -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-border-width: 2px;
 }
 
 .HboxHover:hover{
-    -fx-background-color: #272727;
-    -fx-border-color: #ffffff;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
     -fx-cursor: hand;
 }
 
