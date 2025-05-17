@@ -166,6 +166,8 @@ public class NewFileViewController implements Initializable {
                 btCreate.fire();
             }
         });
+
+        tfFileName.setStyle(tfFileName.getStyle() + "-fx-font-size: 15px; -fx-font-weight: bold;");
     }
 
     private void setInitialsSounds() {
