@@ -20,8 +20,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.entities.Game;
 import model.entities.TypeDLC;
-import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -129,11 +129,7 @@ public class ListFileDataViewController implements Initializable {
         dialogPane.setGraphic(null);
 
         dialogPane.setStyle(
-                "-fx-background-color: #272727; " +
-                        "-fx-background-radius: 25px; " +
-                        "-fx-border-color: #FFFFFF; " +
-                        "-fx-border-width: 5px; " +
-                        "-fx-border-radius: 20px;"
+                "-fx-background-color: #272727; -fx-background-radius: 25px; -fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-border-radius: 20px;"
         );
 
         Stage stage = (Stage) dialogPane.getScene().getWindow();
@@ -148,15 +144,12 @@ public class ListFileDataViewController implements Initializable {
         dialogPane.getScene().setFill(Color.TRANSPARENT);
 
         dialogPane.getStyleClass().add("custom-dialog");
-        dialogPane.setStyle(dialogPane.getStyle() +
-                " -fx-text-fill: white; ");
+        dialogPane.setStyle(dialogPane.getStyle() + " -fx-text-fill: white; ");
 
         Label contentLabel = (Label) dialogPane.lookup(".content.label");
         if (contentLabel != null) {
             contentLabel.setStyle(
-                    "-fx-text-fill: white; " +
-                            "-fx-font-size: 18px; " +
-                            "-fx-font-weight: bold;"
+                    "-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"
             );
         }
 
@@ -167,7 +160,6 @@ public class ListFileDataViewController implements Initializable {
 
         Button btnYes = (Button) dialogPane.lookupButton(btYes);
         Button btnNo = (Button) dialogPane.lookupButton(btNo);
-
 
         btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
 
@@ -180,7 +172,6 @@ public class ListFileDataViewController implements Initializable {
         });
         btnYes.setOnMouseExited(e -> {
             btnYes.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
-
         });
 
         btnNo.setStyle("-fx-background-color: transparent; -fx-background-radius: 15px; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-border-color: transparent; -fx-border-radius: 20px; -fx-border-width: 2px;");
@@ -198,7 +189,6 @@ public class ListFileDataViewController implements Initializable {
         });
 
         Optional<ButtonType> result = alert.showAndWait();
-
 
         if (result.isPresent() && result.get() == btYes) {
             clickSound.play();
@@ -255,7 +245,6 @@ public class ListFileDataViewController implements Initializable {
                     }
 
                     // abre novamente a view atual
-
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/ListFileDataView.fxml"));
                         Parent root = loader.load();
@@ -264,7 +253,6 @@ public class ListFileDataViewController implements Initializable {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
                 case 3 -> {
                     File fileToDelete = new File("C:\\tabelas-GT\\" + ListFilesViewController.fileToAccess + ".xlsx");
@@ -280,7 +268,6 @@ public class ListFileDataViewController implements Initializable {
                     }
                 }
             }
-
         } else {
             clickSound.play();
         }
@@ -353,7 +340,6 @@ public class ListFileDataViewController implements Initializable {
             hBox.setMouseTransparent(false);
             hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
 
-
             hBox.setOnMouseEntered(e -> {
                 for (Node node : hBox.getChildren()) {
                     if (node instanceof Label) {
@@ -375,8 +361,6 @@ public class ListFileDataViewController implements Initializable {
                     }
                 }
             });
-
-
         }
     }
 
@@ -391,7 +375,6 @@ public class ListFileDataViewController implements Initializable {
             hBox.setMouseTransparent(false);
             hBox.setStyle("-fx-cursor: hand; -fx-alignment: top_center;");
 
-
             hBox.setOnMouseEntered(e -> {
                 for (Node node : hBox.getChildren()) {
                     if (node instanceof Label) {
@@ -413,8 +396,6 @@ public class ListFileDataViewController implements Initializable {
                     }
                 }
             });
-
-
         }
     }
 
@@ -543,7 +524,7 @@ public class ListFileDataViewController implements Initializable {
         }
 
 
-        if (hBoxList.isEmpty()){
+        if (hBoxList.isEmpty()) {
             lbNoData.setStyle(lbNoData.getStyle() + "-fx-font-size: 20px;");
             lbNoData.setText("Tabela vazia, por favor clique em \"Inserir um novo jogo\" para inserir o primeiro jogo na tabela.");
             List<Label> labelsDisabled = new ArrayList<>(Arrays.asList(lbName, lbPlatform,

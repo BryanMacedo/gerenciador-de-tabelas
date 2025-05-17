@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -26,7 +25,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -70,7 +68,7 @@ public class NewFileViewController implements Initializable {
     private Label lbWarning;
 
     @FXML
-    private void onHbStatistics(){
+    private void onHbStatistics() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
@@ -83,7 +81,7 @@ public class NewFileViewController implements Initializable {
     }
 
     @FXML
-    private void onHbListFilesClick(){
+    private void onHbListFilesClick() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
@@ -101,11 +99,10 @@ public class NewFileViewController implements Initializable {
         String fileName = tfFileName.getText().trim();
 
         if (fileName.isEmpty()) {
-            lbWarning.setText("Por favor digíte um nome para o arquivo.");
+            lbWarning.setText("Por favor, digite um nome para o arquivo.");
             errorSound.play();
             return;
         }
-
 
         //verificando se já existe um arquivo com o nome informado
         String fileNameXlsx = fileName + ".xlsx";
@@ -114,7 +111,7 @@ public class NewFileViewController implements Initializable {
         File checkFile = new File(path.toString(), fileNameXlsx);
         if (checkFile.exists()) {
             errorSound.play();
-            lbWarning.setText("Já existe um arquivo com este nome, por favor digite outro.");
+            lbWarning.setText("Já existe uma tabela com este nome, por favor digite outro.");
             tfFileName.clear();
             return;
         } else {
@@ -138,7 +135,7 @@ public class NewFileViewController implements Initializable {
                 }
 
                 //Deixa o tamanho da célula igual ao do seu conteúdo
-                for(int i = 0; i < columns.size(); i++) {
+                for (int i = 0; i < columns.size(); i++) {
                     sheet.autoSizeColumn(i);
                 }
 
@@ -146,7 +143,6 @@ public class NewFileViewController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
 
         try {
@@ -157,7 +153,6 @@ public class NewFileViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -167,13 +162,13 @@ public class NewFileViewController implements Initializable {
         setInitialsSounds();
 
         tfFileName.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER){
+            if (event.getCode() == KeyCode.ENTER) {
                 btCreate.fire();
             }
         });
     }
 
-    private void setInitialsSounds(){
+    private void setInitialsSounds() {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
 
@@ -194,6 +189,7 @@ public class NewFileViewController implements Initializable {
                 newHoverPlayer.play();
             });
         }
+
         btCreate.setOnMouseEntered(event -> {
             MediaPlayer newHoverPlayer = new MediaPlayer(mediaHover);
             newHoverPlayer.setVolume(0.1);
@@ -214,7 +210,7 @@ public class NewFileViewController implements Initializable {
         });
     }
 
-    private void loadSounds(){
+    private void loadSounds() {
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);

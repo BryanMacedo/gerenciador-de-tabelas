@@ -37,7 +37,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Bem vindo ao" />
+                        <Label text="Bem-vindo ao" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="163.0">
                            <children>
                               <ImageView fitHeight="66.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">

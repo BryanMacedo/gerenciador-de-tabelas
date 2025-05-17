@@ -168,7 +168,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="tfName" focusTraversable="false" styleClass="textFild">
+                                    <TextField fx:id="tfName" focusTraversable="false" promptText="God of War" styleClass="textFild">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>

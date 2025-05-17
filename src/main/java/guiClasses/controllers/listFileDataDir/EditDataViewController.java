@@ -41,7 +41,6 @@ public class EditDataViewController implements Initializable {
                     , "XBOX SS", "XBOX ONE", "XBOX 360", "XBOX", "SWITCH 2", "SWITCH"));
     private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
 
-
     String strRbYesOrNo = null;
     TypeDLC typeDLC = null;
     Game gameToEdit;
@@ -109,7 +108,7 @@ public class EditDataViewController implements Initializable {
     private HBox hbStatistics;
 
     @FXML
-    private void onHbStatistics(){
+    private void onHbStatistics() {
         clickSound.play();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/StatisticsDir/StatisticsView.fxml"));
@@ -129,25 +128,14 @@ public class EditDataViewController implements Initializable {
         gameEdited = new Game(tfName.getText(), cbPlataforms.getValue(),
                 spnRating.getValue(), typeDLC, strRbYesOrNo, dpFinish.getValue());
 
-        boolean isEqual = false;
-        for (Game game : ListFileDataViewController.games) {
-            if (gameEdited.equals(game)){
-                isEqual = true;
-            }
-        }
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
                 typeDLC == null || strRbYesOrNo.isEmpty()) {
             lbWarning.setText("Preencha todos os campos para editar a linha.");
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
             errorSound.play();
-        } else if (isEqual) {
-            lbWarning.setStyle("-fx-text-fill: #ffffff;");
-            lbWarning.setText("Já existe um jogo com os mesmos dados informados.");
-            errorSound.play();
-
         } else if (gameToEdit.equals(gameEdited)) {
-            lbWarning.setText("Edite os dados para alterar a linha.");
+            lbWarning.setText("Edite pelo menos um dos dados para alterar a linha.");
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
             errorSound.play();
         } else {
@@ -213,10 +201,7 @@ public class EditDataViewController implements Initializable {
             } catch (IOException exc) {
                 exc.printStackTrace();
             }
-
-
         }
-
     }
 
 
@@ -360,18 +345,18 @@ public class EditDataViewController implements Initializable {
 
         ObservableList<Node> form = FXCollections.observableArrayList(
                 tfName, cbPlataforms, spnRating,
-                rbNo,rbYes,rbTERMINEI,rbNAO_JOGUEI,rbNAO_TEM,rbE_DLC, dpFinish);
+                rbNo, rbYes, rbTERMINEI, rbNAO_JOGUEI, rbNAO_TEM, rbE_DLC, dpFinish);
 
         for (Node node : form) {
             node.setOnKeyPressed(event -> {
-                if (event.getCode() == KeyCode.ENTER){
+                if (event.getCode() == KeyCode.ENTER) {
                     btEditLine.fire();
                 }
             });
         }
     }
 
-    private void setInitialsSounds(){
+    private void setInitialsSounds() {
         List<ImageView> imageViews = new ArrayList<>(Arrays.asList(imgvMinimize, imgvClose));
         List<RadioButton> rbs = new ArrayList<>(Arrays.asList(rbE_DLC, rbNAO_TEM, rbNAO_JOGUEI, rbTERMINEI, rbYes, rbNo));
         List<HBox> hBoxViews = new ArrayList<>(Arrays.asList(hbListFiles, hbNewFile, hbStatistics));
@@ -444,7 +429,7 @@ public class EditDataViewController implements Initializable {
         });
     }
 
-    private void loadSounds(){
+    private void loadSounds() {
         String ClickPath = getClass().getResource("/sounds/click_on_UI_01.mp3").toString();
         this.clickSound = new AudioClip(ClickPath);
         this.clickSound.setVolume(0.1);

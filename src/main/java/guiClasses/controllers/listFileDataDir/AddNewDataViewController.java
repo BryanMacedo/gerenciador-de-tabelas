@@ -148,7 +148,7 @@ public class AddNewDataViewController implements Initializable {
 
         boolean isEqual = false;
         for (Game game : ListFileDataViewController.games) {
-            if (newGame.equals(game)){
+            if (newGame.equals(game)) {
                 isEqual = true;
             }
         }
@@ -166,9 +166,6 @@ public class AddNewDataViewController implements Initializable {
             writeData(newGame);
             clickSound.play();
         }
-
-
-
     }
 
     private void writeData(Game game) {
@@ -283,8 +280,6 @@ public class AddNewDataViewController implements Initializable {
                 }
             });
         }
-
-
     }
 
     private void setInitialsSounds() {
@@ -337,7 +332,6 @@ public class AddNewDataViewController implements Initializable {
         dpFinish.setOnMouseClicked(event -> {
             clickSound.play();
         });
-
 
         dpFinish.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {

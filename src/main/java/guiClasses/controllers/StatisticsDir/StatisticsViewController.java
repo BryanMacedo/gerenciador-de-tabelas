@@ -96,6 +96,7 @@ public class StatisticsViewController implements Initializable {
         for (MediaPlayer sound : sounds) {
             sound.stop();
         }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFilesDir/ListFilesView.fxml"));
             Parent root = loader.load();
@@ -105,7 +106,6 @@ public class StatisticsViewController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     private void onHbLogoClick() {
@@ -176,7 +176,6 @@ public class StatisticsViewController implements Initializable {
                     hbLogo.setMouseTransparent(false);
                 });
             }
-
             case "XBOX ONE" -> {
                 xboxOne.seek(javafx.util.Duration.ZERO);
                 xboxOne.play();
@@ -184,7 +183,6 @@ public class StatisticsViewController implements Initializable {
                     hbLogo.setMouseTransparent(false);
                 });
             }
-
             case "XBOX 360" -> {
                 xbox360.seek(javafx.util.Duration.ZERO);
                 xbox360.play();
@@ -199,7 +197,6 @@ public class StatisticsViewController implements Initializable {
                     hbLogo.setMouseTransparent(false);
                 });
             }
-
             case "STEAM DECK" -> {
                 deck.seek(javafx.util.Duration.ZERO);
                 deck.play();
@@ -207,7 +204,6 @@ public class StatisticsViewController implements Initializable {
                     hbLogo.setMouseTransparent(false);
                 });
             }
-
             case "SWITCH", "SWITCH 2" -> {
                 nSwitch.seek(javafx.util.Duration.ZERO);
                 nSwitch.play();
@@ -215,7 +211,6 @@ public class StatisticsViewController implements Initializable {
                     hbLogo.setMouseTransparent(false);
                 });
             }
-
         }
     }
 
@@ -237,7 +232,6 @@ public class StatisticsViewController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -287,7 +281,6 @@ public class StatisticsViewController implements Initializable {
         int countGamesUnfinished = 0;
         int countMaxRating = 0;
 
-
         for (Game game : gamesToStatistics) {
             // quantidades de jogos zerados / n zerdos
             if (game.getTextDate() != null) {
@@ -335,13 +328,12 @@ public class StatisticsViewController implements Initializable {
             }
         }
 
-
         int sum = 0;
         for (int quantity : counterMonthYear.values()) {
             sum += quantity;
         }
 
-        double average =  (double) sum / counterMonthYear.size();
+        double average = (double) sum / counterMonthYear.size();
         String formattedAverage = df.format(average);
 
         //Média anual
@@ -360,33 +352,30 @@ public class StatisticsViewController implements Initializable {
             sum += quantity;
         }
 
-
         double averageYear = (double) sum / counterYear.size();
         String formattedAverageYear = df.format(averageYear);
-
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
 
-        if (Double.isNaN(average)){
+        if (Double.isNaN(average)) {
             lbAverageMonth.setText("0");
-        }else{
+        } else {
             lbAverageMonth.setText(String.valueOf(formattedAverage));
         }
-        if (Double.isNaN(averageYear)){
+        if (Double.isNaN(averageYear)) {
             lbAverageYear.setText("0");
-        }else{
+        } else {
             lbAverageYear.setText(String.valueOf(formattedAverageYear));
         }
 
         if (maxEntry != null) {
             lbPlatform.setText(maxEntry.getKey());
         } else {
-            lbPlatform.setText("Dados insulficientes");
+            lbPlatform.setText("Dados insuficientes");
             hbLogo.setMouseTransparent(true);
         }
         lbMaxRating.setText(String.valueOf(countMaxRating));
-
     }
 
     private void setInitialsSounds() {
@@ -503,7 +492,6 @@ public class StatisticsViewController implements Initializable {
     @FXML
     private void onImgvMinimizeClick() {
         List<MediaPlayer> sounds = new ArrayList<>(Arrays.asList(ps5, ps4, ps3, ps2, ps1, psp, psVita, pc, xbox, xbox360, xboxOne, xboxS, deck, nSwitch));
-
         clickSound.play();
 
         for (MediaPlayer sound : sounds) {

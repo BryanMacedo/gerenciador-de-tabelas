@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -76,47 +75,7 @@ public class AddFirstDataViewController implements Initializable {
     private TextField tfName;
 
     @FXML
-    private Label finishDLC;
-
-    @FXML
-    private Label unfinishDLC;
-
-    @FXML
-    private Label isDLC;
-
-    @FXML
-    private ImageView imgvRbfinishDLC;
-    @FXML
-    private ImageView imgvRbunfinishDLC;
-    @FXML
-    private ImageView imgvRbisDLC;
-    @FXML
-    private ImageView imgvRbDontHaveDLC;
-
-    @FXML
-    private ImageView imgvRbFinishYes;
-
-    @FXML
-    private ImageView imgvRbFinishNo;
-
-
-    @FXML
-    private HBox hbfinishDLC;
-
-    @FXML
-    private HBox hbUnfinishDLC;
-
-    @FXML
-    private HBox hbUnIsDLC;
-
-    @FXML
-    private HBox hbDontHaveDLC;
-
-    @FXML
     private ChoiceBox<String> cbPlataforms;
-
-    @FXML
-    private HBox hbFinishYes;
 
     @FXML
     private HBox hbFinishNo;
@@ -212,6 +171,7 @@ public class AddFirstDataViewController implements Initializable {
 
         if (tfName.getText().isEmpty() || cbPlataforms.getValue() == null ||
                 typeDLC == null || strRbYesOrNo.isEmpty()) {
+            lbWarning.setText("Preencha todos os campos para adicionar um jogo.");
             lbWarning.setStyle("-fx-text-fill: #ffffff;");
             errorSound.play();
         } else {
@@ -260,7 +220,6 @@ public class AddFirstDataViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML

@@ -8,12 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,8 +50,6 @@ public class InitialViewController implements Initializable {
 
     @FXML
     private void onLbStatisticsClick() {
-        // verificar se tem arquivos para entrar na pegar os dados
-
         File folder = new File("C:\\tabelas-GT");
         String[] files = folder.list();
 
@@ -75,7 +71,6 @@ public class InitialViewController implements Initializable {
 
     @FXML
     private void onLbListFilesClick() {
-        // verificar se tem arquivos para listar
         File folder = new File("C:\\tabelas-GT");
         String[] files = folder.list();
 
