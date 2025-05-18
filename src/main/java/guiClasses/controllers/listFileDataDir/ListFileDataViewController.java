@@ -42,6 +42,7 @@ public class ListFileDataViewController implements Initializable {
     private List<String> columns = new ArrayList<>(Arrays.asList("Nome", "Plataforma", "Data de termino", "Nota", "DLC", "Finalizado"));
 
     DateTimeFormatter dateTimeFormatterBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    int numberLine = 1;
 
     private AudioClip clickSound;
     private MediaPlayer hover;
@@ -100,6 +101,9 @@ public class ListFileDataViewController implements Initializable {
 
     @FXML
     private Label lbFinishDate;
+
+    @FXML
+    private Label lbLine;
 
     @FXML
     private HBox hbStatistics;
@@ -462,6 +466,11 @@ public class ListFileDataViewController implements Initializable {
 
                     games.add(newGame);
 
+                    Label labelLine = new Label();
+                    labelLine.setText(String.valueOf(numberLine));
+                    numberLine++;
+                    labelLine.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 87; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
                     Label labelName = new Label(newGame.getName());
                     labelName.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 363; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
 
@@ -487,7 +496,7 @@ public class ListFileDataViewController implements Initializable {
                     Label labelFinish = new Label(newGame.getFinish());
                     labelFinish.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 132; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
 
-                    HBox newHbox = new HBox(labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
+                    HBox newHbox = new HBox(labelLine, labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
                     newHbox.setStyle("-fx-alignment: top_center;");
 
                     newHbox.setMouseTransparent(true);
@@ -527,7 +536,7 @@ public class ListFileDataViewController implements Initializable {
         if (hBoxList.isEmpty()) {
             lbNoData.setStyle(lbNoData.getStyle() + "-fx-font-size: 20px;");
             lbNoData.setText("Tabela vazia, por favor clique em \"Inserir um novo jogo\" para inserir o primeiro jogo na tabela.");
-            List<Label> labelsDisabled = new ArrayList<>(Arrays.asList(lbName, lbPlatform,
+            List<Label> labelsDisabled = new ArrayList<>(Arrays.asList(lbLine, lbName, lbPlatform,
                     lbRating, lbDLC, lbFinish, lbFinishDate, lbTableName));
 
             for (Label label : labelsDisabled) {

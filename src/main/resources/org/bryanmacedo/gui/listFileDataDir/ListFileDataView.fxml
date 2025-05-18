@@ -283,7 +283,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="25.0" prefWidth="1084.0">
                            <children>
-                              <Label fx:id="lbTableName" alignment="CENTER" prefWidth="1035.0" styleClass="marg">
+                              <Label fx:id="lbTableName" alignment="CENTER" prefWidth="1122.0" styleClass="marg">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -298,6 +298,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="1107.0">
                            <children>
+                              <Label fx:id="lbLine" alignment="CENTER" layoutX="51.0" layoutY="10.0" prefHeight="37.0" prefWidth="87.0" styleClass="marg" text="LINHA" />
                               <Label fx:id="lbName" alignment="CENTER" prefHeight="37.0" prefWidth="363.0" styleClass="marg" text="NOME ">
                                  <HBox.margin>
                                     <Insets />
