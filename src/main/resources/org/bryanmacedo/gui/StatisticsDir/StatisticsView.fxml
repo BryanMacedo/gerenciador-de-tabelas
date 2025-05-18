@@ -144,6 +144,12 @@
                         <Label fx:id="lbUnfinishedGames" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
                      </children>
                   </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="1117.0">
+                     <children>
+                        <Label fx:id="lbFinishGamesYear" alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Quantidade de jogos zerados em " />
+                        <Label fx:id="lbNumberFinishGamesYear" alignment="CENTER" prefWidth="200.0" styleClass="marg" />
+                     </children>
+                  </HBox>
                   <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="422.0" prefHeight="0.0" prefWidth="1117.0">
                      <children>
                         <Label alignment="CENTER" prefWidth="400.0" styleClass="marg" text="Média de jogos zerados por ano" />

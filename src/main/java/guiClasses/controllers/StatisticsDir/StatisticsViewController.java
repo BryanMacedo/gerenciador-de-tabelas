@@ -79,6 +79,12 @@ public class StatisticsViewController implements Initializable {
     private Label lbAverageYear;
 
     @FXML
+    private Label lbFinishGamesYear;
+
+    @FXML
+    private Label lbNumberFinishGamesYear;
+
+    @FXML
     private HBox hbLogo;
 
     @FXML
@@ -300,8 +306,10 @@ public class StatisticsViewController implements Initializable {
         Map<String, Integer> counterPlatforms = new HashMap<>();
 
         for (Game gamePlatform : gamesToStatistics) {
-            String platform = gamePlatform.getPlatform();
-            counterPlatforms.put(platform, counterPlatforms.getOrDefault(platform, 0) + 1);
+            if (gamePlatform.getFinishDate() != null){
+                String platform = gamePlatform.getPlatform();
+                counterPlatforms.put(platform, counterPlatforms.getOrDefault(platform, 0) + 1);
+            }
         }
 
         Map.Entry<String, Integer> maxEntry = null;
@@ -354,6 +362,22 @@ public class StatisticsViewController implements Initializable {
 
         double averageYear = (double) sum / counterYear.size();
         String formattedAverageYear = df.format(averageYear);
+
+        // quantidade de jogos zerados no ano
+        LocalDate date = LocalDate.now();
+
+        int year = date.getYear();
+
+        int countGamesThisYear = 0;
+
+        for (Game game : gamesToStatistics) {
+            if (game.getFinishDate() != null && game.getFinishDate().getYear() == year){
+                countGamesThisYear++;
+            }
+        }
+
+        lbFinishGamesYear.setText(lbFinishGamesYear.getText() + year);
+        lbNumberFinishGamesYear.setText(String.valueOf(countGamesThisYear));
 
         lbFinishedGames.setText(String.valueOf(countGamesFinished));
         lbUnfinishedGames.setText(String.valueOf(countGamesUnfinished));
