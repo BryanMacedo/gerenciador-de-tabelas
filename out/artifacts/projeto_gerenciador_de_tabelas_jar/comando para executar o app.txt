@@ -1,0 +1,1 @@
+java --module-path "C:\java-libs\javafx-sdk-17\lib" --add-modules javafx.controls,javafx.fxml,javafx.media --class-path "projeto-gerenciador-de-tabelas.jar;C:\java-libs\poi\*" org.bryanmacedo.projetogerenciadordetabelas.Main
