@@ -19,12 +19,11 @@ Ideal para gamers que desejam manter um registro completo e acessível da sua jo
 </div>
 
 <h2 align="left" id="Install">Como instalar 👾</h2>
-
+<p><b>• Instalar o java 17.0.14 ou superior.</p>
 <p align="left">
-  <p>• Baixe o app no link abaixo: </p>
-  https://drive.google.com/file/d/198kaNF4RXDV3thsIhSQPE4PbcwX-lgeu/view?usp=drive_link
+  <p>• Baixe o app no link:  https://drive.google.com/file/d/198kaNF4RXDV3thsIhSQPE4PbcwX-lgeu/view?usp=drive_link</p>
 </p>
-<p>• Seguir o passo a passo do arquivo "HOW TO INSTALL"</p>
+<p>• Seguir o passo a passo do arquivo "HOW TO INSTALL".</p>
 <div align="center">
 
 <h2 id="layout">Layout 🎨</h2>
