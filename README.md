@@ -18,6 +18,15 @@ Ideal para gamers que desejam manter um registro completo e acessível da sua jo
 
 </div>
 
+<h2 align="left" id="Install">Como instalar 👾</h2>
+
+<p align="left">
+  <p>• Baixe o app no link abaixo: </p>
+  https://drive.google.com/file/d/198kaNF4RXDV3thsIhSQPE4PbcwX-lgeu/view?usp=drive_link
+</p>
+<p>• Seguir o passo a passo do arquivo "HOW TO INSTALL"</p>
+<div align="center">
+
 <h2 id="layout">Layout 🎨</h2>
 
 ![image](https://github.com/user-attachments/assets/ed09fb5e-0c99-43a1-966a-37fa1607d7c6)
