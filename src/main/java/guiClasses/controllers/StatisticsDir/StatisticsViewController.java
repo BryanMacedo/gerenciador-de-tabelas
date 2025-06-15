@@ -48,6 +48,7 @@ public class StatisticsViewController implements Initializable {
     private MediaPlayer xbox;
     private MediaPlayer deck;
     private MediaPlayer nSwitch;
+    private MediaPlayer nSwitch2;
     private Media mediaHover;
 
 
@@ -210,10 +211,16 @@ public class StatisticsViewController implements Initializable {
                     hbLogo.setMouseTransparent(false);
                 });
             }
-            case "SWITCH", "SWITCH 2" -> {
+            case "SWITCH" -> {
                 nSwitch.seek(javafx.util.Duration.ZERO);
                 nSwitch.play();
                 nSwitch.setOnEndOfMedia(() -> {
+                    hbLogo.setMouseTransparent(false);
+                });
+            }case "SWITCH 2" -> {
+                nSwitch2.seek(javafx.util.Duration.ZERO);
+                nSwitch2.play();
+                nSwitch2.setOnEndOfMedia(() -> {
                     hbLogo.setMouseTransparent(false);
                 });
             }
@@ -500,6 +507,11 @@ public class StatisticsViewController implements Initializable {
         Media mediaSwitch = new Media(audioSwitch);
         nSwitch = new MediaPlayer(mediaSwitch);
         nSwitch.setVolume(0.2);
+
+        String audioSwitch2 = getClass().getResource("/sounds/easter_egg_sounds/switch2.mp3").toString();
+        Media mediaSwitch2 = new Media(audioSwitch2);
+        nSwitch2 = new MediaPlayer(mediaSwitch2);
+        nSwitch2.setVolume(0.2);
 
         String audioHover = getClass().getResource("/sounds/hover_sound_01.mp3").toString();
         this.mediaHover = new Media(audioHover);
