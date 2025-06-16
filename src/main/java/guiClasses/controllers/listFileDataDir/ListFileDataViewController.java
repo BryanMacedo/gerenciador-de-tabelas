@@ -465,65 +465,6 @@ public class ListFileDataViewController implements Initializable {
                     }
 
                     games.add(newGame);
-
-                    Label labelLine = new Label();
-                    labelLine.setText(String.valueOf(numberLine));
-                    numberLine++;
-                    labelLine.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 87; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
-
-                    Label labelName = new Label(newGame.getName());
-                    labelName.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 363; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
-
-                    Label labelPlataform = new Label(newGame.getPlatform());
-                    labelPlataform.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 142; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
-
-                    Label labelDate;
-
-                    if (newGame.getFinishDate() == null) {
-                        labelDate = new Label(newGame.getTextDate());
-                    } else {
-                        labelDate = new Label(newGame.getFinishDate().format(dateTimeFormatterBR));
-                    }
-
-                    labelDate.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 192; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
-
-                    Label labelRating = new Label(String.valueOf(newGame.getRating()));
-                    labelRating.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 72; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
-
-                    Label labelDLC = new Label(newGame.getDlc().getStrDLC());
-                    labelDLC.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 134; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
-
-                    Label labelFinish = new Label(newGame.getFinish());
-                    labelFinish.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 132; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
-
-                    HBox newHbox = new HBox(labelLine, labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
-                    newHbox.setStyle("-fx-alignment: top_center;");
-
-                    newHbox.setMouseTransparent(true);
-
-                    newHbox.setOnMouseClicked(e -> {
-                        gameToEdit = newGame;
-
-                        switch (optionFunction) {
-                            case 1 -> {
-                                try {
-                                    fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/EditDataView.fxml"));
-                                    Parent root = loader.load();
-                                    Scene scene = imgvClose.getScene();
-                                    scene.setRoot(root);
-                                } catch (IOException ex) {
-                                    ex.printStackTrace();
-                                }
-                            }
-                            case 2 -> {
-                                clickSound.play();
-                                warningDelete("Tem certeza que deseja excluir esta Linha?");
-                            }
-                        }
-                    });
-                    vbList.getChildren().add(newHbox);
-                    hBoxList.add(newHbox);
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -532,6 +473,68 @@ public class ListFileDataViewController implements Initializable {
             throw new RuntimeException(exc);
         }
 
+        games.sort(Comparator.comparing(Game::getFinishDate, Comparator.nullsLast(Comparator.naturalOrder())));
+
+        for (Game game : games) {
+            Label labelLine = new Label();
+            labelLine.setText(String.valueOf(numberLine));
+            numberLine++;
+            labelLine.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 87; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
+            Label labelName = new Label(game.getName());
+            labelName.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 363; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
+            Label labelPlataform = new Label(game.getPlatform());
+            labelPlataform.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 142; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
+            Label labelDate;
+
+            if (game.getFinishDate() == null) {
+                labelDate = new Label(game.getTextDate());
+            } else {
+                labelDate = new Label(game.getFinishDate().format(dateTimeFormatterBR));
+            }
+
+            labelDate.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 192; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
+            Label labelRating = new Label(String.valueOf(game.getRating()));
+            labelRating.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 72; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
+            Label labelDLC = new Label(game.getDlc().getStrDLC());
+            labelDLC.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 134; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
+            Label labelFinish = new Label(game.getFinish());
+            labelFinish.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 5px; -fx-pref-width: 132; -fx-pref-height: 37; -fx-alignment: center; -fx-background-color: #272727;");
+
+            HBox newHbox = new HBox(labelLine, labelName, labelPlataform, labelRating, labelDLC, labelFinish, labelDate);
+            newHbox.setStyle("-fx-alignment: top_center;");
+
+            newHbox.setMouseTransparent(true);
+
+            newHbox.setOnMouseClicked(e -> {
+                gameToEdit = game;
+
+                switch (optionFunction) {
+                    case 1 -> {
+                        try {
+                            fileNameToAccessFromListData = ListFilesViewController.fileToAccess;
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/bryanmacedo/gui/listFileDataDir/EditDataView.fxml"));
+                            Parent root = loader.load();
+                            Scene scene = imgvClose.getScene();
+                            scene.setRoot(root);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                    case 2 -> {
+                        clickSound.play();
+                        warningDelete("Tem certeza que deseja excluir esta Linha?");
+                    }
+                }
+            });
+            vbList.getChildren().add(newHbox);
+            hBoxList.add(newHbox);
+        }
 
         if (hBoxList.isEmpty()) {
             lbNoData.setStyle(lbNoData.getStyle() + "-fx-font-size: 20px;");
